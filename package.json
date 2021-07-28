@@ -16,7 +16,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "concurrently": "^5.1.0"
+    "autoprefixer": "^9.8.6",
+    "concurrently": "^5.1.0",
+    "postcss": "^7.0.36"
   },
   "dependencies": {
     "@apollo/client": "^3.3.21",
