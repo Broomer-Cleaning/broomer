@@ -10,16 +10,12 @@ const resolvers = {
           return User.find({});
         },
 
-        me: async (parent, args, context) => {
-          if (context.user) {
-            return User.findOne({_id: context.user._id});
-          }
-        }
-
-        // // Book is not an object?
-        // book: async() => {
-        //     return Book.find({})
+        // me: async (parent, args, context) => {
+        //   if (context.user) {
+        //     return User.findOne({_id: context.user._id});
+        //   }
         // }
+
       },
     Mutation: {
         createUser: async ( parent, args) => {
@@ -27,33 +23,7 @@ const resolvers = {
             const token = signToken(user);
             
             return {token, user}
-          },
-
-        saveBook: async (parent, {bookData}, context) => {
-            if (context.user) {
-                const updateUser = await User.findByIdAndUpdate(
-                    {_id: context.user._id},
-                    {$push: {savedBooks: bookData}},
-                    {new: true, runValidators: true}
-                )
-                console.log(updateUser)
-                return updateUser
-            }
-            throw new AuthenticationError("Only logged in users can keep a book list.")
-        },
-
-        // Updating a user's set of 'savedBooks' based on the book's ID
-        removeBook: async (parent, {bookId}, context) => {
-            if (context.user) {
-                const book = await User.findOneAndUpdate (
-                    {_id: context.user._id},
-                    {$pull: {savedBooks: {bookId: bookId}}},
-                    {new: true}
-                );
-                return book
-            }
-            throw new AuthenticationError('You need to be logged in!')
-        },
+          },  
 
         login: async (parent, {email, password}) => {
             // Look up the user by the provided email address. Since the `email` field is unique, we know that only one person will exist with that email

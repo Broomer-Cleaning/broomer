@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
 // import schema from Book.js
-const bookSchema = require('./Book');
+// const bookSchema = require('./Book');
 
 const userSchema = new Schema(
   {
@@ -21,8 +21,56 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    first_name: {
+      type: String,
+      // required: true,
+    },
+    last_name: {
+      type: String,
+      // required: true,
+    },
+    date_of_birth: {
+      type: Date,
+      // required: true,
+    },
+    phone_number: {
+      type: String,
+      // required: true,
+    },
+    about_me: {
+      type: String,
+    },
+    // Come back to this later
+    qualifications: {
+      type: [String],
+      default: undefined,
+    },
+    // Come back to this later
+    specifications: {
+      type: [String],
+      default: undefined,
+    },
+    jobs_worked: {
+      type: [String],
+      default: undefined,
+    },
+    jobs_hired: {
+      type: [String],
+      default: undefined,
+    },
+    reviews: {
+      type: [String],
+      default: undefined,
+    }
+
+
+
+
+
+
+
     // set savedBooks to be an array of data that adheres to the bookSchema
-    savedBooks: [bookSchema],
+    // savedBooks: [bookSchema],
   },
   // set this to use virtual below
   {
