@@ -13,10 +13,52 @@ const typeDefs = gql`
         about_me: String
         qualifications: [String]
         specifications: [String]
-        job_worked: [String]
-        jobs_hired: [String]
-        reviews: [String]
-        
+        jobs_worked: [Job]
+        jobs_hired: [Job]
+        reviews: [Review]  
+    }
+
+    type Job {
+        _id: ID!
+        street_address: String!
+        postal_code: String!
+        employerId: String
+        workerId: String
+        est_hours: Float!
+        rate_per_hour: Float!
+        job_description: String!
+
+        safety_double_vax: Boolean
+        safety_mask: Boolean
+        safety_police_check: Boolean
+        have_pets: Boolean
+        have_equipment_employer: Boolean
+        need_equipment_worker: Boolean
+        have_supplies_employer: Boolean
+        need_supplies_worker: Boolean
+        emp_provides_meal: Boolean
+        emp_provides_drinks: Boolean
+        emp_provides_facilities: Boolean
+
+        dataCaseOpened: String!
+        dateJobStart: String
+        dateJobEnd: String
+        dateCaseClosed: String
+        dollarsPromised: Int
+        Tip: Int
+        Currency: String
+        review: Review
+    }
+
+    type Review {
+        _id: ID!
+        jobId: String!
+        employerId: String!
+        workerId: String!
+        review_score_worker: Float
+        review_text_worker: String
+        review_score_employer: Float
+        review_text_employer: String
     }
 
     type Auth {
@@ -25,7 +67,9 @@ const typeDefs = gql`
     }
 
     type Query {
-        users: [User]    
+        users: [User]
+        jobs: [Job]
+        reviews: [Review]    
     }
 
     type Mutation {
