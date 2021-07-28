@@ -11,7 +11,7 @@ import {Link} from "react-scroll";
 
 const Navbar = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container">
 
     {/* <Link smooth={true} to="home" className="navbar-brand"><img className="logo" src={logo} alt="logo"></img></Link> */}
