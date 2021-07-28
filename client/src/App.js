@@ -2,6 +2,7 @@
 import React from 'react';
 import { ApolloProvider } from '@apollo/client';
 import Navbar from './components/Navbar';
+import Dashboard from './components/dashboard/Dashboard'
 import ApolloClient from 'apollo-boost';
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -22,6 +23,7 @@ function App() {
     <ApolloProvider client={client}>
     <>
      <Navbar/>
+     <Dashboard/>
      </>
     </ApolloProvider>
   );
