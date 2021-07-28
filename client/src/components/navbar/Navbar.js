@@ -1,4 +1,5 @@
 import React from "react";
+import "./navbar.css";
 // import logo from "../logo.png";
 import {Link} from "react-scroll";
 // import resume from "../images/Full-Stack-Developer.pdf"
@@ -10,7 +11,7 @@ import {Link} from "react-scroll";
 
 const Navbar = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-dark fixed-top">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
       <div className="container">
 
     {/* <Link smooth={true} to="home" className="navbar-brand"><img className="logo" src={logo} alt="logo"></img></Link> */}
