@@ -5,8 +5,8 @@ import {Link} from "react-scroll";
 // import resume from "../images/Full-Stack-Developer.pdf"
 
 //react font awesome
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import {faBars} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faBars} from "@fortawesome/free-solid-svg-icons";
 
 
 const Navbar = () => {
@@ -16,7 +16,7 @@ const Navbar = () => {
 
     {/* <Link smooth={true} to="home" className="navbar-brand"><img className="logo" src={logo} alt="logo"></img></Link> */}
     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      {/* <FontAwesomeIcon icon={faBars} style ={{color: "#fff"}}/> */}
+      <FontAwesomeIcon icon={faBars} style ={{color: "#fff"}}/>
     </button>
   
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
