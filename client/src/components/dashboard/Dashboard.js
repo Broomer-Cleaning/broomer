@@ -1,11 +1,18 @@
 import "./dashboard.css"
-import React from "react";
+import React , {useState} from "react";
 // import { Link } from "react-scroll";
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 import { Button } from 'react-bootstrap';
 import { Image } from 'react-bootstrap'
 import profileImg from './img/avatar.jpeg'
 
 const Dashboard = () => {
+  const [date, setDate] = useState(new Date());
+
+  const onChange = date => {
+    setDate(date);
+  } 
   return ( 
   <div className = "main">
     <div className = "leftSide">
@@ -27,6 +34,9 @@ const Dashboard = () => {
       </div>
     </div> 
   <div className = "rightSide">
+    <div>
+      <Calendar className="w-100" onChange={onChange} value = {date} />
+    </div>
 
   </div>
 </div>
