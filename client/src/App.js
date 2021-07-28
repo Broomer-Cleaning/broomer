@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 import React from 'react';
 import { ApolloProvider } from '@apollo/client';
-import Navbar from './components/Navbar';
+import Navbar from './components/navbar/Navbar';
 import ApolloClient from 'apollo-boost';
 import "bootstrap/dist/css/bootstrap.min.css";
 
