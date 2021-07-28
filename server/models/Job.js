@@ -1,83 +1,124 @@
 const { Schema, model } = require('mongoose');
-const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
-require('mongoose-currency').loadType(mongoose);
-var Currency = mongoose.Types.Currency;
 
 const jobSchema = new Schema(
-{
+  {
     id: {
-        type: String,
-        allowNull: false,
-        // primaryKey: true,
-      },
+      type: String,
+      required: true,
+    },
 
-      employerId: {
-        type: String,
-        allowNull: false,
-      },
+    street_address: {
+      type: String,
+      required: true,
+    },
 
-      workerId: {
-        type: String,
-        allowNull: false,
-      },
+    postal_code: {
+      type: String,
+      required: true,
+    },
 
-      dateCaseOpened: {
-        type: Date,
-        allowNull: false,
-        autoIncrement: true,
-      },
+    employerId: {
+      type: String,
+    },
 
-      dateJobStart: {
-        type: Date,
-        allowNull: false,
-      },
+    workerId: {
+      type: String,
+    },
 
-      dateJobEnd: {
-        type: Date,
-        allowNull: false,
-        primaryKey: true,
-        autoIncrement: true,
-      },
+    // basis for total
+    est_hours: {
+      type: Number,
+      required: true
+    },
 
-      dateCaseClosed: {
-        type: Date,
-        allowNull: false,
-        autoIncrement: true,
-      },
+    // basis for total
+    rate_per_hour: {
+      type: Number,
+      required: true
+    },
 
-    //   billable_Hours
+    job_description: {
+      type: String,
+      required: true
+    },
 
-    // Rate
+    safety_double_vax: {
+      type: Boolean,
+      default: false
+    },
+    safety_mask: {
+      type: Boolean,
+      default: false
+    },
+    safety_police_check: {
+      type: Boolean,
+      default: false
+    },
+    have_pets: {
+      type: Boolean,
+      default: false
+    },
+    have_equipment_employer: {
+      type: Boolean,
+      default: false
+    },
+    need_equipment_worker: {
+      type: Boolean,
+      default: false
+    },
+    have_supplies_employer: {
+      type: Boolean,
+      default: false
+    },
+    need_supplies_worker: {
+      type: Boolean,
+      default: false
+    },
+    emp_provides_meal: {
+      type: Boolean,
+      default: false
+    },
+    emp_provides_drinks: {
+      type: Boolean,
+      default: false
+    },
+    emp_provides_facilities: {
+      type: Boolean,
+      default: false
+    },
+    dateCaseOpened: {
+      type: Date,
+    },
 
-    // Total
+    dateJobStart: {
+      type: Date,
+    },
 
-    // Location: 
+    dateJobEnd: {
+      type: Date,
+    },
+
+    dateCaseClosed: {
+      type: Date,
+    },
 
     dollarsPromised: {
-        type: Number,
-        allowNull: false,
-      },
+      type: Number,
+    },
 
-      Tip: {
-        type: Number,
-        allowNull: false
-      },
+    Tip: {
+      type: Number,
+    },
 
-      Currency: {
-        type: Number,
-        allowNull: false,
-        autoIncrement: true,
-      },
+    Currency: {
+      type: String,
+    },
 
-      Currency: {
-        type: Number,
-        allowNull: false,
-        format: Currency
-      },
+    review: {
+      type: Array
+    }
+  })
 
-      reviewEmployer: {
-        type: String,
-        allowNull: false,
-      },
-    }),
+const Job = model('Job', jobSchema);
+module.exports = Job;

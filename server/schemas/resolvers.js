@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { Book, User } = require('../models');
+const { Job, User, Review } = require('../models');
 const { signToken } = require('../utils/auth');
 const mongoose = require('mongoose')
 
@@ -9,6 +9,14 @@ const resolvers = {
         users: async () => {
           return User.find({});
         },
+
+        jobs: async () => {
+          return Job.find({});
+        },
+
+        reviews: async () => {
+          return Review.find({})
+        }
 
         // me: async (parent, args, context) => {
         //   if (context.user) {
