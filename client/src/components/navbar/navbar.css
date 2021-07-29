@@ -4,6 +4,16 @@ body {
   font-family: "Roboto Condensed", san-serif !important;
 }
 
+:root {
+  --primary-blue: #4473b7;
+  --primary-white: #fffFFF;
+}
+
+/*Logo*/
+.logo{
+  width: 15.5rem;
+}
+
 nav {
   z-index:2;
 }
@@ -17,7 +27,7 @@ nav a.nav-link {
   font-size: 0.75rem;
   letter-spacing: 0.6px;
   cursor: pointer;
-  border-top: 0.18rem solid var(--primary-dark);
+  /* border-top: 0.18rem solid var(--primary-dark); */
 }
 
 nav ul li {
@@ -25,7 +35,8 @@ nav ul li {
 }
 
 .navbar-nav > li > a {
-  color: var(--primary-white) !important;
+  color: var(--primary-blue) !important;
+  font-weight: bold;
   margin-left: 0.75rem;
   margin-right: 0.75rem;
   margin-top: 1.5rem;
