@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+
+body {
+  font-family: "Roboto Condensed", san-serif !important;
+}
+
 :root {
   --primary-dark-blue: #081525;
   --primary-white: #fffFFF;
