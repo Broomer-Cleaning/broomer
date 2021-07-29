@@ -5,6 +5,7 @@ import Navbar from './components/navbar/Navbar';
 import Dashboard from './components/dashboard/Dashboard';
 import ApolloClient from 'apollo-boost';
 import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 const client = new ApolloClient({
   request: operation => {
@@ -21,10 +22,15 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
+    <Router>
     <>
      <Navbar/>
-     <Dashboard/>
+     <Switch>
+     <Route exact path='/' component={Dashboard} />
+     
+     </Switch>
      </>
+     </Router>
     </ApolloProvider>
   );
 }

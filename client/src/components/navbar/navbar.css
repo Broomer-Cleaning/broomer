@@ -9,6 +9,11 @@ body {
   --primary-white: #fffFFF;
 }
 
+
+/*nav*/
+.navbar {
+  background-color: var(--primary-white) !important;
+}
 /*Logo*/
 .logo{
   width: 15.5rem;
@@ -24,7 +29,7 @@ nav {
 
 /*Links*/
 nav a.nav-link {
-  font-size: 0.75rem;
+  font-size: 0.80rem;
   letter-spacing: 0.6px;
   cursor: pointer;
   /* border-top: 0.18rem solid var(--primary-dark); */
