@@ -1,20 +1,26 @@
 [
     {
+        "employerId": "greybutgood",
+        "workerId": "gabsparks22",        
         "review_score_worker": 4.5,
         "review_text_worker": "This was an easy host to work for. Looking forward to do repeat jobs if possible.",
         "review_score_employer": 5,
         "review_text_employer": "Very happy with their service"
     },
     {
+        "employerId": "redcoincounter",
+        "workerId": "alexisummer",
         "review_score_worker": 4,
         "review_text_worker": "Fairly easy job, but instructions not fully clear.",
         "review_score_employer": 5,
-        "review_text_employer": "They did a fine job"
+        "review_text_employer": "She did a fine job"
     },
     {
+        "employerId": "redcoincounter",
+        "workerId": "iwannabetracer",
         "review_score_worker": 2,
         "review_text_worker": "Was a bit rude and disrespectful. But provided equipment and left me alone after a while.",
         "review_score_employer": 1.5,
-        "review_text_employer": "Provided an incomplete cleaning job. Insisted on listening to his 1990s Walk-Man and doing Fortnite dances every few minutes. Started vaping in our house, which we repeatedly asked that he stop. He then told us 'OK, Boomer' over and over again, as though he thought made him 'win' the argument. Anyways, we tipped him well and hope he never has anything to do with our home ever again."
+        "review_text_employer": "Provided an incomplete cleaning job. Insisted on listening to his 1990s-style Walk-Man and doing Fortnite dances every few minutes. Started vaping in the building, which we repeatedly asked that he stop. He then began shouting 'OK, Boomer' over and over again, as though he thought this made him 'win' the argument. Anyways, we tipped him well and hope he never has anything to do with our business ever again."
     }
 ]

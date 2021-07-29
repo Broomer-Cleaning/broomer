@@ -14,6 +14,20 @@
         
     },
     {
+        "username": "greybutgood",
+        "email": "beatrice@hotmail.com",
+        "password": "password123",
+        "first_name": "Beatrice",
+        "last_name": "Montpellier",
+        "date_of_birth": "1941-04-25",
+        "phone_number": "613-634-4566",
+        "about_me": "I'm looking for people who can help clean my house every now and again. I'm older so I need people who stay safe and out of trouble.",
+        "safety_double_vax": true,
+        "safety_mask": true,
+        "safety_police_check": true
+        
+    },
+    {
         "username": "alexisummer",
         "email": "alex99@gmail.com",
         "password": "savingforalexus",
@@ -38,5 +52,32 @@
         "safety_double_vax": false,
         "safety_mask": true,
         "safety_police_check": false
+    },
+    {
+        "username": "redcoincounter",
+        "email": "jacobninto@gmail.com",
+        "password": "savingforalexus",
+        "first_name": "Jacob",
+        "last_name": "Ninto",
+        "date_of_birth": "1991-12-13",
+        "phone_number": "613-447-6023",
+        "about_me": "A business owner who needs regular cleaning.",
+        "safety_double_vax": false,
+        "safety_mask": true,
+        "safety_police_check": true
+    },
+    {
+        "username": "iwannabetracer",
+        "email": "hellothere@askjeeves.com",
+        "password": "dontreallycare",
+        "first_name": "Mo",
+        "last_name": "Poblem",
+        "date_of_birth": "2000-",
+        "phone_number": "613-117-5552",
+        "about_me": "Just looking for jobs.",
+        "safety_double_vax": true,
+        "safety_mask": true,
+        "safety_police_check": true
     }
+
 ]

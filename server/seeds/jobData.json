@@ -26,6 +26,8 @@
     {
         "street_address": "100 Aylmer Avenue",
         "postal_code": "K1S 2Z7",
+        "employerId": "redcoincounter",
+        "workerId": "alexisummer",
         "est_hours": 5,
         "rate_per_hour": 25,
         "job_description": "Please clean my top floor. This includes my kitchen and bathroom. I'll provide the materials.",
