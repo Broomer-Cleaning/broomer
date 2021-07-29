@@ -23,19 +23,15 @@ const userSchema = new Schema(
     },
     first_name: {
       type: String,
-      // required: true,
     },
     last_name: {
       type: String,
-      // required: true,
     },
     date_of_birth: {
       type: Date,
-      // required: true,
     },
     phone_number: {
       type: String,
-      // required: true,
     },
     about_me: {
       type: String,
@@ -45,10 +41,21 @@ const userSchema = new Schema(
       type: [String],
       default: undefined,
     },
-    // Come back to this later
-    specifications: {
-      type: [String],
-      default: undefined,
+    safety_double_vax: {
+      type: Boolean,
+      default: false
+    },
+    safety_mask: {
+      type: Boolean,
+      default: false
+    },
+    safety_police_check: {
+      type: Boolean,
+      default: false
+    },
+    have_pets: {
+      type: Boolean,
+      default: false
     },
 
     jobs_worked: {

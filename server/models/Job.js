@@ -3,11 +3,6 @@ const mongoose = require('mongoose');
 
 const jobSchema = new Schema(
   {
-    id: {
-      type: String,
-      required: true,
-    },
-
     street_address: {
       type: String,
       required: true,
@@ -107,11 +102,11 @@ const jobSchema = new Schema(
       type: Number,
     },
 
-    Tip: {
+    tip: {
       type: Number,
     },
 
-    Currency: {
+    currency: {
       type: String,
     },
 

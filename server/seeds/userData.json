@@ -1,0 +1,42 @@
+[
+    {
+        "username": "gabsparks22",
+        "email": "gabw@gmail.com",
+        "password": "allworknoplay",
+        "first_name": "Gabriel",
+        "last_name": "Wallace",
+        "date_of_birth": "1988-01-28",
+        "phone_number": "613-844-5620",
+        "about_me": "Hi! I'm a hard worker and aim to please. I specialize in cleaning garages and cars.",
+        "safety_double_vax": true,
+        "safety_mask": true,
+        "safety_police_check": true
+        
+    },
+    {
+        "username": "alexisummer",
+        "email": "alex99@gmail.com",
+        "password": "savingforalexus",
+        "first_name": "Alexandra",
+        "last_name": "DiMarco",
+        "date_of_birth": "1999-06-01",
+        "phone_number": "613-667-5301",
+        "about_me": "This is Alex! I've been cleaning all of my life, so I figured I would help others clean their things too. Very flexible schedule.",
+        "safety_double_vax": false,
+        "safety_mask": true,
+        "safety_police_check": false
+    },
+    {
+        "username": "trillocoop",
+        "email": "help@trillo.com",
+        "password": "savingforalexus",
+        "first_name": "Alexandra",
+        "last_name": "DiMarco",
+        "date_of_birth": "2000-01-05",
+        "phone_number": "613-667-5301",
+        "about_me": "This is Alex! I've been cleaning all of my life, so I figured I would help others clean their things too. Very flexible schedule.",
+        "safety_double_vax": false,
+        "safety_mask": true,
+        "safety_police_check": false
+    }
+]

@@ -3,24 +3,19 @@ const mongoose = require('mongoose');
 
 const reviewSchema = new Schema(
     {
-        id: {
-            type: String,
-            required: true
-        },
-
         jobId: {
             type: String,
-            required: true,
+            // required: true,
         },
 
         employerId: {
             type: String,
-            required: true,
+            // required: true,
         },
 
         workerId: {
             type: String,
-            required: true
+            // required: true
         },
         review_score_worker: {
             type: Number

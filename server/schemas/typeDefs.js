@@ -12,7 +12,10 @@ const typeDefs = gql`
         phone_number: String!
         about_me: String
         qualifications: [String]
-        specifications: [String]
+        safety_double_vax: Boolean
+        safety_mask: Boolean
+        safety_police_check: Boolean
+        have_pets: Boolean
         jobs_worked: [Job]
         jobs_hired: [Job]
         reviews: [Review]  
@@ -27,7 +30,6 @@ const typeDefs = gql`
         est_hours: Float!
         rate_per_hour: Float!
         job_description: String!
-
         safety_double_vax: Boolean
         safety_mask: Boolean
         safety_police_check: Boolean
@@ -39,14 +41,13 @@ const typeDefs = gql`
         emp_provides_meal: Boolean
         emp_provides_drinks: Boolean
         emp_provides_facilities: Boolean
-
         dataCaseOpened: String!
         dateJobStart: String
         dateJobEnd: String
         dateCaseClosed: String
         dollarsPromised: Int
-        Tip: Int
-        Currency: String
+        tip: Int
+        currency: String
         review: Review
     }
 
