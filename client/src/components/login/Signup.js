@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Form, Button, Alert } from 'react-bootstrap';
+import { Form, Button, Alert, Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 import Auth from '../../utils/auth';
 
@@ -48,13 +49,16 @@ const SignupForm = () => {
 
   return (
     <>
+    <Card>
+    <Card.Body>
+      <h2 className="text-center mb-4">Sign Up</h2>
       {/* This is needed for the validation functionality above */}
       <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
         {/* show alert if server response is bad */}
         <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
           Something went wrong with your signup!
         </Alert>
-
+       <Form>
         <Form.Group>
           <Form.Label htmlFor='username'>Username</Form.Label>
           <Form.Control
@@ -93,6 +97,18 @@ const SignupForm = () => {
           />
           <Form.Control.Feedback type='invalid'>Password is required!</Form.Control.Feedback>
         </Form.Group>
+        {/* <Form.Group>
+          <Form.Label htmlFor='password-confirmation'>Password Confirmation</Form.Label>
+          <Form.Control
+            type='password'
+            placeholder='Confirm password'
+            name='password-confirmation'
+            onChange={handleInputChange}
+            value={userFormData.password}
+            required
+          />
+          <Form.Control.Feedback type='invalid'>Passwords don't match!</Form.Control.Feedback>
+        </Form.Group> */}
         <Button
           disabled={!(userFormData.username && userFormData.email && userFormData.password)}
           type='submit'
@@ -100,6 +116,10 @@ const SignupForm = () => {
           Submit
         </Button>
       </Form>
+      </Form>
+      </Card.Body>
+      </Card>
+      <div className=" question w-100 text-center mt-2">Already have an account? <Link to="login" className="nav-link">Login</Link></div>
     </>
   );
 };

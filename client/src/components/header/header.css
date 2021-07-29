@@ -58,7 +58,11 @@ body {
 .form-control:focus {
   outline: none !important;
   box-shadow: none !important;
+  
 }
+
+
+
 
 @media (max-width: 768px) {
   .typed-text {

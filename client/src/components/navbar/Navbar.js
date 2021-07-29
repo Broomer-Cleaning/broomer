@@ -33,15 +33,19 @@ const Navbar = () => {
         <li className="nav-item">
           <Link to="/contact" className="nav-link">contact us</Link>
         </li> 
+        <li className="nav-item">
+          <Link to="/login" className="nav-link">Login</Link>
+        </li> 
         <li className="nav-item active">
           <Link to="/dashboard" className="nav-link">Dashboard <span className="sr-only"></span></Link>
         </li>
         <li className="nav-item">
-          <Link to="/login" className="nav-link">Login</Link>
+          <Link to="/profile" className="nav-link">Profile</Link>
         </li> 
+{/*        
         <li className="nav-item">
           <Link to="/signup" className="nav-link">Sign Up</Link>
-        </li> 
+        </li>  */}
         <li className="nav-item">
           <Link to="/" className="nav-link">Logout</Link>
         </li> 

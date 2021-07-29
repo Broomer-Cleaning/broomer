@@ -14,6 +14,7 @@ import ApolloClient from 'apollo-boost';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
+
 const client = new ApolloClient({
   request: operation => {
     const token = localStorage.getItem('id_token');
@@ -43,8 +44,10 @@ function App() {
      <Route exact path="/signup" component={Signup} />
      </Switch>
      <Footer/>
-     </>
+      </>
+     
      </Router>
+    
     </ApolloProvider>
   );
 }

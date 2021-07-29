@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+
+body {
+  font-family: "Roboto Condensed", san-serif !important;
+}
+
+:root {
+  --primary-dark-blue: #081525;
+  --primary-blue: #4473b7;
+  --primary-white: #fffFFF;
+}
+
+.form-label {
+  padding-top: 1.3rem !important;
+}
+
+/* .form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+
+h2 {
+  color: var(--primary-blue);
+  text-transform: uppercase;
+  font-weight: bolder;
+  padding-bottom: 1rem;
+}
+
+.nav-link {
+  font-size: 0.80rem;
+  letter-spacing: 0.6px;
+  cursor: pointer;
+  text-transform: uppercase;
+  color: var(--primary-blue) !important;
+  font-weight: bold;
+}
+
+.question {
+  color: var(--primary-dark-blue);
+}
+
+.btn {
+  margin-top: 2rem !important;
+}
+
+.card {
+  width: 80%;
+  border: none !important;
+}
+

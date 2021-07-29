@@ -32,7 +32,6 @@ nav a.nav-link {
   font-size: 0.80rem;
   letter-spacing: 0.6px;
   cursor: pointer;
-  /* border-top: 0.18rem solid var(--primary-dark); */
 }
 
 nav ul li {
