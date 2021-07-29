@@ -29,7 +29,8 @@
 
 /*Typed text*/
 .typed-text {
-  font-size: 2rem;
+  font-size: 3rem;
   color: var(--primary-white);
   margin-top: 1rem;
+  font-weight: bold;
 }

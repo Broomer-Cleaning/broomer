@@ -1,0 +1,25 @@
+:root {
+  --primary-dark-blue: #081525;
+  --primary-white: #fffFFF;
+}
+
+.footer {
+  background: var(--primary-dark-blue);
+  color: var(--primary-white);
+  padding: 3rem;
+}
+
+.footer a {
+  text-decoration: none;
+  color: var(--primary-white);
+}
+
+.footer a:hover {
+  text-decoration: none;
+  color: var(--primary-orange);
+  cursor:pointer;
+}
+
+.footer p {
+  margin-bottom: 0;
+}
