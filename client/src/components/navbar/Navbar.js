@@ -1,7 +1,7 @@
 import React from "react";
 import "./navbar.css";
 import logo from "./img/logo.png";
-import {Link} from "react-scroll";
+import { Link } from 'react-router-dom';
 
 
 //react font awesome
@@ -14,7 +14,7 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-lg navbar-light">
       <div className="container">
 
-    <Link smooth={true} to="home" className="navbar-brand"><img className="logo" src={logo} alt="logo"></img></Link>
+    <Link to="/" className="navbar-brand"><img className="logo" src={logo} alt="logo"></img></Link>
     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <FontAwesomeIcon icon={faBars} style ={{color: "#fff"}}/>
     </button>
@@ -22,19 +22,22 @@ const Navbar = () => {
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav ml-auto">
         <li className="nav-item active">
-          <Link smooth={true} to="home" className="nav-link">Home <span className="sr-only"></span></Link>
+          <Link  to="/" className="nav-link">Home <span className="sr-only"></span></Link>
         </li>
         <li className="nav-item">
-          <Link smooth={true} to="aboutMe" offset={-110} className="nav-link">about us</Link>
+          <Link to="/about" offset={-110} className="nav-link">about us</Link>
         </li> 
         <li className="nav-item">
-          <Link smooth={true} to="aboutMe" offset={-110} className="nav-link">services</Link>
+          <Link to="/services" offset={-110} className="nav-link">services</Link>
         </li> 
         <li className="nav-item">
-          <Link smooth={true} to="portfolio" offset={-110} className="nav-link">contact us</Link>
+          <Link to="/contact" offset={-110} className="nav-link">contact us</Link>
         </li> 
+        <li className="nav-item active">
+          <Link to="/dashboard" className="nav-link">Dashboard <span className="sr-only"></span></Link>
+        </li>
         <li className="nav-item">
-          <Link smooth={true} to="contactMe" offset={-110} className="nav-link">Login</Link>
+          <Link to="/login" offset={-110} className="nav-link">Login</Link>
         </li> 
       </ul>
     </div>
