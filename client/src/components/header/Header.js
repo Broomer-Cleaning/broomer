@@ -9,10 +9,10 @@ const Header = () => {
   return (
     <div id="home" className="header-wraper">
       <div className="main-info">
-      <div class="input-group">
+      <div class="input-group w-50">
    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
     aria-describedby="search-addon" />
-   <button type="button" class="btn btn-outline-primary">search</button>
+   <button type="button" class="btn btn-outline-primary">SEARCH</button>
    </div>
    <Typed
       className="typed-text"

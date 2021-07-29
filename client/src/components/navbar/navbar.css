@@ -55,3 +55,8 @@ nav ul li {
 .navbar-toggler {
   margin-top: 1.4rem;
 }
+
+.navbar-light .navbar-toggler {
+  color: var(--primary-blue) !important;
+}
+

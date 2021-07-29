@@ -4,6 +4,11 @@ body {
   font-family: "Roboto Condensed", san-serif !important;
 }
 
+:root {
+  --primary-dark-blue: #081525;
+  --primary-blue: #4473b7;
+  --primary-white: #fffFFF;
+}
 .header-wraper{
   position: relative;
   background: url(img/background.png) no-repeat;
@@ -37,4 +42,26 @@ body {
   color: var(--primary-white);
   margin-top: 1rem;
   font-weight: bold;
+}
+
+/*Search*/
+.btn  {
+  background-color: var(--primary-blue) !important;
+  color: var(--primary-white) !important;
+}
+
+.btn:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.form-control:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+@media (max-width: 768px) {
+  .typed-text {
+    font-size: 1.5rem;
+  }
 }
