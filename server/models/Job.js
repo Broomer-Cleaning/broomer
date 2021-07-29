@@ -90,7 +90,11 @@ const jobSchema = new Schema(
       type: Date,
     },
 
-    dateJobEnd: {
+    dateJobEndWorker: {
+      type: Date,
+    },
+
+    dateJobEndEmployer: {
       type: Date,
     },
 

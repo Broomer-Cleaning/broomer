@@ -63,15 +63,15 @@ const resolvers = {
             
             // The user's username will be 
             // if (context) {
-              const addUser = await Job.findByIdAndUpdate(
-                {_id: context.user._id},
-                {$set: {employerUser: context.user.username}},
-                {new: true, runValidators: true}
-              )
+              // const addUser = await Job.findByIdAndUpdate(
+              //   {_id: context.job._id},
+              //   {$set: {employerUser: context.user.username}},
+              //   {new: true, runValidators: true}
+              // )
             // }
 
             // try {
-              return addUser
+              // return addUser
             //  } catch {
               // return job
             //  } 
@@ -80,27 +80,16 @@ const resolvers = {
 
           // A profile setup; a second step after a user creates their account
           profileDetails: async (parent, {userData}, context) => {
-            if (context.user) {
+            // if (context.user) {
               const updateUser = await User.findByIdAndUpdate(
                 {_id: context.user._id},
-                {$set: {
-                  first_name: userData.first_name,
-                  last_name: userData.last_name,
-                  date_of_birth: userData.date_of_birth,
-                  phone_number: userData.phone_number,
-                  about_me: userData.about_me,
-                  safety_double_vax: userData.safety_double_vax,
-                  safety_mask: userData.safety_mask,
-                  safety_police_check: userData.safety_police_check,
-                  have_pets: userData.have_pets
-                }},
-                
+                {$set: userData},
                 {new: true, runValidators: true}
             )
             console.log(updateUser)
             return updateUser
-          }
-          throw new AuthenticationError("Only logged in users can keep a book list.")  
+          // }
+          // throw new AuthenticationError("Only logged in users can keep a book list.")  
         } 
     },
 };

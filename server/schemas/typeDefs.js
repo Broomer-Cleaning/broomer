@@ -52,9 +52,10 @@ const typeDefs = gql`
         emp_provides_meal: Boolean
         emp_provides_drinks: Boolean
         emp_provides_facilities: Boolean
-        dataCaseOpened: String!
+        dataCaseOpened: String
         dateJobStart: String
-        dateJobEnd: String
+        dateJobEndWorker: String
+        dateJobEndEmployer: String
         dateCaseClosed: String
         dollarsPromised: Int
         tip: Int
@@ -62,9 +63,18 @@ const typeDefs = gql`
         review: [Review]
     }
 
-    # input jobInit {
-
-    # }
+    input JobDetails {
+        street_address: String!
+        postal_code: String!
+        est_hours: Float
+        rate_per_hour: Float
+        job_description: String
+        # safety_double_vax: Boolean
+        # safety_mask: Boolean
+        # safety_police_check: Boolean
+        # have_pets: Boolean
+        # need_supplies_worker: Boolean
+    }
 
     type Review {
         _id: ID!
@@ -72,6 +82,7 @@ const typeDefs = gql`
         review_text_worker: String
         review_score_employer: Float
         review_text_employer: String
+        need_equipment_worker: Boolean
     }
 
     type Auth {
@@ -89,8 +100,11 @@ const typeDefs = gql`
     type Mutation {
         createUser(username: String!, email: String!, password: String!): Auth
         login(email: String!, password: String!): Auth
+        
         profileDetails(userData: profileSetup!): User
-        addAJob(street_address: String!, postal_code: String!): Job
+        # addAJob(street_address: String!, postal_code: String!): Job
+        
+        addAJob(jobData: JobDetails!): Job
     }
 `
 
