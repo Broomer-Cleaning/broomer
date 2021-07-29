@@ -2,6 +2,7 @@ import React from 'react'
 import "./header.css";
 
 
+
 //react-typed
 import Typed from "react-typed";
 
