@@ -65,10 +65,6 @@ const userSchema = new Schema(
     jobs_hired: {
       type: Array
     },
-
-    reviews: {
-      type: Array
-    }
   },
   // set this to use virtual below
   {

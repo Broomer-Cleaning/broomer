@@ -2,6 +2,8 @@
     {
         "street_address": "1305 Snowdon Street",
         "postal_code": "K1H 7P3",
+        "employerUser": "redcoincounter",
+        "workerUser": "alexisummer",
         "est_hours": 3,
         "rate_per_hour": 30,
         "job_description": "Need someone to clean my garage",
@@ -21,13 +23,21 @@
         "dateJobEnd": "July 10 2021",
         "dateCaseClosed": "July 11 2021",
         "tip": 10,
-        "currency": "CAD"
+        "currency": "CAD",
+        "review": [
+            {
+                "review_score_worker": 4,
+                "review_text_worker": "Fairly easy job, but instructions not fully clear.",
+                "review_score_employer": 5,
+                "review_text_employer": "She did a fine job" 
+            }
+        ]
     },
     {
         "street_address": "100 Aylmer Avenue",
         "postal_code": "K1S 2Z7",
-        "employerId": "redcoincounter",
-        "workerId": "alexisummer",
+        "employerUser": "redcoincounter",
+        "workerUser": "gabsparks22",
         "est_hours": 5,
         "rate_per_hour": 25,
         "job_description": "Please clean my top floor. This includes my kitchen and bathroom. I'll provide the materials.",
@@ -47,11 +57,21 @@
         "dateJobEnd": "July 19 2021",
         "dateCaseClosed": "July 20 2021",
         "tip": 20,
-        "currency": "CAD"
+        "currency": "CAD",
+        "review": [
+            {
+                "review_score_worker": 4.5,
+                "review_text_worker": "This was an easy host to work for. Looking forward to do repeat jobs if possible.",
+                "review_score_employer": 5,
+                "review_text_employer": "Very happy with their service"
+            }
+        ]
     },
     {
         "street_address": "33 Hazel Street",
         "postal_code": "K1S 0G1",
+        "employerUser": "trillocoop",
+        "workerUser": "iwannabetracer",
         "est_hours": 2,
         "rate_per_hour": 30,
         "job_description": "Looking to have all of my (three) cars cleaned. Need someone with the right gear.",
@@ -67,6 +87,14 @@
         "emp_provides_drinks": true,
         "emp_provides_facilities": true,
         "dataCaseOpened": "July 18 2021",
-        "currency": "CAD"
+        "currency": "CAD",
+        "review": [
+            {
+                "review_score_worker": 2,
+                "review_text_worker": "Was a bit rude and disrespectful. But provided equipment and left me alone after a while.",
+                "review_score_employer": 1.5,
+                "review_text_employer": "Provided an incomplete cleaning job. Insisted on listening to his 1990s-style Walk-Man and doing Fortnite dances every few minutes. Started vaping in the building, which we repeatedly asked that he stop. He then began shouting 'OK, Boomer' over and over again, as though he thought this made him 'win' the argument. Anyways, we tipped him well and hope he never has anything to do with our business ever again."
+            }
+        ]
     }
 ]
