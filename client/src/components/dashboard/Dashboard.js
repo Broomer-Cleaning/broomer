@@ -1,18 +1,39 @@
 import "./dashboard.css"
-import React , {useState} from "react";
+import React  from "react";
 // import { Link } from "react-scroll";
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
+// import Calendar from 'react-calendar';
+import FullCalendar, {EventInput} from '@fullcalendar/react';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid'
+
+// import 'react-calendar/dist/Calendar.css';
 import { Button } from 'react-bootstrap';
 import { Image } from 'react-bootstrap'
 import profileImg from './img/avatar.jpeg'
+// import { start } from "@popperjs/core";
+
+const data:EventInput[] = [
+  {
+    title:"Clean the hous on cope dr",
+    start:"2021-07-01"
+    
+  },
+  {
+    title:"bay",
+    start:"2021-07-01"
+
+    
+  }
+]
 
 const Dashboard = () => {
-  const [date, setDate] = useState(new Date());
 
-  const onChange = date => {
-    setDate(date);
-  } 
+
+  // const [date, setDate] = useState(new Date());
+
+  // const onChange = date => {
+  //   setDate(date);
+  // } 
   return ( 
   <div className = "main">
     <div className = "leftSide">
@@ -21,7 +42,7 @@ const Dashboard = () => {
         <div className="descption">
         <h4 className="name">Ahmed Hakeem</h4>
         <p className="about">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
         </p>
         </div>
       </div>
@@ -35,7 +56,14 @@ const Dashboard = () => {
     </div> 
   <div className = "rightSide">
     <div>
-      <Calendar className="w-100" onChange={onChange} value = {date} />
+      {/* <Calendar className="w-100" onChange={onChange} value = {date} /> */}
+
+      <FullCalendar className="calendar"
+      events={data}
+      plugins={[dayGridPlugin, timeGridPlugin]}
+      
+      
+      />
     </div>
 
   </div>
