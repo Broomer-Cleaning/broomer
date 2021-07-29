@@ -4,7 +4,8 @@ import React  from "react";
 // import Calendar from 'react-calendar';
 import FullCalendar, {EventInput} from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
-import timeGridPlugin from '@fullcalendar/timegrid'
+import timeGridPlugin from '@fullcalendar/timegrid';
+import listPlugin from '@fullcalendar/list';
 
 // import 'react-calendar/dist/Calendar.css';
 import { Button } from 'react-bootstrap';
@@ -19,10 +20,17 @@ const data:EventInput[] = [
     
   },
   {
-    title:"bay",
-    start:"2021-07-01"
-
+    title:"we have to code all day",
+    start:"2021-07-29"
+  },
+  {
+    title:"we have to code",
+    start:"2021-07-29",
     
+  },
+  {
+    title:"we have to code day",
+    start:"2021-07-29"
   }
 ]
 
@@ -61,13 +69,22 @@ const Dashboard = () => {
       <FullCalendar className="calendar"
       events={data}
       plugins={[dayGridPlugin, timeGridPlugin]}
-      
-      
       />
     </div>
-
-  </div>
-</div>
+    <div className="medSection">
+    <div>
+    <FullCalendar className="dayList"
+      events={data}
+      plugins={[listPlugin]}
+      initialView = 'listDay'
+      />
+    </div>
+    <div className="review">
+      <h1>review</h1>
+    </div>
+    </div>
+    </div>
+    </div>
   );
 }
 
