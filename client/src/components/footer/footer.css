@@ -1,6 +1,7 @@
 :root {
   --primary-dark-blue: #081525;
   --primary-white: #fffFFF;
+  --primary-blue: #4473b7;
 }
 
 .footer {
@@ -16,7 +17,7 @@
 
 .footer a:hover {
   text-decoration: none;
-  color: var(--primary-orange);
+  color: var(--primary-blue);
   cursor:pointer;
 }
 
