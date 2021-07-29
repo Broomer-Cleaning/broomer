@@ -4,6 +4,7 @@ import { ApolloProvider } from '@apollo/client';
 import Navbar from './components/navbar/Navbar';
 import Dashboard from './components/dashboard/Dashboard';
 import Header from './components/header/Header';
+import AboutUs from './components/about/AboutUs';
 import ApolloClient from 'apollo-boost';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -28,7 +29,9 @@ function App() {
      <Navbar/>
      <Switch>
      <Route path="/" exact component={Header} />
-     <Route exact path='/dashboard' component={Dashboard} />
+     <Route path="/about" exact component={AboutUs} />
+     <Route exact path="/dashboard" component={Dashboard} />
+     
      
      </Switch>
      </>
