@@ -27,6 +27,7 @@ body {
 .contactUs p {
   color: var(--primary-dark-blue);
   font-size: 1.2rem;
+  margin-bottom: 2rem;
 }
 
 .contactUs input, .contactUs textarea {
@@ -37,7 +38,7 @@ body {
   border: 0;
   border-bottom: 0.125rem solid var(--primary-blue);
   border-radius: 0;
-  color: var(--primary-white);
+  color: var(--primary-dark-blue);
   outline: 0 !important;
   box-shadow: none !important;
   margin-bottom: 1rem;
@@ -60,8 +61,14 @@ body {
 
 .contact-btn {
   margin: 1rem 0 0 0;
-  width: 100%;
-  background: none;
+  width: 50%;
+  background-color: var(--primary-blue);
+  outline: none;
+  border: none;
+  border-radius: 0.2rem;
+  text-transform: uppercase;
+  color: var(--primary-white);
+  
 }
 
 .line {
