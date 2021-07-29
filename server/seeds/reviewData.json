@@ -1,23 +1,23 @@
 [
     {
-        "employerId": "greybutgood",
-        "workerId": "gabsparks22",        
+        "employerUser": "redcoincounter",
+        "workerUser": "gabsparks22",        
         "review_score_worker": 4.5,
         "review_text_worker": "This was an easy host to work for. Looking forward to do repeat jobs if possible.",
         "review_score_employer": 5,
         "review_text_employer": "Very happy with their service"
     },
     {
-        "employerId": "redcoincounter",
-        "workerId": "alexisummer",
+        "employerUser": "redcoincounter",
+        "workerUser": "alexisummer",
         "review_score_worker": 4,
         "review_text_worker": "Fairly easy job, but instructions not fully clear.",
         "review_score_employer": 5,
         "review_text_employer": "She did a fine job"
     },
     {
-        "employerId": "redcoincounter",
-        "workerId": "iwannabetracer",
+        "employerUser": "trillocoop",
+        "workerUser": "iwannabetracer",
         "review_score_worker": 2,
         "review_text_worker": "Was a bit rude and disrespectful. But provided equipment and left me alone after a while.",
         "review_score_employer": 1.5,

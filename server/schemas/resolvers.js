@@ -5,7 +5,6 @@ const mongoose = require('mongoose')
 
 const resolvers = {
     Query: {
-        // get all books
         users: async () => {
           return User.find({});
         },
@@ -14,15 +13,15 @@ const resolvers = {
           return Job.find({});
         },
 
-        reviews: async () => {
-          return Review.find({})
-        }
+        // Expired now that reviews are collapsed into the 'jobs' object
+        // reviews: async () => {
+        //   return Review.find({})
+        // },
 
-        // me: async (parent, args, context) => {
-        //   if (context.user) {
-        //     return User.findOne({_id: context.user._id});
-        //   }
-        // }
+        // Returns a single user's profile based on their profile's ID
+        profile: async (parent, { profileId }) => {
+          return User.findOne({ _id: profileId });
+        } 
 
       },
     Mutation: {
@@ -55,7 +54,54 @@ const resolvers = {
       
             // Return an `Auth` object that consists of the signed token and user's information
             return { token, user };
+          },
+
+          // Creates the initial job
+          addAJob: async (parent, args, context) => {
+            // Creates a Job with location's address
+            const job = await Job.create(args);
+            
+            // The user's username will be 
+            // if (context) {
+              const addUser = await Job.findByIdAndUpdate(
+                {_id: context.user._id},
+                {$set: {employerUser: context.user.username}},
+                {new: true, runValidators: true}
+              )
+            // }
+
+            // try {
+              return addUser
+            //  } catch {
+              // return job
+            //  } 
+            
+          },
+
+          // A profile setup; a second step after a user creates their account
+          profileDetails: async (parent, {userData}, context) => {
+            if (context.user) {
+              const updateUser = await User.findByIdAndUpdate(
+                {_id: context.user._id},
+                {$set: {
+                  first_name: userData.first_name,
+                  last_name: userData.last_name,
+                  date_of_birth: userData.date_of_birth,
+                  phone_number: userData.phone_number,
+                  about_me: userData.about_me,
+                  safety_double_vax: userData.safety_double_vax,
+                  safety_mask: userData.safety_mask,
+                  safety_police_check: userData.safety_police_check,
+                  have_pets: userData.have_pets
+                }},
+                
+                {new: true, runValidators: true}
+            )
+            console.log(updateUser)
+            return updateUser
           }
+          throw new AuthenticationError("Only logged in users can keep a book list.")  
+        } 
     },
 };
 

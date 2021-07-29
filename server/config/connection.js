@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/broomer', {
+mongoose.connect('mongodb://localhost/broomer', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
@@ -9,3 +9,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/broomer', {
 });
 
 module.exports = mongoose.connection;
+
+
+// This does not connect to MongoDB Atlas correctly
+//process.env.MONGODB_URI || 

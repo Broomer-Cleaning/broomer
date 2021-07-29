@@ -6,10 +6,10 @@ const typeDefs = gql`
         username: String!
         email: String!
         password: String!
-        first_name: String!
-        last_name: String!
-        date_of_birth: String!
-        phone_number: String!
+        first_name: String
+        last_name: String
+        date_of_birth: String
+        phone_number: String
         about_me: String
         qualifications: [String]
         safety_double_vax: Boolean
@@ -18,18 +18,29 @@ const typeDefs = gql`
         have_pets: Boolean
         jobs_worked: [Job]
         jobs_hired: [Job]
-        reviews: [Review]  
+    }
+
+    input profileSetup {
+        first_name: String
+        last_name: String
+        date_of_birth: String
+        phone_number: String
+        about_me: String
+        safety_double_vax: Boolean
+        safety_mask: Boolean
+        safety_police_check: Boolean
+        have_pets: Boolean
     }
 
     type Job {
         _id: ID!
         street_address: String!
         postal_code: String!
-        employerId: String
-        workerId: String
-        est_hours: Float!
-        rate_per_hour: Float!
-        job_description: String!
+        employerUser: String
+        workerUser: String
+        est_hours: Float
+        rate_per_hour: Float
+        job_description: String
         safety_double_vax: Boolean
         safety_mask: Boolean
         safety_police_check: Boolean
@@ -48,14 +59,15 @@ const typeDefs = gql`
         dollarsPromised: Int
         tip: Int
         currency: String
-        review: Review
+        review: [Review]
     }
+
+    # input jobInit {
+
+    # }
 
     type Review {
         _id: ID!
-        jobId: String!
-        employerId: String!
-        workerId: String!
         review_score_worker: Float
         review_text_worker: String
         review_score_employer: Float
@@ -70,21 +82,16 @@ const typeDefs = gql`
     type Query {
         users: [User]
         jobs: [Job]
-        reviews: [Review]    
+        reviews: [Review]
+        profile(profileId: ID!): User
     }
 
     type Mutation {
         createUser(username: String!, email: String!, password: String!): Auth
-
         login(email: String!, password: String!): Auth
+        profileDetails(userData: profileSetup!): User
+        addAJob(street_address: String!, postal_code: String!): Job
     }
 `
 
 module.exports = typeDefs;
-
-
-
-
-// type Mutation {
-    
-// }
