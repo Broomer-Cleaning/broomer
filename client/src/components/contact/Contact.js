@@ -36,17 +36,17 @@ const Contact = () => {
  }
 
  return (
-  <div id="contactMe" className="contactMe">
+  <div id="contactUs" className="contactUs">
   <div className="text-center">
-  <h1>contact me</h1>
-   <p>Please fill out the form and I will contact you as soon as possible.</p>
+  <h1>contact us</h1>
+   <p>Please fill out the form and we will contact you shortly</p>
    <span className="success-message">{successMessage}</span>
   </div>
   <div className="container">
     <form onSubmit={handleSubmit(onSubmit)}>
     <div className="row">
       <div className="col-md-6 col-xs-12">
-        <div className="text-center">
+        <div className="text-start">
          <input 
            type="text"
            className="form-control"
@@ -63,8 +63,8 @@ const Contact = () => {
          <ErrorMessage errors={errors} name="name"/>
          <div className="line"></div>
         </div>
-        <span className="error-message">{errors.name && errors.name.message}</span>
-        <div className="text-center">
+        {/* <span className="error-message">{errors.name && errors.name.message}</span> */}
+        <div className="text-start">
          <input 
            type="text"
            className="form-control"
@@ -77,8 +77,8 @@ const Contact = () => {
           <ErrorMessage errors={errors} name="phone"/>
          <div className="line"></div>
          </div>
-         <span className="error-message">{errors.phone && errors.phone.message}</span>
-        <div className="text-center">
+         {/* <span className="error-message">{errors.phone && errors.phone.message}</span> */}
+        <div className="text-start">
          <input 
            type="email"
            className="form-control"
@@ -95,9 +95,9 @@ const Contact = () => {
           <ErrorMessage errors={errors} name="email"/>
          <div className="line"></div>
         </div>
-        <span className="error-message">{errors.email && errors.email.message}</span>
+        {/* <span className="error-message">{errors.email && errors.email.message}</span> */}
 
-        <div className="text-center">
+        <div className="text-start">
          <input 
            type="text"
            className="form-control"
@@ -110,13 +110,13 @@ const Contact = () => {
           <ErrorMessage errors={errors} name="subject"/>
          <div className="line"></div>
         </div>
-        <span className="error-message">
+        {/* <span className="error-message">
             {errors.subject && errors.subject.message}
-          </span>
+          </span> */}
 
       </div>
       <div className="col-md-6 col-xs-12">
-       <div className="text-center">
+       <div className="text-start">
          <textarea
            type="text"
            className="form-control"
@@ -130,7 +130,7 @@ const Contact = () => {
            <ErrorMessage errors={errors} name="description"/>
          <div className="line"></div>
         </div>
-        <span className="error-message">{errors.description && errors.description.message}</span>
+        {/* <span className="error-message">{errors.description && errors.description.message}</span> */}
         <button className="btn-main contact-btn" type="submit">contact me</button>
       </div>
     </div>

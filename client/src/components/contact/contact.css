@@ -12,29 +12,30 @@ body {
   --primary-hover-red: #f33501;
 }
 
-.contacts {
-  background: var(--primary-dark-blue);
+.contactUs {
+  background: var(--primary-white);
   padding: 3rem 0;
 }
 
-.contacts h1 {
-  color: var(--primary-white);
+.contactUs h1 {
+  color: var(--primary-blue);
   padding: 1.3rem 0;
   text-transform: uppercase;
+  font-weight: bold;
 }
 
-.contacts p {
-  color: var(--primary-white);
+.contactUs p {
+  color: var(--primary-dark-blue);
   font-size: 1.2rem;
 }
 
-.contacts input, .contacts textarea {
+.contactUs input, .contactUs textarea {
   width: 100%;
   box-sizing: border-box;
   background: none;
   resize: none;
   border: 0;
-  border-bottom: 0.125rem solid var(--primary-dark-blue);
+  border-bottom: 0.125rem solid var(--primary-blue);
   border-radius: 0;
   color: var(--primary-white);
   outline: 0 !important;
@@ -85,11 +86,11 @@ textarea.form-control {
   margin: -0.3rem 0;
 }
 
-.error-message {
+/* .error-message {
   color: var(--primary-white);
   background: var(--primary-hover-red);
   text-align: left;
-}
+} */
 
 .success-message {
   font-weight: 900;
