@@ -45,7 +45,7 @@ body {
 }
 
 /*Search*/
-.btn  {
+.main-info .btn  {
   background-color: var(--primary-blue) !important;
   color: var(--primary-white) !important;
 }

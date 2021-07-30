@@ -40,8 +40,9 @@ h2 {
   color: var(--primary-dark-blue);
 }
 
-.btn {
+.btn-success {
   margin-top: 2rem !important;
+  background-color: var(--primary-blue) !important;
 }
 
 .card {

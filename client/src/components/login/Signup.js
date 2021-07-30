@@ -125,7 +125,7 @@ const SignupForm = () => {
       </Form>
       </Card.Body>
       </Card>
-      <div className=" question w-100 text-center mt-2">Already have an account? <Link to="login" classaddUserName="nav-link">Login</Link></div>
+      <div className=" question w-100 text-center mt-2">Already have an account? <Link to="login" className="nav-link">Login</Link></div>
     </>
   );
 };

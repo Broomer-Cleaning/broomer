@@ -85,9 +85,9 @@ input:focus+.line, textarea:focus+.line {
   transition: width 0.5s ease-in-out;
 }
 
-input.form-control {
+/* input.form-control {
   margin: -0.3rem 0;
-}
+} */
 
 textarea.form-control {
   margin: -0.3rem 0;
