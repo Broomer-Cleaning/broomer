@@ -3,6 +3,8 @@ import "./navbar.css";
 import logo from "./img/logo.png";
 import { Link } from 'react-router-dom';
 
+import Auth from '../../utils/auth';
+
 
 //react font awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -33,22 +35,25 @@ const Navbar = () => {
         <li className="nav-item">
           <Link to="/contact" className="nav-link">contact us</Link>
         </li> 
-        <li className="nav-item">
-          <Link to="/login" className="nav-link">Login</Link>
-        </li> 
+      
+        {Auth.loggedIn() ? (
+          <>
         <li className="nav-item active">
           <Link to="/dashboard" className="nav-link">Dashboard <span className="sr-only"></span></Link>
         </li>
         <li className="nav-item">
           <Link to="/profile" className="nav-link">Profile</Link>
         </li> 
-{/*        
         <li className="nav-item">
-          <Link to="/signup" className="nav-link">Sign Up</Link>
-        </li>  */}
-        <li className="nav-item">
-          <Link to="/" className="nav-link">Logout</Link>
-        </li> 
+          <Link to="/" className="nav-link" onClick={Auth.logout}>Logout</Link>
+          </li>
+          </>
+          ) : (
+            <li className="nav-item">
+          <Link to="/login" className="nav-link">Login</Link>
+         </li> 
+          )}
+
       </ul>
     </div>
     </div>

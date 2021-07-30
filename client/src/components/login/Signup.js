@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Button, Alert, Card } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+
 
 import Auth from '../../utils/auth';
 
@@ -23,6 +24,7 @@ const SignupForm = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    
 
     // check if form has everything (as per react-bootstrap docs)
     const form = event.currentTarget;
@@ -45,7 +47,10 @@ const SignupForm = () => {
       email: '',
       password: '',
     });
+    
   };
+
+   let history = useHistory();
 
   return (
     <>
@@ -112,7 +117,9 @@ const SignupForm = () => {
         <Button
           disabled={!(userFormData.username && userFormData.email && userFormData.password)}
           type='submit'
-          variant='success'>
+          variant='success' onClick={()=> {
+            history.push('/')
+          }}>
           Submit
         </Button>
       </Form>
