@@ -82,7 +82,8 @@ const LoginForm = () => {
           <Form.Control.Feedback type='invalid'>Password is required!</Form.Control.Feedback>
         </Form.Group>
         <Button
-          disabled={!(userFormData.email && userFormData.password)} onClick={()=> { history.push('/')
+          disabled={!(userFormData.email && userFormData.password)} onClick={()=> { 
+            //history.push('/')
           }}
           type='submit'
           variant='success'>
