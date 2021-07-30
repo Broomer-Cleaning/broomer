@@ -8,23 +8,11 @@ import { tasks } from '@fortawesome/free-solid-svg-icons'
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
-// import { Link } from "react-scroll";
-// import Calendar from 'react-calendar';
-
-// import 'react-calendar/dist/Calendar.css';
-// import { start } from "@popperjs/core";
-
 const Dashboard = () => {
-  // const [date, setDate] = useState(new Date());
-
-  // const onChange = date => {
-  //   setDate(date);
-  // }
   return (
     <div className="main">
       <div className="rightSide">
         <div>
-          {/* <Calendar className="w-100" onChange={onChange} value = {date} /> */}
           <Calendar />
         </div>
         <div className="medSection">
@@ -37,36 +25,39 @@ const Dashboard = () => {
             <Card>
               <Card.Img variant="top" src="holder.js/100px160" />
               <Card.Body>
-                <Card.Title>Card title</Card.Title>
+                <Card.Title>Job Posted</Card.Title>
                 <Card.Text>
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
+                  <ul>
+                    <li>Job 1</li>
+                    <li>Job 2</li>
+                    <li>Job 3</li>
+                  </ul>
                 </Card.Text>
                 <div className="task">
-                  <Button variant="primary mb=1">Add Task</Button>
-                  <Button variant="danger">Delete Task</Button>
+                  <Button variant="primary mb=1">Add Job</Button>
+                  <Button variant="danger">Delete JOb</Button>
                 </div>
               </Card.Body>
             </Card>
             <Card>
               <Card.Img variant="top" src="holder.js/100px160" />
               <Card.Body>
-                <Card.Title>Card title</Card.Title>
+                <Card.Title>Job Completed</Card.Title>
                 <Card.Text>
-                  This card has supporting text below as a natural lead-in to
-                  additional content.{" "}
+                <ul>
+                    <li>Job 1</li>
+                    <li>Job 2</li>
+                    <li>Job 3</li>
+                  </ul>
                 </Card.Text>
               </Card.Body>
             </Card>
             <Card>
               <Card.Img variant="top" src="holder.js/100px160" />
               <Card.Body>
-                <Card.Title>Card title</Card.Title>
+                <Card.Title>Income</Card.Title>
                 <Card.Text>
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This card has even longer
-                  content than the first to show that equal height action.
+                  Tolal of Income
                 </Card.Text>
               </Card.Body>
             </Card>
