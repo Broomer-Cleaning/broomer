@@ -2,6 +2,7 @@ import "./calendar.css"
 import FullCalendar, {EventInput} from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
+import interactionPlugin from '@fullcalendar/interaction'; 
 
 
 
@@ -14,16 +15,16 @@ const data:EventInput[] = [
     },
     {
       title:"we have to code all day",
-      start:"2021-07-29"
+      start:"2021-07-30"
     },
     {
       title:"we have to code",
-      start:"2021-07-29",
+      start:"2021-07-30",
       
     },
     {
       title:"we have to code day",
-      start:"2021-07-29"
+      start:"2021-07-30"
     }
   ]
 
@@ -40,7 +41,7 @@ const data:EventInput[] = [
   <div>
         <FullCalendar className="calendar"
         events={data}
-        plugins={[dayGridPlugin, timeGridPlugin]}
+        plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin]}
         />
       </div> 
     );

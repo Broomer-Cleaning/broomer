@@ -85,6 +85,12 @@ body {
   margin-top: 5%;
 }
 
+.card {
+  display: flex;
+  flex-wrap: wrap;
+  
+}
+
 @media screen and (max-width: 600px){
   .main{
     flex-direction: column;

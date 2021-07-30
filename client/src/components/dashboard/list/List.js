@@ -8,21 +8,21 @@ import listPlugin from '@fullcalendar/list';
 const data:EventInput[] = [
     {
       title:"Clean the hous on cope dr",
-      start:"2021-07-01"
+      start:"2021-07-30"
       
     },
     {
       title:"we have to code all day",
-      start:"2021-07-29"
+      start:"2021-07-30"
     },
     {
       title:"we have to code",
-      start:"2021-07-29",
+      start:"2021-07-30",
       
     },
     {
       title:"we have to code day",
-      start:"2021-07-29"
+      start:"2021-07-30"
     }
   ]
 
