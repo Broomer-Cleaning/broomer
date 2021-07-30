@@ -106,7 +106,8 @@ const typeDefs = gql`
         
         # profileDetails(userData: profileSetup!): User
 
-        profileDetails(first_name: String, last_name: String, 
+        profileDetails(first_name: String, 
+        last_name: String, 
         date_of_birth: String,
         phone_number: String,
         about_me: String,
@@ -117,9 +118,10 @@ const typeDefs = gql`
         ): User
 
         # Start here with 'addAJob' mutation
-        addAJob(street_address: String!, postal_code: String!): Job
-
+        addAJob(street_address: String, postal_code: String): Job
         # addAJob(jobData: JobDetails!): Job
+
+        updateAJob(est_hours: Float): Job
     }
 `
 
