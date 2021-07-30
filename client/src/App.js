@@ -1,6 +1,9 @@
 // import logo from './logo.svg';
 import React from 'react';
-import { ApolloProvider } from '@apollo/client';
+import { ApolloProvider, createHttpLink, ApolloClient, InMemoryCache } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
 import Navbar from './components/navbar/Navbar';
 import Home from './components/home/Home';
 import Dashboard from './components/dashboard/Dashboard';
@@ -10,21 +13,26 @@ import Contact from './components/contact/Contact';
 import Login from './components/login/Login';
 import Signup from './components/login/Signup';
 import Footer from './components/footer/Footer';
-import ApolloClient from 'apollo-boost';
-import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
+import "bootstrap/dist/css/bootstrap.min.css";
+
+const httpLink = createHttpLink({
+  uri: '/graphql'
+})
+
+const authLink = setContext((_, {headers}) => {
+  const token = localStorage.getItem('id_token');
+  return {
+    header: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : ``,
+    },
+  };
+});
 
 const client = new ApolloClient({
-  request: operation => {
-    const token = localStorage.getItem('id_token');
-    operation.setContext({
-      headers: {
-        authorization: token ? `Bearer ${token}` : ''
-      }
-    });
-  },
-  uri: '/graphql'
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
 });
 
 function App() {

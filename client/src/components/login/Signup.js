@@ -6,7 +6,7 @@ import { Link, useHistory } from 'react-router-dom';
 import Auth from '../../utils/auth';
 
 import { useMutation } from '@apollo/react-hooks';
-import { ADD_USER } from '../../utils/mutation';
+import { CREATE_USER } from '../../utils/mutation';
 
 const SignupForm = () => {
   // set initial form state
@@ -15,7 +15,7 @@ const SignupForm = () => {
   const [validated] = useState(false);
   // set state for alert
   const [showAlert, setShowAlert] = useState(false);
-  const [addUser] = useMutation(ADD_USER);
+  const [createUser] = useMutation(CREATE_USER);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -34,9 +34,10 @@ const SignupForm = () => {
     }
 
     try {
-      const { data } = await addUser({ variables: { ...userFormData } });
+      const { data } = await createUser({ variables: { ...userFormData } });
       console.log(data);
-      Auth.login(data.addUser.token);
+      Auth.login(data.createUser.token);
+      console.log(Auth.login())
     } catch (err) {
       console.error(err);
       setShowAlert(true);
@@ -63,7 +64,6 @@ const SignupForm = () => {
         <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
           Something went wrong with your signup!
         </Alert>
-       <Form>
         <Form.Group>
           <Form.Label htmlFor='username'>Username</Form.Label>
           <Form.Control
@@ -118,15 +118,14 @@ const SignupForm = () => {
           disabled={!(userFormData.username && userFormData.email && userFormData.password)}
           type='submit'
           variant='success' onClick={()=> {
-            history.push('/')
+            // history.push('/')
           }}>
           Submit
         </Button>
       </Form>
-      </Form>
       </Card.Body>
       </Card>
-      <div className=" question w-100 text-center mt-2">Already have an account? <Link to="login" className="nav-link">Login</Link></div>
+      <div className=" question w-100 text-center mt-2">Already have an account? <Link to="login" classaddUserName="nav-link">Login</Link></div>
     </>
   );
 };

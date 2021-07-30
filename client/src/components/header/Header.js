@@ -13,7 +13,7 @@ const Header = () => {
       <div class="input-group w-50">
    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
     aria-describedby="search-addon" />
-   <button type="button" class="btn btn-outline-primary">SEARCH</button>
+   <button type="button" class="btn btn-outline-primary mt-0">SEARCH</button>
    </div>
    <Typed
       className="typed-text"
