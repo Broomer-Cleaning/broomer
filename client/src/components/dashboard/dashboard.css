@@ -47,14 +47,6 @@ body {
   margin: 5%;
 }
 
-.leftSide {
-    height: 100%;
-    width: 35%;
-    margin-right: 5%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
 
 .aboutMe {
   display: flex;
@@ -72,6 +64,7 @@ body {
 .rightSide{
   height: 100%;
   width: 100%;
+ 
 }
 
 .calendar{
@@ -79,20 +72,17 @@ body {
 }
 
 .dayList{
-  width: 50px;
+  margin-right: 2.5%;
+  height: 100%;
 }
 
 .medSection{
+  margin-top: 5%; 
   display: flex;
-  
-
+  flex-direction: column;
 }
-
-.review{
-  height: 100%;
-  width: 100%;
-  border: 2px solid black;
-  background-color: blue;
+.cardSection{
+  margin-top: 5%;
 }
 
 @media screen and (max-width: 600px){
