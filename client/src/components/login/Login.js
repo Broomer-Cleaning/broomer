@@ -55,7 +55,6 @@ const LoginForm = () => {
         <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
           Something went wrong with your login credentials!
         </Alert>
-        <Form>
         <Form.Group>
           <Form.Label htmlFor='email'>Email</Form.Label>
           <Form.Control
@@ -89,7 +88,6 @@ const LoginForm = () => {
           variant='success'>
           Submit
         </Button>
-      </Form>
       </Form>
       </Card.Body>
       </Card>
