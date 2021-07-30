@@ -59,7 +59,9 @@ const resolvers = {
           // Creates the initial job
           addAJob: async (parent, args, context) => {
             // Creates a Job with location's address
-            const job = await Job.create(args);
+            const job = await Job.create(
+              {$set: {employerUser: context.user.username}}
+              );
             
             // The user's username will be 
             // if (context) {
@@ -79,17 +81,18 @@ const resolvers = {
           },
 
           // A profile setup; a second step after a user creates their account
-          profileDetails: async (parent, {userData}, context) => {
-            // if (context.user) {
+          profileDetails: async (parent, args, context) => {
+            console.log(args)
+            if (context.user) {
               const updateUser = await User.findByIdAndUpdate(
                 {_id: context.user._id},
-                {$set: userData},
+                {$set: args},
                 {new: true, runValidators: true}
             )
             console.log(updateUser)
             return updateUser
-          // }
-          // throw new AuthenticationError("Only logged in users can keep a book list.")  
+          }
+          throw new AuthenticationError("Only logged in users can keep a book list.")  
         } 
     },
 };

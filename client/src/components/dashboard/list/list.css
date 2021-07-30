@@ -1,0 +1,15 @@
+#root > div.main > div.rightSide > div.medSection > div:nth-child(1) > div > div > div.fc-header-toolbar.fc-toolbar > div:nth-child(1) > h2,
+#root > div.main > div.rightSide > div.medSection > div:nth-child(1) > div > div > div.fc-header-toolbar.fc-toolbar > div:nth-child(3) > button,
+#root > div.main > div.rightSide > div.medSection > div:nth-child(1) > div > div > div.fc-header-toolbar.fc-toolbar > div:nth-child(3) > div
+ {
+  display: none !important;
+
+ }
+ #root > div.main > div.rightSide > div.medSection > div:nth-child(1) > div > div > div.fc-view-harness.fc-view-harness-active {
+     min-width: 500px !important;
+     padding-bottom: 5px;
+ }
+
+ #root > div.main > div > div.medSection > div:nth-child(1) > div > div{
+     height: 100%;
+ }
