@@ -36,8 +36,8 @@ const Navbar = () => {
           <Link to="/contact" className="nav-link">contact us</Link>
         </li> 
       
-        {Auth.loggedIn() ? (
-          <>
+        {/* {Auth.loggedIn() ? (
+          <> */}
         <li className="nav-item active">
           <Link to="/dashboard" className="nav-link">Dashboard <span className="sr-only"></span></Link>
         </li>
@@ -47,12 +47,12 @@ const Navbar = () => {
         <li className="nav-item">
           <Link to="/" className="nav-link" onClick={Auth.logout}>Logout</Link>
           </li>
-          </>
-          ) : (
+          {/* </>
+          ) : ( */}
             <li className="nav-item">
           <Link to="/login" className="nav-link">Login</Link>
          </li> 
-          )}
+          {/* )} */}
 
       </ul>
     </div>
