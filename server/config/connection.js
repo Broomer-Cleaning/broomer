@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
 
-mongoose.connect('mongodb://localhost/broomer', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/broomer', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
