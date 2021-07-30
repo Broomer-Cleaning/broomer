@@ -24,3 +24,26 @@
     align-items: center;
     margin-bottom: 2.5%;
 }
+
+.reviws{
+    margin-bottom: 5%;
+}
+
+.content{
+    background-color: #4473B7;
+}
+
+
+
+#root > div:nth-child(2) > div.reviws > div.carousel-root > div > div > ul > li > div > h3,
+#root > div:nth-child(2) > div.reviws > div.carousel-root > div > div > ul > li > div > p,
+#root > div:nth-child(2) > div.reviws > div.carousel-root > div > button.control-arrow.control-next    
+{
+    color:black;
+}
+
+.sectionTital{
+    color: 4473B7;
+    text-align: center;
+    font-weight: bold;
+}
