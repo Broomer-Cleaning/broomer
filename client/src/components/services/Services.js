@@ -11,7 +11,7 @@ const Services = () => {
     <h1 className="py-5">our services</h1>
     <div className="container">
       <div className="row">
-        <div className="col-lg-3 col-md-6 col-sm-6">
+        <div className="col-lg-4 col-md-6 col-sm-6">
           <div className="box">
             <div className="circle"><img className="inside-img" src={inside} alt="cleaning supplies" />
             </div>
@@ -20,7 +20,7 @@ const Services = () => {
           </div>
         </div>
         
-        <div className="col-lg-3 col-md-6 col-sm-6">
+        <div className="col-lg-4 col-md-6 col-sm-6">
           <div className="box">
             <div className="circle"><img className="outside-img" src={outside} alt="house with broom"/></div>
 
@@ -29,7 +29,7 @@ const Services = () => {
           </div>
         </div>
         {/* - */}
-        <div className="col-lg-3 col-md-6 col-sm-6">
+        <div className="col-lg-4 col-md-6 col-sm-6">
           <div className="box">
             <div className="circle"><img className="car-img" src={car} alt="car with bubbles"/></div>
 
