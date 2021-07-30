@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import "./login.css";
-import { Form, Button, Alert } from 'react-bootstrap';
+import { Form, Button, Alert, Card } from 'react-bootstrap';
+import { Link, useHistory } from 'react-router-dom';
 
 import Auth from '../../utils/auth';
 
@@ -44,12 +45,17 @@ const LoginForm = () => {
     });
   };
 
+  let history = useHistory();
+
   return (
     <>
+    <Card>
+    <Card.Body>
       <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
         <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
           Something went wrong with your login credentials!
         </Alert>
+        <Form>
         <Form.Group>
           <Form.Label htmlFor='email'>Email</Form.Label>
           <Form.Control
@@ -76,12 +82,17 @@ const LoginForm = () => {
           <Form.Control.Feedback type='invalid'>Password is required!</Form.Control.Feedback>
         </Form.Group>
         <Button
-          disabled={!(userFormData.email && userFormData.password)}
+          disabled={!(userFormData.email && userFormData.password)} onClick={()=> { history.push('/')
+          }}
           type='submit'
           variant='success'>
           Submit
         </Button>
       </Form>
+      </Form>
+      </Card.Body>
+      </Card>
+      <div className=" question w-100 text-center mt-2">Don't have an account? <Link to="signup" className="nav-link">Sign up</Link></div>
     </>
   );
 };
