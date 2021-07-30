@@ -8,10 +8,14 @@ body {
   --primary-dark-blue: #081525;
   --primary-blue: #4473b7;
   --primary-white: #fffFFF;
+  --primary-transparent-dark-blue: rgb(10, 28, 48)
+  ;
+
+  ;
 }
 
 .reviews {
-  background-image: url(img/reviews-bg.jpg);
+  background-image: url(img/people.png);
   background-size: cover;
   background-color: var(--primary-dark-blue);
   text-align: center;
@@ -22,15 +26,18 @@ body {
 
 .reviews h1 {
   color: var(--primary-white);
-  padding: 3rem 0;
+  padding: 4rem 0;
   text-transform: uppercase;
+  font-weight: bold;
 }
 
 .reviews-content {
   text-align: center;
   max-width: 53.125rem;
   margin: 0 auto 2rem auto;
-  background: var(--primary-transparent-black); 
+  background: var(--primary-transparent-dark-blue); 
+  opacity: 70%;
+ 
 }
 
 .myCarousel {
