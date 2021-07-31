@@ -1,19 +1,25 @@
-#root > div.main > div > div.medSection > div > div > div > div > div.fc-header-toolbar.fc-toolbar > div:nth-child(3) > button {
+#root > div.main > div > div.medSection > div > div > div > div > div.fc-header-toolbar.fc-toolbar > div:nth-child(3) > button,
+#root > div.main > div.rightSide > div.medSection > div > div > div > div > div.fc-header-toolbar.fc-toolbar {
   display: none !important;
   
   
 
  }
 
- /* #root > div.main > div > div.medSection > div{
-    border-radius: 5%;
-    border: 1px solid lightgray;
-    box-shadow: 10px 10px 5px grey;
+ #root > div.main > div.rightSide > div.medSection > div > div > div > div > div.fc-view-harness.fc-view-harness-active > div{
+     padding: 0;
+     border-radius: 20px;
+     border: 1px solid lightgray;
+     box-shadow: 10px 10px 5px grey;
+     margin-bottom: 2.5%;
+     }
 
- } */
+ #root > div.main > div.rightSide > div.medSection > div > div > div > div > div.fc-view-harness.fc-view-harness-active > div
+
+ 
 
  #root > div.main > div > div.medSection > div > div{
-     height: 50%ç;
+     height: 5%;
  }
 
  #root > div.main > div > div.medSection > div > div > div > div > div.fc-view-harness.fc-view-harness-active > div,

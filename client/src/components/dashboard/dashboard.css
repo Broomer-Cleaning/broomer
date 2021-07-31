@@ -78,13 +78,32 @@ body {
   flex-direction: column;
 }
 
-.boxHedaer{
+.boxHedaer {
   display: flex;
+  margin-left: 2.5%;
+  justify-content: space-around;
+  
+} 
+
+.boxHedaer > .postJobBox,
+.boxHedaer > .compeletJobBox,
+.boxHedaer > .incomBox{
+  height: 100%;
+  width: 100%;
+  border-radius: 20px;
+  border: 1px solid lightgray;
+  box-shadow: 10px 10px 5px grey;
+  font-weight: bold;
+  text-align: center;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 .boxSection{
   display: flex;
   flex-direction: column;
-  margin-top: -42%;
+  margin-top: -40%;
   
 }
 .postJobBox,
@@ -98,7 +117,8 @@ body {
   box-shadow: 10px 10px 5px grey;
   font-weight: bold;
   text-align: center;
-  margin: 2.5%;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
   padding-top: 5px;
   padding-bottom: 5px;
 }
