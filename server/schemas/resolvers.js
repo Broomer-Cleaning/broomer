@@ -21,6 +21,7 @@ const resolvers = {
       return User.findOne({ _id: profileId });
     },
 
+    
     // Returns a specific job based on its ID
     specificJob: async (parent, {jobId}) => {
       return Job.findOne({ _id: jobId})

@@ -102,5 +102,51 @@
                 "review_text_employer": "Provided an incomplete cleaning job. Insisted on listening to his 1990s-style Walk-Man and doing Fortnite dances every few minutes. Started vaping in the building, which we repeatedly asked that he stop. He then began shouting 'OK, Boomer' over and over again, as though he thought this made him 'win' the argument. Anyways, we tipped him well and hope he never has anything to do with our business ever again."
             }
         ]
+    },
+    {
+        "street_address": "66 Maclaren Cres",
+        "postal_code": "K1S 09B",
+        "employerUser": "chickensoupforthesoup",
+        "workerUser": "lenovolover",
+        "est_hours": 2,
+        "rate_per_hour": 30,
+        "job_description": "Looking to have all of my (three) cars cleaned. Need someone with the right gear.",
+        "safety_double_vax": false,
+        "safety_mask": false,
+        "safety_police_check": true,
+        "have_pets": false,
+        "have_equipment_employer": false,
+        "need_equipment_worker": true,
+        "have_supplies_employer": false,
+        "need_supplies_worker": true,
+        "emp_provides_meal": false,
+        "emp_provides_drinks": true,
+        "emp_provides_facilities": true,
+        "dataCaseOpened": "July 18 2021",
+        "currency": "CAD"
+    },
+    {
+        "street_address": "22 Mackenzie King",
+        "postal_code": "K1S 1G6",
+        "employerUser": "halo3",
+        "workerUser": "metalgearsolid",
+        "est_hours": 5,
+        "rate_per_hour": 29,
+        "job_description": "Help me out bro.",
+        "safety_double_vax": false,
+        "safety_mask": false,
+        "safety_police_check": true,
+        "have_pets": false,
+        "have_equipment_employer": false,
+        "need_equipment_worker": true,
+        "have_supplies_employer": false,
+        "need_supplies_worker": true,
+        "emp_provides_meal": false,
+        "emp_provides_drinks": true,
+        "emp_provides_facilities": true,
+        "dataCaseOpened": "July 18 2021",
+        "dateJobStart": "July 18 2021",
+        "currency": "CAD"
     }
+
 ]

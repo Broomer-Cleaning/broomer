@@ -85,7 +85,6 @@ const typeDefs = gql`
         review_text_worker: String
         review_score_employer: Float
         review_text_employer: String
-        need_equipment_worker: Boolean
     }
 
     type Auth {
