@@ -96,8 +96,8 @@ const typeDefs = gql`
     type Query {
         users: [User]
         jobs: [Job]
-        reviews: [Review]
         profile(profileId: ID!): User
+        specificJob(jobId: ID!): Job
     }
 
     type Mutation {
@@ -105,7 +105,6 @@ const typeDefs = gql`
         login(email: String!, password: String!): Auth
         
         # profileDetails(userData: profileSetup!): User
-
         profileDetails(first_name: String, 
         last_name: String, 
         date_of_birth: String,
@@ -121,7 +120,11 @@ const typeDefs = gql`
         addAJob(street_address: String, postal_code: String): Job
         # addAJob(jobData: JobDetails!): Job
 
-        updateAJob(est_hours: Float): Job
+        updateAJob(jobId: ID!, est_hours: Float, rate_per_hour: Float): Job
+
+        workerAgreeJob(jobId: ID!
+        # , workerId: workerUser!
+        ): Job 
     }
 `
 
