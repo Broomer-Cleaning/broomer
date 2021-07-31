@@ -83,8 +83,8 @@ body {
 }
 .boxSection{
   display: flex;
+  margin-top: -45%;
   
-  margin-top: -40%;
 }
 .postJobBox,
 .compeletJobBox,
@@ -92,10 +92,14 @@ body {
 
   height: 100%;
   width: 100%;
-  border: 3px solid black;
+  border-radius: 5%;
+  border: 1px solid lightgray;
+  box-shadow: 10px 10px 5px grey;
   font-weight: bold;
   text-align: center;
   margin: 2.5%;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .JobList{
@@ -106,6 +110,9 @@ body {
 }
 
 .JobList li {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1%;
   list-style-type: none; 
 }
 

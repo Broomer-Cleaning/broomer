@@ -1,17 +1,16 @@
-#root > div.main > div.rightSide > div.medSection > div:nth-child(1) > div > div > div.fc-header-toolbar.fc-toolbar > div:nth-child(1) > h2,
-#root > div.main > div.rightSide > div.medSection > div:nth-child(1) > div > div > div.fc-header-toolbar.fc-toolbar > div:nth-child(3) > button,
-#root > div.main > div.rightSide > div.medSection > div:nth-child(1) > div > div > div.fc-header-toolbar.fc-toolbar > div:nth-child(3) > div,
-#root > div.main > div > div.medSection > div > div > div > div > div.fc-header-toolbar.fc-toolbar
- {
+#root > div.main > div > div.medSection > div > div > div > div > div.fc-header-toolbar.fc-toolbar > div:nth-child(3) > button {
   display: none !important;
-  height: 50% !important;
+  
+  
 
  }
- #root > div.main > div.rightSide > div.medSection > div:nth-child(1) > div > div > div.fc-view-harness.fc-view-harness-active {
-     min-width: 500px !important;
-     height: 500px;
-     padding-bottom: 5px;
- }
+
+ /* #root > div.main > div > div.medSection > div{
+    border-radius: 5%;
+    border: 1px solid lightgray;
+    box-shadow: 10px 10px 5px grey;
+
+ } */
 
  #root > div.main > div > div.medSection > div > div{
      height: 50%ç;
@@ -19,6 +18,7 @@
 
  #root > div.main > div > div.medSection > div > div > div > div > div.fc-view-harness.fc-view-harness-active > div,
  #root > div.main > div > div.medSection > div > div > div > div > div.fc-view-harness.fc-view-harness-active{
+     padding-top: 5%;
      height: 30%;
      width: 100%;
  }

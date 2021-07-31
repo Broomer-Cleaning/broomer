@@ -6,6 +6,21 @@ import listPlugin from '@fullcalendar/list';
 
 
 const data:EventInput[] = [
+  {
+    title:"Clean the hous on cope dr",
+    start:"2021-07-27"
+    
+  },
+  {
+    title:"Clean the hous on cope dr",
+    start:"2021-07-28"
+    
+  },
+  {
+    title:"Clean the hous on cope dr",
+    start:"2021-07-29"
+    
+  },
     {
       title:"Clean the hous on cope dr",
       start:"2021-07-30"
@@ -13,16 +28,16 @@ const data:EventInput[] = [
     },
     {
       title:"we have to code all day",
-      start:"2021-07-30"
+      start:"2021-07-31"
     },
     {
       title:"we have to code",
-      start:"2021-07-30",
+      start:"2021-07-31",
       
     },
     {
       title:"we have to code day",
-      start:"2021-07-30"
+      start:"2021-07-31"
     }
   ]
 
@@ -40,7 +55,7 @@ const data:EventInput[] = [
         <FullCalendar className="dayList"
       events={data}
       plugins={[listPlugin]}
-      initialView = 'listDay'
+      initialView = 'listMonth'
       />
     </div>
     );

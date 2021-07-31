@@ -9,11 +9,6 @@ const Dashboard = () => {
   return (
     <div className="main">
       <div className="rightSide">
-        <div>
-          <Container>
-            <Calendar />
-          </Container>
-        </div>
         <div className="medSection">
           <div className="listview">
             <Container>
@@ -27,25 +22,36 @@ const Dashboard = () => {
               <h4>Jod Posted</h4>
               <div className="JobList">
               <ul>
-                <li>Job Tital <span><Button>Edit Job</Button>
-              <Button>Delet Job</Button><Button>Done</Button></span></li>
-              <li>Job Tital <span><Button>Edit Job</Button>
-              <Button>Delet Job</Button><Button>Done</Button></span></li>
-              <li>Job Tital <span><Button>Edit Job</Button>
-              <Button>Delet Job</Button><Button>Done</Button></span></li>
-              <li>Job Tital <span><Button>Edit Job</Button>
-              <Button>Delet Job</Button><Button>Done</Button></span></li>
-              <li>Job Tital <span><Button>Edit Job</Button>
-              <Button>Delet Job</Button><Button>Done</Button></span></li>
+                <li>Job Tital <span><Button variant="warning">Edit Job</Button> <Button variant="danger">Delete Job</Button> <Button variant="secondary">Done</Button></span></li>
+                <li>Job Tital <span><Button variant="warning">Edit Job</Button> <Button variant="danger">Delete Job</Button> <Button variant="secondary">Done</Button></span></li>
+                <li>Job Tital <span><Button variant="warning">Edit Job</Button> <Button variant="danger">Delete Job</Button> <Button variant="secondary">Done</Button></span></li>
+                <li>Job Tital <span><Button variant="warning">Edit Job</Button> <Button variant="danger">Delete Job</Button> <Button variant="secondary">Done</Button></span></li>
+                <li>Job Tital <span><Button variant="warning">Edit Job</Button> <Button variant="danger">Delete Job</Button> <Button variant="secondary">Done</Button></span></li>
               </ul>
               </div>
               <Button>Add Job</Button>
             </div>
             <div className="compeletJobBox">
               <h4>Jod Completed</h4>
+              <div className="JobList">
+              <ul>
+                <li>Job Tital <span><Button variant="info">Write Review</Button></span></li>
+                <li>Job Tital <span><Button variant="info">Write Review</Button></span></li>
+                <li>Job Tital <span><Button variant="info">Write Review</Button></span></li>
+                <li>Job Tital <span><Button variant="info">Write Review</Button></span></li>
+              </ul>
+              </div>
             </div>
             <div className="incomBox">
               <h4>Income</h4>
+              <div className="JobList">
+              <ul>
+                <li>Job Tital: $ </li>
+                <li>Job Tital: $ </li>
+                <li>Job Tital: $ </li>
+                <li>Job Tital: $ </li>
+              </ul>
+              </div>
             </div>
           </Container>
         </div>
