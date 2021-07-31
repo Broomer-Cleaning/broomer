@@ -1,13 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import "./footer.css";
+import Auth from '../../utils/auth';
 
 const Footer = () => {
   return (
     <div className="footer">
       <div className="container">
         <div className="row">
-          <div className="col-lg-4 col-md-6 col-sm-6">
+          <div className="col-lg-3 col-md-6 col-sm-6">
             <div className="d-flex">
               <a href="tel:555-555-555">+1(555)555-5555</a>
             </div>
@@ -29,9 +30,20 @@ const Footer = () => {
               <div className="col">
                 <Link to="/contact" className="footer-nav">Contact us</Link>
                 <br />
+                  {Auth.loggedIn() ? (
+                 <>
+               <div className="col">
                 <Link to="/dashboard" className="footer-nav">Dashboard</Link>
                 <br />
+                <Link to="/profile" className="footer-nav">Profile</Link>
+                <br />
+                <Link to="/logout" className="footer-nav">Logout</Link>
+                <br />
+                </div>
+                  </>
+                ) : (
                 <Link to="/login" className="footer-nav">Login</Link>
+                )}
               </div>
             </div>
           </div>
