@@ -81,15 +81,21 @@ body {
   display: flex;
   flex-direction: column;
 }
-.cardSection{
-  margin-top: 5%;
+.boxSection{
+  margin-top: -40%;
+  display: flex;
+}
+.postJobBox,
+.compeletJobBox,
+.incomBox {
+  height: 100%;
+  width: 100%;
+  border: 3px solid black;
+  font-weight: bold;
+  text-align: center;
 }
 
-.card {
-  display: flex;
-  flex-wrap: wrap;
-  
-}
+
 
 @media screen and (max-width: 600px){
   .main{
