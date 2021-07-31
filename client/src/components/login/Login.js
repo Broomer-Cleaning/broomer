@@ -49,8 +49,8 @@ const LoginForm = () => {
 
   return (
     <>
-    <Card>
-    <Card.Body>
+    <div className="card mx-auto">
+    <h2 className="text-center mb-4">login</h2>
       <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
         <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
           Something went wrong with your login credentials!
@@ -89,10 +89,11 @@ const LoginForm = () => {
           Submit
         </Button>
       </Form>
-      </Card.Body>
-      </Card>
+      </div>
       <div className=" question w-100 text-center mt-2">Don't have an account? <Link to="signup" className="nav-link">Sign up</Link></div>
+      
     </>
+    
   );
 };
 

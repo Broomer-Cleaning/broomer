@@ -50,3 +50,8 @@ h2 {
   border: none !important;
 }
 
+.card h2 {
+  margin-top: 4rem;
+  font-weight: bold;
+}
+

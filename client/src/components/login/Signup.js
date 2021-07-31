@@ -55,8 +55,7 @@ const SignupForm = () => {
 
   return (
     <>
-    <Card>
-    <Card.Body>
+   <div className="card mx-auto">
       <h2 className="text-center mb-4">Sign Up</h2>
       {/* This is needed for the validation functionality above */}
       <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
@@ -123,8 +122,7 @@ const SignupForm = () => {
           Submit
         </Button>
       </Form>
-      </Card.Body>
-      </Card>
+      </div>
       <div className=" question w-100 text-center mt-2">Already have an account? <Link to="login" className="nav-link">Login</Link></div>
     </>
   );
