@@ -11,6 +11,7 @@ import AboutUs from './components/about/AboutUs';
 import Services from './components/services/Services';
 import Contact from './components/contact/Contact';
 import Profile from './components/profile/Profile';
+import Testimonials from './components/reviews/Testimonials';
 import Login from './components/login/Login';
 import Signup from './components/login/Signup';
 import Footer from './components/footer/Footer';
@@ -52,6 +53,7 @@ function App() {
      <Route exact path="/login" component={Login} />
      <Route exact path="/signup" component={Signup} />
      <Route exact path="/profile" component={Profile} />
+     <Route exact path="/testimonials" component={Testimonials} />
      </Switch>
      <Footer/>
       </>
