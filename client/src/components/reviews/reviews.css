@@ -8,10 +8,7 @@ body {
   --primary-dark-blue: #081525;
   --primary-blue: #4473b7;
   --primary-white: #fffFFF;
-  --primary-transparent-dark-blue: rgb(10, 28, 48)
-  ;
-
-  ;
+  --primary-transparent-dark-blue: rgb(10, 28, 48);
 }
 
 .reviews {
