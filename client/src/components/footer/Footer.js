@@ -1,6 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import "./footer.css";
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  TwitterShareButton,
+  TwitterIcon,
+  LinkedinShareButton,
+  LinkedinIcon
+} from "react-share";
+
+
+
 import Auth from '../../utils/auth';
 
 const Footer = () => {
@@ -48,11 +59,31 @@ const Footer = () => {
             </div>
           </div>
           <div className="col-lg-5 col-md-5 col-sm-6 align-items-center">
-            <div className="d-flex justify-content-center">
-              
-                
-            </div>
-            <p className="pt-3 text-center">
+            <div className="d-flex justify-content-center">  
+            <FacebookShareButton
+                url={"https://www.facebook.com/Broomer-108877578087838"}
+                quote={"Broomer"}
+                hashtag="#broomer"
+              >
+                <FacebookIcon className="mx-3" size={36} />
+              </FacebookShareButton>
+              <TwitterShareButton
+                url={"https://twitter.com/home"}
+                quote={"Broomer"}
+                hashtag="#broomer"
+              >
+                <TwitterIcon className="mx-3" size={36} />
+              </TwitterShareButton>
+              <LinkedinShareButton
+                url={"https://www.linkedin.com/in/broomer-cleaning-3b77a8218/"}
+                quote={"Broomer"}
+                hashtag="#broomer"
+              >
+                <LinkedinIcon className="mx-3" size={36} />
+              </LinkedinShareButton>
+            </div>      
+            
+            <p className="pt-3 text-center ">
               Copyright&copy;
               {new Date().getFullYear()}&nbsp;Broomer | All Rights Reserved
             </p>

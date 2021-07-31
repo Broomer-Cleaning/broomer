@@ -30,3 +30,22 @@ body {
 .footer p {
   margin-bottom: 0;
 }
+
+@media (max-width: 768px) {
+  .col-lg-2 {
+    margin-left: 0 !important;
+    
+  }
+  
+  .col-md-auto {
+   padding-left: 0 !important;
+  }
+  
+  .col-lg-2, .col-md-auto, .col {
+    text-align: center !important;
+  }
+  
+  .icons {
+    margin-bottom: 2rem !important;
+  }
+}
