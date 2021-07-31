@@ -44,7 +44,7 @@ body {
 
 .main { 
   display: flex;
-  margin: 5%;
+  flex-direction: column;
 }
 
 
@@ -67,10 +67,6 @@ body {
  
 }
 
-.calendar{
-  width: 100%;
-}
-
 .dayList{
   margin-right: 2.5%;
   height: 100%;
@@ -81,9 +77,14 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+.boxHedaer{
+  display: flex;
+}
 .boxSection{
   display: flex;
-  margin-top: -45%;
+  flex-direction: column;
+  margin-top: -42%;
   
 }
 .postJobBox,
@@ -92,7 +93,7 @@ body {
 
   height: 100%;
   width: 100%;
-  border-radius: 5%;
+  border-radius: 20px;
   border: 1px solid lightgray;
   box-shadow: 10px 10px 5px grey;
   font-weight: bold;
