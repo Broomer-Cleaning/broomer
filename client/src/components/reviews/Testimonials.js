@@ -74,7 +74,7 @@ const style = {
     border: "1px solid #4473b7",
     width: 300,
     padding: 10,
-    marginBottom: "2rem"
+    marginBottom: "4rem"
 
   }
 }
