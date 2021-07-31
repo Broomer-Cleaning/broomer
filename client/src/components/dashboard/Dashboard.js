@@ -13,19 +13,19 @@ const Dashboard = () => {
       <Container className="boxHedaer">
         <div className="postJobBox">
           <h4>Total of Jod Posted</h4>
-          <p> Jods</p>
+          <p>50 Jods</p>
         </div>
         <div className="compeletJobBox">
           <h4>Total of Jod Completed</h4>
-          <p> Jods</p>
+          <p>64 Jods</p>
         </div>
         <div className="incomBox">
           <h4> Total of Income</h4>
-          <p> $</p>
+          <p>2000 $</p>
         </div>
         <div className="incomBox">
           <h4> Total of Outcome</h4>
-          <p> $</p>
+          <p>350 $</p>
         </div>
       </Container>
       <div className="rightSide">
