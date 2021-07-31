@@ -2,12 +2,47 @@ import React from 'react'
 import "./testimonials.css";
 import {FaStar} from "react-icons/fa";
 
+// import {SAVE_REVIEW} from "../../utils/mutation"
+// import { useMutation } from '@apollo/react-hooks';
+// import Auth from '../../utils/auth';
+
 const colors = {
   yellow: "#F2B212",
   blue: "#4473b7"
 }
 
 const Testimonials = () => {
+
+  // const [savedReviewIds, setSavedReviewIds] = useState(getSavedReviewIds());
+
+  // const [saveReviews] = useMutation(SAVE_REVIEW);
+
+  // const handleSaveReview = async (reviewId) => {
+    
+  //    // get token
+  //    const token = Auth.loggedIn() ? Auth.getToken() : null;
+ 
+  //    if (!token) {
+  //      return false;
+  //    }
+ 
+  //    try {
+  //      console.log('reviewToSave', reviewToSave);
+  //      const { data } = await saveReviews({
+  //        variables: { bookData: { ...reviewToSave } }
+  //      });
+  //      console.log('data', data);
+ 
+  //      // if review successfully saves to user's account, save review id to state
+  //      setSavedReviewIds([...savedReviewIds, reviewToSave.reviewId]);
+  //    } catch (err) {
+  //      console.error(err);
+  //    }
+  // }
+
+
+
+
   const stars = Array(5).fill(0);
   const[currentValue, setCurrentValue]=React.useState(0);
   const [hoverValue, setHoverValue] = React.useState(undefined);

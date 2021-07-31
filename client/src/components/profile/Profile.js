@@ -1,8 +1,9 @@
 import "./profile.css";
 import React from "react";
 import avtar from "../profile/img/avatar.jpeg";
-import { Mail, Language, PhoneIphone } from "@material-ui/icons";
 import { Button } from "react-bootstrap";
+import { MdPhoneIphone } from 'react-icons/md';
+import {AiOutlineMail} from 'react-icons/ai'
 
 import ReviewsCarousel from "../reviews/ReviewsCarousel";
 import { Container } from "react-bootstrap";
@@ -15,15 +16,11 @@ const Profile = () => {
           <img className="avatr" src={avtar} alt="avatr" />
           <h1 className="fullName">Ahmed Hakeem</h1>
           <div className="itemContainer">
-            <Language className="icon" />
-            <a href="https://google.com">
-              <span>website</span>
-            </a>
-            <Mail className="icon" />
+            <AiOutlineMail className="icon" size={24}/>
             <a href="mailto:test@addres.com">
               <span>Email</span>
             </a>
-            <PhoneIphone className="icon" />
+            <MdPhoneIphone className="icon" size={24}/>
             <a href="tel:+1 555 555 5555">
               <span>Call Me</span>
             </a>
@@ -40,7 +37,7 @@ const Profile = () => {
             PageMaker including versions of Lorem Ipsum.
           </p>
         <div>
-          <Button variant="warning">Click to edit</Button>
+          <Button className="editBtn" variant="warning">Click to edit</Button>
         </div>
         </div>
       </Container>

@@ -15,7 +15,9 @@
 
 .fullName {
     font-weight: bold;
-    color: #4473B7
+    color: #4473B7;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
 }
 
 .itemContainer {
@@ -27,11 +29,55 @@
 
 .reviws{
     margin-bottom: 5%;
+    background-image: url(img/people.png);
+    background-size: cover;
+    background-color: var(--primary-dark-blue);
+    text-align: center;
+    padding-bottom: 4rem;
+    margin-bottom: 0;
+    width: 100%;
 }
 
-.content{
-    background-color: #081525;
+.reviws h2 {
+    color: var(--primary-white);
+    padding: 3rem 0;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.content {
    
+ background-color: #081525;
+ opacity: 70%;
+
+}
+
+.itemContainer .icon  {
+ margin-right: 0.1rem;
+}
+
+.itemContainer span {
+ margin-right: 1rem;
+       
+}
+
+.itemContainer a {
+ text-decoration: none;
+ color: #081525;
+}
+
+.itemContainer a:hover {
+ color: #4473B7;
+
+}
+
+.aboutMeSection p {
+    margin-bottom: 3rem;
+    margin-top: 1rem;
+}
+
+.editBtn {
+    margin-bottom: 2rem;
 }
 
 
