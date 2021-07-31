@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import "./login.css";
-import { Form, Button, Alert, Card } from 'react-bootstrap';
+import { Form, Button, Alert} from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 
 import Auth from '../../utils/auth';
