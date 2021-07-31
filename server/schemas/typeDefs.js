@@ -95,6 +95,7 @@ const typeDefs = gql`
     type Query {
         users: [User]
         jobs: [Job]
+        jobsByUser(profileId: ID): User
         profile(profileId: ID!): User
         specificJob(jobId: ID!): Job
     }
@@ -116,7 +117,7 @@ const typeDefs = gql`
         ): User
 
         # Start here with 'addAJob' mutation
-        addAJob(street_address: String, postal_code: String): Job
+        addAJob(street_address: String!, postal_code: String!): User
         # addAJob(jobData: JobDetails!): Job
 
         updateAJob(jobId: ID!, est_hours: Float, rate_per_hour: Float): Job

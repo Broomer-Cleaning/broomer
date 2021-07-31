@@ -57,14 +57,15 @@ const userSchema = new Schema(
       type: Boolean,
       default: false
     },
+    jobs_worked: [{
+      type: Schema.Types.ObjectId,
+      ref: "jobs"
+    }],
 
-    jobs_worked: {
-      type: Array
-    },
-
-    jobs_hired: {
-      type: Array
-    },
+    jobs_hired: [{
+      type: Schema.Types.ObjectId,
+      ref: "jobs"
+    }],
   },
   // set this to use virtual below
   {

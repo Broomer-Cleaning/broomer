@@ -1,18 +1,26 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { Job, User, Review } = require('../models');
+const { Job, User } = require('../models');
 const { signToken } = require('../utils/auth');
 const mongoose = require('mongoose')
 
 const resolvers = {
   Query: {
-    // ✔️✔️
+    // not pulling up seeded users
     users: async () => {
       return User.find({});
     },
     
-    // ✔️✔️
+    // not pulling up seeded jobs
     jobs: async () => {
       return Job.find({});
+    },
+
+    jobsByUser: async(parent, { profileId }, context) => {
+      if (context.user) {
+        return User.findOne({ _id: context.user._id }).populate("jobs");
+      } else {
+        return User.findOne({ _id: profileId }).populate("jobs")
+      }
     },
 
     // ✔️✔️
@@ -79,15 +87,18 @@ const resolvers = {
     addAJob: async (parent, args, context) => {
 
       // To Better understand the background
-      console.log("context.user HERE", context.user)
+      // console.log("context.user HERE", context.user)
       console.log("context.user.username HERE", context.user.username)
       console.log("context.user._id HERE", context.user._id)
-      console.log("args", args)
+      // console.log("args", args)
+      console.log("Street address is HERE", args.street_address)
 
       // Creates a Job with location's address (the required items so far)
       // Goal: set the Job's employerUser name as the online user's username
       const job = await Job.create(
         { employerUser: context.user.username,
+          postal_code: args.postal_code,
+          street_address: args.street_address,
           dataCaseOpened: Date.now()
         }
         // { $set: { employerUser: context.user.username } }
@@ -98,13 +109,16 @@ const resolvers = {
       // finds the user who is creating the job, then add the Job ID to the user's jobs_hired array
       const userJobUpdate = await User.findByIdAndUpdate(
         { _id: context.user._id },
-        { $push: { jobs_hired: "new job" } },
+        
+        // "new job" is meant to be the ID of the job that's just been added
+        { $push: { jobs_hired: job._id } },
+        
         { new: true, runValidators: true }
-      )
+      ).populate("jobs")
 
       console.log("JOBUserUpdate HERE", userJobUpdate)
 
-      return {job, userJobUpdate}
+      return  userJobUpdate
     },
 
     updateAJob: async (parent, args, context) => {
@@ -142,15 +156,13 @@ const resolvers = {
           { _id: jobId },
           { $set: 
             {
+              // Timestamps the 'jobStart' moment, adds the worker's username
               dateJobStart: Date(), 
-              // workerUser: workerId 
+              workerUser: context.user.username 
             }
           },
           { new: true, runValidators: true }
         )
-
-        console.log(workerAgree)
-
         return workerAgree
       }
       throw new AuthenticationError("Only logged in users can do this.")
