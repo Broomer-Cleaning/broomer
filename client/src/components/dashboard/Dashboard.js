@@ -3,7 +3,7 @@ import React from "react";
 import Calendar from "./calendar/calendar";
 import List from "./list/List";
 import { Button, Container } from "react-bootstrap";
-import Card from "react-bootstrap/card";
+
 
 const Dashboard = () => {
   return (
@@ -25,6 +25,21 @@ const Dashboard = () => {
           <Container className="boxSection">
             <div className="postJobBox">
               <h4>Jod Posted</h4>
+              <div className="JobList">
+              <ul>
+                <li>Job Tital <span><Button>Edit Job</Button>
+              <Button>Delet Job</Button><Button>Done</Button></span></li>
+              <li>Job Tital <span><Button>Edit Job</Button>
+              <Button>Delet Job</Button><Button>Done</Button></span></li>
+              <li>Job Tital <span><Button>Edit Job</Button>
+              <Button>Delet Job</Button><Button>Done</Button></span></li>
+              <li>Job Tital <span><Button>Edit Job</Button>
+              <Button>Delet Job</Button><Button>Done</Button></span></li>
+              <li>Job Tital <span><Button>Edit Job</Button>
+              <Button>Delet Job</Button><Button>Done</Button></span></li>
+              </ul>
+              </div>
+              <Button>Add Job</Button>
             </div>
             <div className="compeletJobBox">
               <h4>Jod Completed</h4>

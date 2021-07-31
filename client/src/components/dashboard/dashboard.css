@@ -82,20 +82,32 @@ body {
   flex-direction: column;
 }
 .boxSection{
-  margin-top: -40%;
   display: flex;
+  
+  margin-top: -40%;
 }
 .postJobBox,
 .compeletJobBox,
 .incomBox {
+
   height: 100%;
   width: 100%;
   border: 3px solid black;
   font-weight: bold;
   text-align: center;
+  margin: 2.5%;
 }
 
+.JobList{
+  text-align: left;
+  justify-items: right;
+  list-style-type: none;  
+  font-weight: bold;
+}
 
+.JobList li {
+  list-style-type: none; 
+}
 
 @media screen and (max-width: 600px){
   .main{
