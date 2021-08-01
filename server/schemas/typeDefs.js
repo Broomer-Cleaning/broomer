@@ -20,18 +20,6 @@ const typeDefs = gql`
         jobs_hired: [Job]
     }
 
-    # input profileSetup {
-    #     first_name: String
-    #     last_name: String
-    #     date_of_birth: String
-    #     phone_number: String
-    #     about_me: String
-    #     safety_double_vax: Boolean
-    #     safety_mask: Boolean
-    #     safety_police_check: Boolean
-    #     have_pets: Boolean
-    # }
-
     type Job {
         _id: ID!
         street_address: String!
@@ -52,7 +40,7 @@ const typeDefs = gql`
         emp_provides_meal: Boolean
         emp_provides_drinks: Boolean
         emp_provides_facilities: Boolean
-        dataCaseOpened: String
+        dateCaseOpened: String
         dateJobStart: String
         dateJobEndWorker: String
         dateJobEndEmployer: String
@@ -101,30 +89,29 @@ const typeDefs = gql`
     }
 
     type Mutation {
+        
+        # Login/Registration
         createUser(username: String!, email: String!, password: String!): Auth
         login(email: String!, password: String!): Auth
-        
-        # profileDetails(userData: profileSetup!): User
-        profileDetails(first_name: String, 
-        last_name: String, 
-        date_of_birth: String,
-        phone_number: String,
-        about_me: String,
-        safety_double_vax: Boolean,
-        safety_mask: Boolean,
-        safety_police_check: Boolean,
-        have_pets: Boolean
-        ): User
+    
+        # Set User Profile
+        profileDetails(first_name: String, last_name: String, 
+        date_of_birth: String, phone_number: String,
+        about_me: String, safety_double_vax: Boolean,
+        safety_mask: Boolean, safety_police_check: Boolean,
+        have_pets: Boolean): User
 
-        # Start here with 'addAJob' mutation
-        addAJob(street_address: String!, postal_code: String!): User
-        # addAJob(jobData: JobDetails!): Job
-
+        # Creating a job 
+        addAJob(street_address: String, postal_code: String): User
         updateAJob(jobId: ID!, est_hours: Float, rate_per_hour: Float): Job
 
-        workerAgreeJob(jobId: ID!
-        # , workerId: workerUser!
-        ): Job 
+        # The job-open to job-close sequence
+        workerAgreeJob(jobId: ID!): User 
+        workerCompleteJob(jobId: ID!): Job
+        employerCompleteJob(jobId: ID!): Job
+        closeJobCase(jobId: ID!): Job
+        addReviewWorker(jobId: ID!, review_score_worker: Float!, review_text_worker: String!): Job
+        addReviewEmployer(jobId: ID!, review_score_employer: Float!, review_text_employer: String!): Job
     }
 `
 

@@ -5,12 +5,10 @@ const jobSchema = new Schema(
   {
     street_address: {
       type: String,
-      required: true,
     },
 
     postal_code: {
       type: String,
-      required: true,
     },
 
     employerUser: {
@@ -24,18 +22,15 @@ const jobSchema = new Schema(
     // basis for total
     est_hours: {
       type: Number,
-      // required: true
     },
 
     // basis for total
     rate_per_hour: {
       type: Number,
-      // required: true
     },
 
     job_description: {
       type: String,
-      // required: true
     },
 
     safety_double_vax: {
