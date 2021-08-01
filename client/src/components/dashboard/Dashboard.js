@@ -1,12 +1,47 @@
 import "./dashboard.css";
-import React from "react";
-import List from "./list/List";
-import { Button, Container, Nav } from "react-bootstrap";
+import React, { useState, useRef } from "react";
+import { Button, Container } from "react-bootstrap";
+import "./list/list.css";
+
+import "react-datetime/css/react-datetime.css";
+import FullCalendar from "@fullcalendar/react";
+import listPlugin from "@fullcalendar/list";
+// //for the calender
+import AddEventModal from "./list/AddEvent";
+import axios from "axios";
+import moment from "moment"
+
+// //for the calendar
 
 const Dashboard = () => {
-  const handleCilck = () => {
-    console.log("Hello Ahmed");
+
+  const [modalOpen, setModalOpen] = useState(false);
+  const [events, setEvents] = useState([])
+  const calendarRef = useRef(null);
+
+  const onEventAdded = (event) => {
+    let calendarApi = calendarRef.current.getApi();
+    calendarApi.addEvent({
+      start: moment(event.start).toDate(),
+      end: moment(event.end).toDate(),
+      title: event.title
+
+    })
+
   };
+
+  async function handleEventAdd (data) {
+
+    await axios.post("/api/calenar/create-event", data.event);
+
+  }
+
+  async function handleDateSet (data) {
+    const responce = await axios.get("/api/calendar/get-events?start="+moment(data.start).toISOString()+"&end="+moment(data.end).toISOString())
+    setEvents(responce.data);
+
+
+  }
 
   return (
     <div className="main">
@@ -30,9 +65,27 @@ const Dashboard = () => {
       </Container>
       <div className="rightSide">
         <div className="medSection">
-          <div className="listview">
+          <div className="listview" id="calender">
             <Container>
-              <List />
+              <div className="daylist">
+              <Button onClick={() => setModalOpen(true)}>Add Job</Button>
+                <div style={{ position: "relative", zIndex: 2 }}>
+                  <FullCalendar
+                    ref={calendarRef}
+                    events={events}
+                    className="dayList"
+                    plugins={[listPlugin]}
+                    initialView="listMonth"
+                    eventAdd={event => handleEventAdd(event)}
+                    dateSet = {(date) => handleDateSet(date)}
+                  />
+                </div>
+                <AddEventModal
+                  isOpen={modalOpen}
+                  onClose={() => setModalOpen(false)}
+                  onEventAdded={(event) => onEventAdded(event)}
+                />
+              </div>
             </Container>
           </div>
         </div>
@@ -45,16 +98,14 @@ const Dashboard = () => {
                   <li>
                     Job Tital{" "}
                     <span>
-                      <Button onClick={handleCilck} variant="warning">
-                        Edit Job
-                      </Button>{" "}
+                      <Button variant="warning">Edit Job</Button>{" "}
                       <Button variant="danger">Delete Job</Button>{" "}
                       <Button variant="secondary">Done</Button>
                     </span>
                   </li>
                 </ul>
               </div>
-              <Button>Add Job</Button>
+              {/* <Button onClick={() => setModalOpen(true)}>Add Job</Button> */}
             </div>
             <div className="compeletJobBox">
               <h4>Jod Completed</h4>
