@@ -40,7 +40,9 @@
     "react-scripts": "4.0.3",
     "react-scroll": "^1.8.3",
     "react-share": "^4.4.0",
+    "react-spring": "^9.2.4",
     "react-typed": "^1.2.0",
+    "styled-components": "^5.3.0",
     "web-vitals": "^1.1.2"
   },
   "scripts": {

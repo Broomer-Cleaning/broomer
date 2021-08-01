@@ -126,6 +126,14 @@ body {
   list-style-type: none; 
 }
 
+/* body > div.ReactModalPortal > div{
+  
+  height: 50%;
+}
+body > div.ReactModalPortal > div > div{
+ margin: 5%;
+} */
+
 @media screen and (max-width: 600px){
   .main{
     flex-direction: column;
