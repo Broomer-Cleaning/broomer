@@ -3,7 +3,8 @@ import Modal  from "react-modal";
 import Datetime from "react-datetime";
 
 
-const Addjob = (isOpen, onClose, onEventAdded) => {
+
+const Addjob = ({isOpen, onClose, onEventAdded}) => {
 
     const [title, setTitle] =  useState("");
     const [description, setDescription] = useState("")

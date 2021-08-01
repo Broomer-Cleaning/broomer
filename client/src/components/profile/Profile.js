@@ -1,14 +1,21 @@
 import "./profile.css";
-import React from "react";
+import "./modal.css";
+import React, { useState } from "react";
+import Modal from "./Modal";
 import avtar from "../profile/img/avatar.jpeg";
 import { Button } from "react-bootstrap";
-import { MdPhoneIphone } from 'react-icons/md';
-import {AiOutlineMail} from 'react-icons/ai'
-
+import { MdPhoneIphone } from "react-icons/md";
+import { AiOutlineMail } from "react-icons/ai";
+// import styled from 'styled-components';
 import ReviewsCarousel from "../reviews/ReviewsCarousel";
 import { Container } from "react-bootstrap";
 
 const Profile = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = () => {
+    setShowModal((prev) => !prev);
+  };
   return (
     <div>
       <Container>
@@ -16,11 +23,11 @@ const Profile = () => {
           <img className="avatr" src={avtar} alt="avatr" />
           <h1 className="fullName">Ahmed Hakeem</h1>
           <div className="itemContainer">
-            <AiOutlineMail className="icon" size={24}/>
+            <AiOutlineMail className="icon" size={24} />
             <a href="mailto:test@addres.com">
               <span>Email</span>
             </a>
-            <MdPhoneIphone className="icon" size={24}/>
+            <MdPhoneIphone className="icon" size={24} />
             <a href="tel:+1 555 555 5555">
               <span>Call Me</span>
             </a>
@@ -36,18 +43,23 @@ const Profile = () => {
             and more recently with desktop publishing software like Aldus
             PageMaker including versions of Lorem Ipsum.
           </p>
-        <div>
-          <Button className="editBtn" variant="warning">Click to edit</Button>
-        </div>
+          <div>
+            <Container className="editFrom">
+              <Button variant="warning"  className="btn" onClick={openModal}>
+                Click to edit
+              </Button>
+              <Modal showModal={showModal} setShowModal={setShowModal} />
+            </Container>
+          </div>
         </div>
       </Container>
       <Container>
-      <div className="reviws">
-        <h2 className="sectionTital">My Reviews</h2>
-        <div className="content">
-          <ReviewsCarousel />
+        <div className="reviws">
+          <h2 className="sectionTital">My Reviews</h2>
+          <div className="content">
+            <ReviewsCarousel />
           </div>
-      </div>
+        </div>
       </Container>
     </div>
   );
