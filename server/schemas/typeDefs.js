@@ -83,6 +83,7 @@ const typeDefs = gql`
     type Query {
         users: [User]
         jobs: [Job]
+        me: User
         jobsByUser(profileId: ID): User
         profile(profileId: ID!): User
         specificJob(jobId: ID!): Job

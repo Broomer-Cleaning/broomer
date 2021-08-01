@@ -8,16 +8,19 @@ const resolvers = {
     users: async () => {
       return User.find({});
     },
-    
+
     jobs: async () => {
       return Job.find({});
     },
 
-    jobsByUser: async(parent, { profileId }, context) => {
+    jobsByUser: async (parent, { profileId }, context) => {
+      return User.findOne({ _id: profileId }).populate("jobs")
+    },
+
+    // ✔️✔️
+    me: async (parent, args, context) => {
       if (context.user) {
         return User.findOne({ _id: context.user._id }).populate("jobs");
-      } else {
-        return User.findOne({ _id: profileId }).populate("jobs")
       }
     },
 
@@ -26,10 +29,10 @@ const resolvers = {
     profile: async (parent, { profileId }) => {
       return User.findOne({ _id: profileId });
     },
-    
+
     // Returns a specific job based on its ID
-    specificJob: async (parent, {jobId}) => {
-      return Job.findOne({ _id: jobId})
+    specificJob: async (parent, { jobId }) => {
+      return Job.findOne({ _id: jobId })
     }
 
   },
@@ -67,7 +70,7 @@ const resolvers = {
 
       console.log("context.user._id HERE", context.user._id)
       console.log(args)
-      
+
       // Goal: Find a User type by its ID and update its custom values
       if (context.user) {
         const updateUser = await User.findByIdAndUpdate(
@@ -90,7 +93,8 @@ const resolvers = {
       // Creates a Job with location's address (the required items so far)
       // Goal: set the Job's employerUser name as the online user's username
       const job = await Job.create(
-        { employerUser: context.user.username,
+        {
+          employerUser: context.user.username,
           postal_code: args.postal_code,
           street_address: args.street_address,
           dateCaseOpened: Date()
@@ -109,7 +113,7 @@ const resolvers = {
 
       console.log("JOBUserUpdate HERE", userJobUpdate)
 
-      return  userJobUpdate
+      return userJobUpdate
     },
 
     updateAJob: async (parent, args, context) => {
@@ -117,7 +121,7 @@ const resolvers = {
       console.log("context.user._id HERE", context.user._id)
       console.log("context.user HERE", context.user)
       console.log("context.job HERE", context.job)
-      
+
       // Goal: to update the Job type with custom details, based on job's ID
       if (context.user) {
 
@@ -143,11 +147,12 @@ const resolvers = {
       if (context.user) {
         const workerAgree = Job.findByIdAndUpdate(
           { _id: jobId },
-          { $set: 
+          {
+            $set:
             {
               // Timestamps the 'jobStart' moment, adds the worker's username
-              dateJobStart: Date(), 
-              workerUser: context.user.username 
+              dateJobStart: Date(),
+              workerUser: context.user.username
             }
           },
           { new: true, runValidators: true }
@@ -156,12 +161,12 @@ const resolvers = {
 
         const userWorkerUpdate = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          
+
           // "new job" is meant to be the ID of the job that's just been added
           { $push: { jobs_worked: jobId } },
           { new: true, runValidators: true }
         ).populate("jobs")
-  
+
         console.log("JOBUserUpdate HERE", userWorkerUpdate)
         return userWorkerUpdate
       }
@@ -171,66 +176,73 @@ const resolvers = {
     // [Error: "workerCompleteJob" defined in resolvers, but not in schema]
     workerCompleteJob: async (parent, { jobId }, context) => {
 
-      if (context.user) {
-        const workerComplete = Job.findByIdAndUpdate(
-          {_id: jobId},
-          { $set: 
-            {
-              dateJobEndWorker: Date(), 
-              // dollarsPromised: (est_hours * rate_per_hour)
-            }
-          }, { new: true, runValidators: true }
-          )
-          return workerComplete
-      }
-
       // if (context.user) {
-      //   const workerComplete = Job.aggregate([
-      //     {$match: {
-      //       _id: jobId}
-      //     },
-      //     { $group: 
-      //       { dateJobEndWorker: Date(),
-      //         dollarsPromised: { $sum: { $multiply: ["$est_hours", "$rate_per_hour"]}} 
+      //   const workerComplete = Job.findByIdAndUpdate(
+      //     {_id: jobId},
+      //     { $set: 
+      //       {
+      //         dateJobEndWorker: Date(), 
+      //         // dollarsPromised: (est_hours * rate_per_hour)
       //       }
-      //     }, 
-      //     { new: true, runValidators: true }
-      //   ])
-      //     console.log(workerComplete)
+      //     }, { new: true, runValidators: true }
+      //     )
       //     return workerComplete
       // }
 
-    },
-
-    employerCompleteJob: async (parent, { jobId }, context) => {
-
       if (context.user) {
-        const employerComplete = Job.findByIdAndUpdate(
-          {_id: jobId},
-          { $set: 
-            {
-              dateJobEndEmployer: Date(), 
-              // dollarsPromised: (est_hours * rate_per_hour)
+        const workerComplete = Job.aggregate([
+          {
+            $match: {
+              _id: jobId
             }
-          }, { new: true, runValidators: true }
-          )
-          return employerComplete
-      }
+          },
+          {
+            $set: { dateJobEndWorker: Date() }
+          },
+          {
+            $project: {
+              _id: 1, dateJobEndWorker: 1, dollarsPromised: { $multiply: [ "$est_hours", "$rate_per_hour"]}
+            }
+          },
+          { new: true, runValidators: true }  
+      ])
+      
+    }
+      console.log(workerComplete)
+      return workerComplete
     },
-    closeJobCase: async (parent, { jobId }, context) => {
 
-      if (context.user) {
-        const jobComplete = Job.findByIdAndUpdate(
-          {_id: jobId},
-          { $set: 
-            {
-              dateCaseClosed: Date()
-            }
-          }, { new: true, runValidators: true }
-          )
-          return jobComplete
-      }
-    },
+employerCompleteJob: async (parent, { jobId }, context) => {
+
+  if (context.user) {
+    const employerComplete = Job.findByIdAndUpdate(
+      { _id: jobId },
+      {
+        $set:
+        {
+          dateJobEndEmployer: Date(),
+          // dollarsPromised: (est_hours * rate_per_hour)
+        }
+      }, { new: true, runValidators: true }
+    )
+    return employerComplete
+  }
+},
+  closeJobCase: async (parent, { jobId }, context) => {
+
+    if (context.user) {
+      const jobComplete = Job.findByIdAndUpdate(
+        { _id: jobId },
+        {
+          $set:
+          {
+            dateCaseClosed: Date()
+          }
+        }, { new: true, runValidators: true }
+      )
+      return jobComplete
+    }
+  },
 
     addReviewWorker: async (parent, args, context) => {
       if (context.user) {
@@ -238,11 +250,11 @@ const resolvers = {
       }
     },
 
-    addReviewEmployer: async (parent, args, context) => {
-      if (context.user) {
-        console.log("Need to access nested query")
+      addReviewEmployer: async (parent, args, context) => {
+        if (context.user) {
+          console.log("Need to access nested query")
+        }
       }
-    }
   },
 
 };
