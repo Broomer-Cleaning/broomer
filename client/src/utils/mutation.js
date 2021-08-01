@@ -12,7 +12,6 @@ mutation createUser($username: String!, $email: String!, $password: String!) {
 }
 `;
 
-
 export const LOGIN_USER = gql`
 mutation login ($email: String!, $password: String!){
   login(email: $email, password: $password){
@@ -24,3 +23,30 @@ mutation login ($email: String!, $password: String!){
   }
 }
 `;
+
+// Doesn't need input variables. Creates a Job Type, 
+// with `dateCaseOpened` timestamped as Date.now() and employerUser as context.user.username
+
+export const ADD_JOB = gql`
+mutation {  
+	addAJob {
+ 		jobs_hired {
+      _id
+      employerUser
+      workerUser
+      dateCaseOpened
+      dateJobStart
+      dateJobEndWorker
+      dateJobEndEmployer
+      dateCaseClosed
+    }
+    jobs_worked {
+      _id
+      dateCaseOpened
+      dateJobStart
+      dateJobEndWorker
+      dateJobEndEmployer
+      dateCaseClosed
+    }
+  }
+}`

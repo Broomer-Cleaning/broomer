@@ -22,8 +22,8 @@ const typeDefs = gql`
 
     type Job {
         _id: ID!
-        street_address: String!
-        postal_code: String!
+        street_address: String
+        postal_code: String
         employerUser: String
         workerUser: String
         est_hours: Float
@@ -61,10 +61,13 @@ const typeDefs = gql`
         safety_mask: Boolean
         safety_police_check: Boolean
         have_pets: Boolean
-        need_supplies_worker: Boolean
         emp_provides_meal: Boolean
         emp_provides_drinks: Boolean
         emp_provides_facilities: Boolean
+        have_equipment_employer: Boolean
+        need_equipment_worker: Boolean
+        have_supplies_employer: Boolean
+        need_supplies_worker: Boolean
     }
 
     type Review {
@@ -103,8 +106,9 @@ const typeDefs = gql`
         have_pets: Boolean): User
 
         # Creating a job 
-        addAJob(street_address: String, postal_code: String): User
-        updateAJob(jobId: ID!, est_hours: Float, rate_per_hour: Float): Job
+        # addAJob(street_address: String, postal_code: String): User
+        addAJob: User
+        updateAJob(jobId: ID!, jobInput: JobDetails): Job
 
         # The job-open to job-close sequence
         workerAgreeJob(jobId: ID!): User 

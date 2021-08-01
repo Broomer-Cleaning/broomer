@@ -95,8 +95,6 @@ const resolvers = {
       const job = await Job.create(
         {
           employerUser: context.user.username,
-          postal_code: args.postal_code,
-          street_address: args.street_address,
           dateCaseOpened: Date()
         }
       );
@@ -116,7 +114,7 @@ const resolvers = {
       return userJobUpdate
     },
 
-    updateAJob: async (parent, args, context) => {
+    updateAJob: async (parent, {args, jobInput}, context) => {
       console.log(args)
       console.log("context.user._id HERE", context.user._id)
       console.log("context.user HERE", context.user)
@@ -127,7 +125,7 @@ const resolvers = {
 
         const update = Job.findByIdAndUpdate(
           { _id: args.jobId },
-          { $set: args },
+          { $set: args.jobInput },
           { new: true, runValidators: true }
         )
 
