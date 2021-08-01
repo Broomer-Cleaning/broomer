@@ -1,13 +1,13 @@
 import "./dashboard.css";
 import React, { useState, useRef } from "react";
 import { Button, Container } from "react-bootstrap";
-import "./list/list.css";
+import "./addEvent/AddEvent";
 
 import "react-datetime/css/react-datetime.css";
 import FullCalendar from "@fullcalendar/react";
 import listPlugin from "@fullcalendar/list";
 // //for the calender
-import AddEventModal from "./list/AddEvent";
+import AddEventModal from "./addEvent/AddEvent";
 import axios from "axios";
 import moment from "moment"
 
@@ -68,8 +68,6 @@ const Dashboard = () => {
           <div className="listview" id="calender">
             <Container>
               <div className="daylist">
-              <Button onClick={() => setModalOpen(true)}>Add Job</Button>
-                <div style={{ position: "relative", zIndex: 2 }}>
                   <FullCalendar
                     ref={calendarRef}
                     events={events}
@@ -80,12 +78,13 @@ const Dashboard = () => {
                     dateSet = {(date) => handleDateSet(date)}
                   />
                 </div>
+                <div >
                 <AddEventModal
                   isOpen={modalOpen}
                   onClose={() => setModalOpen(false)}
                   onEventAdded={(event) => onEventAdded(event)}
                 />
-              </div>
+                </div>
             </Container>
           </div>
         </div>
@@ -96,16 +95,16 @@ const Dashboard = () => {
               <div className="JobList">
                 <ul>
                   <li>
-                    Job Tital{" "}
+                    Job Tital
                     <span>
-                      <Button variant="warning">Edit Job</Button>{" "}
-                      <Button variant="danger">Delete Job</Button>{" "}
+                      <Button variant="warning">Edit Job</Button>
+                      <Button variant="danger">Delete Job</Button>
                       <Button variant="secondary">Done</Button>
                     </span>
                   </li>
                 </ul>
               </div>
-              {/* <Button onClick={() => setModalOpen(true)}>Add Job</Button> */}
+              <Button onClick={() => setModalOpen(true)}>Add Job</Button>
             </div>
             <div className="compeletJobBox">
               <h4>Jod Completed</h4>

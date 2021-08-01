@@ -1,4 +1,4 @@
-/* #root > div.main > div > div.medSection > div > div > div > div > div.fc-header-toolbar.fc-toolbar > div:nth-child(3) > button,
+#root > div.main > div > div.medSection > div > div > div > div > div.fc-header-toolbar.fc-toolbar > div:nth-child(3) > button,
 #root > div.main > div.rightSide > div.medSection > div > div > div > div > div.fc-header-toolbar.fc-toolbar {
   display: none !important;
   
@@ -27,9 +27,9 @@
      padding-top: 5%;
      height: 30%;
      width: 100%;
- } */
+ }
 
- body > div.ReactModalPortal > div > div {
+ /* body > div.ReactModalPortal > div > div {
      position: relative;
      z-index: 0;
- }
+ }  */
