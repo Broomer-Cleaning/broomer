@@ -48,18 +48,6 @@ body {
 }
 
 
-.aboutMe {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: justify;
-}
-
-.task{
-  display: flex;
-  flex-direction: column;
-}
 
 .rightSide{
   height: 100%;
@@ -68,6 +56,7 @@ body {
 }
 
 .dayList{
+  display: flex;
   margin-right: 2.5%;
   height: 100%;
 }
