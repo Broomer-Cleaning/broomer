@@ -1,18 +1,24 @@
 import "./dashboard.css";
-import "./addEvent/addEvent.css"
+import "./addEvent/addEvent.css";
 import React, { useState, useRef } from "react";
 import { Button, Container } from "react-bootstrap";
-import "./addEvent/AddEvent";
+import AddJob from "./addEvent/AddJob";
+import EditJob from "./addEvent/EditJob";
 
 import "react-datetime/css/react-datetime.css";
 import FullCalendar from "@fullcalendar/react";
 import listPlugin from "@fullcalendar/list";
-import AddEventModal from "./addEvent/AddEvent";
+import Modal from "./addEvent/AddJob";
 import axios from "axios";
 import moment from "moment";
 
 const Dashboard = () => {
-  const [modalOpen, setModalOpen] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = () => {
+    setShowModal((prev) => !prev);
+  };
+
   const [events, setEvents] = useState([]);
   const calendarRef = useRef(null);
 
@@ -74,12 +80,12 @@ const Dashboard = () => {
                   dateSet={(date) => handleDateSet(date)}
                 />
               </div>
-                <AddEventModal
-                  isOpen={modalOpen}
-                  onClose={() => setModalOpen(false)}
-                  onEventAdded={(event) => onEventAdded(event)}
-                />
-             
+
+              <Modal
+                showModal={showModal}
+                setShowModal={setShowModal}
+                onEventAdded={(event) => onEventAdded(event)}
+              />
             </Container>
           </div>
         </div>
@@ -92,14 +98,22 @@ const Dashboard = () => {
                   <li>
                     Job Tital
                     <span>
-                      <Button variant="warning">Edit Job</Button>
+                      <div>
+                        <Button onClick={openModal}>Edit Job</Button>
+                        <EditJob
+                          showModal={showModal}
+                          setShowModal={setShowModal}
+                        />
+                      </div>
+
                       <Button variant="danger">Delete Job</Button>
                       <Button variant="secondary">Done</Button>
                     </span>
                   </li>
                 </ul>
               </div>
-              <Button onClick={() => setModalOpen(true)}>Add Job</Button>
+              <Button onClick={openModal}>Add Job</Button>
+              <AddJob showModal={showModal} setShowModal={setShowModal} />
             </div>
             <div className="compeletJobBox">
               <h4>Jod Completed</h4>
