@@ -114,22 +114,23 @@ const resolvers = {
       return userJobUpdate
     },
 
-    updateAJob: async (parent, {args, jobInput}, context) => {
-      console.log(args)
-      console.log("context.user._id HERE", context.user._id)
-      console.log("context.user HERE", context.user)
-      console.log("context.job HERE", context.job)
+    updateAJob: async (parent, {jobId, jobInput}, context) => {
 
+      // console.log("context.user._id HERE", context.user._id)
+      // console.log("context.user HERE", context.user)
+      
+      console.log(jobId)
+      console.log(jobInput)
       // Goal: to update the Job type with custom details, based on job's ID
       if (context.user) {
 
         const update = Job.findByIdAndUpdate(
-          { _id: args.jobId },
-          { $set: args.jobInput },
+          { _id: jobId },
+          { $set: jobInput },
           { new: true, runValidators: true }
         )
 
-        console.log(update)
+        // console.log(update)
 
         return update
       }

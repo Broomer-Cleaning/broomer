@@ -52,8 +52,8 @@ const typeDefs = gql`
     }
 
     input JobDetails {
-        street_address: String!
-        postal_code: String!
+        street_address: String
+        postal_code: String
         est_hours: Float
         rate_per_hour: Float
         job_description: String
