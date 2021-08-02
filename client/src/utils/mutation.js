@@ -24,6 +24,25 @@ mutation login ($email: String!, $password: String!){
 }
 `;
 
+// Allows you to update your profile with details such as first_name, last_name, DOB, etc.
+// None of these fields are mandatory
+export const UPDATE_PROFILE = gql`
+  mutation profileDetails($profileInput: profileInput) {
+    profileDetails(profileInput: $profileInput) {
+      first_name
+      last_name
+      date_of_birth
+      phone_number
+      about_me
+      safety_double_vax
+      safety_police_check
+      safety_mask
+      have_pets
+  }
+}
+`;
+
+
 // Doesn't need input variables. Creates a Job Type, 
 // with `dateCaseOpened` timestamped as Date.now() and employerUser as context.user.username
 export const ADD_JOB = gql`

@@ -20,6 +20,18 @@ const typeDefs = gql`
         jobs_hired: [Job]
     }
 
+    input profileInput {
+        first_name: String
+        last_name: String
+        date_of_birth: String
+        phone_number: String
+        about_me: String
+        safety_double_vax: Boolean
+        safety_mask: Boolean
+        safety_police_check: Boolean
+        have_pets: Boolean
+    }
+
     type Job {
         _id: ID!
         street_address: String
@@ -99,14 +111,15 @@ const typeDefs = gql`
         login(email: String!, password: String!): Auth
     
         # Set User Profile
-        profileDetails(first_name: String, last_name: String, 
-        date_of_birth: String, phone_number: String,
-        about_me: String, safety_double_vax: Boolean,
-        safety_mask: Boolean, safety_police_check: Boolean,
-        have_pets: Boolean): User
+        # profileDetails(first_name: String, last_name: String, 
+        # date_of_birth: String, phone_number: String,
+        # about_me: String, safety_double_vax: Boolean,
+        # safety_mask: Boolean, safety_police_check: Boolean,
+        # have_pets: Boolean): User
+
+        profileDetails(profileInput: profileInput): User
 
         # Creating a job 
-        # addAJob(street_address: String, postal_code: String): User
         addAJob: User
         updateAJob(jobId: ID!, jobInput: JobDetails): Job
 

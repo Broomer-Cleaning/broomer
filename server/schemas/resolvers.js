@@ -66,16 +66,16 @@ const resolvers = {
     },
 
     // A profile setup; a second step after a User creates their account
-    profileDetails: async (parent, args, context) => {
+    profileDetails: async (parent, {profileInput}, context) => {
 
       console.log("context.user._id HERE", context.user._id)
-      console.log(args)
+      console.log(profileInput)
 
       // Goal: Find a User type by its ID and update its custom values
       if (context.user) {
         const updateUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $set: args },
+          { $set: profileInput },
           { new: true, runValidators: true }
         )
         console.log(updateUser)
@@ -143,13 +143,13 @@ const resolvers = {
       // Goal: update Job type based on ID, for timestamp of worker's agreement to start job
       // Also adds User's username to workerId to job
 
+      console.log(context.user.username)
+
       if (context.user) {
         const workerAgree = Job.findByIdAndUpdate(
           { _id: jobId },
-          {
-            $set:
-            {
-              // Timestamps the 'jobStart' moment, adds the worker's username
+          { $set:
+            { // Timestamps the 'jobStart' moment, adds the worker's username
               dateJobStart: Date(),
               workerUser: context.user.username
             }
@@ -162,11 +162,13 @@ const resolvers = {
           { _id: context.user._id },
 
           // "new job" is meant to be the ID of the job that's just been added
+          // Adds a new job to the jobs_worked array. Repeatedly adds a job if done more than once.
+
           { $push: { jobs_worked: jobId } },
           { new: true, runValidators: true }
         ).populate("jobs")
 
-        console.log("JOBUserUpdate HERE", userWorkerUpdate)
+        // console.log("JOBUserUpdate HERE", userWorkerUpdate)
         return userWorkerUpdate
       }
       throw new AuthenticationError("Only logged in users can do this.")
