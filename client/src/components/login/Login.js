@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import "./login.css";
 import { Form, Button, Alert} from 'react-bootstrap';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import Auth from '../../utils/auth';
 
@@ -45,7 +45,7 @@ const LoginForm = () => {
     });
   };
 
-  let history = useHistory();
+  
 
   return (
     <>
@@ -81,9 +81,7 @@ const LoginForm = () => {
           <Form.Control.Feedback type='invalid'>Password is required!</Form.Control.Feedback>
         </Form.Group>
         <Button
-          disabled={!(userFormData.email && userFormData.password)} onClick={()=> { 
-            //history.push('/')
-          }}
+          disabled={!(userFormData.email && userFormData.password)} 
           type='submit'
           variant='success'>
           Submit

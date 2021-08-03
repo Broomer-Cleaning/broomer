@@ -79,7 +79,7 @@ const Testimonials = () => {
           onClick={()=> handleClick(index + 1)}
           onMouseOver={()=> handleMouseOver(index + 1)}
           onMouseLeave={handleMouseLeave}
-          value={this.state.stars}
+          // value={this.state.stars}
        />
         )
       
@@ -88,7 +88,7 @@ const Testimonials = () => {
       <textarea
       placeholder="Please leave your feedback here"
       style={style.textarea}
-      value={this.state.body}
+      // value={this.state.body}
       />
       <button style={style.button}>Submit</button>
     </div>
