@@ -51,13 +51,13 @@ const Addjob = ({ isOpen, onClose, onEventAdded, showModal, setShowModal }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [start, setStart] = useState(new Date());
-  const [end, setEnd] = useState(new Date());
+  // const [end, setEnd] = useState(new Date());
   const onSubmit = (event) => {
     event.preventDefault();
     onEventAdded({
       title,
       start,
-      end,
+      // end,
     });
     onClose();
   };
@@ -69,7 +69,7 @@ const Addjob = ({ isOpen, onClose, onEventAdded, showModal, setShowModal }) => {
           <animated.div style={animation}>
             <div className="ModalWrapper" showModal={showModal}>
               <div className="ModalContent">
-                <form onSubmit={onSubmit}>
+                <form className="form" onSubmit={onSubmit}>
                   <input
                     placeholder="Title"
                     value={title}
@@ -83,17 +83,17 @@ const Addjob = ({ isOpen, onClose, onEventAdded, showModal, setShowModal }) => {
                   />
 
                   <div>
-                    <label>Start Date</label>
+                    <label>Select Date and Time</label>
                     <Datetime
                       value={start}
                       onChange={(date) => setStart(date)}
                     />
                   </div>
 
-                  <div>
+                  {/* <div>
                     <label>End Date</label>
                     <Datetime value={end} onChange={(date) => setEnd(date)} />
-                  </div>
+                  </div> */}
 
                   <button type="submit">Add Job</button>
                 </form>

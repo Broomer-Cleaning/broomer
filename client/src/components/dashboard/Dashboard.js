@@ -12,24 +12,24 @@ import Modal from "./addEvent/AddJob";
 import axios from "axios";
 import moment from "moment";
 
-const oldData = [
-  {
-    title: "Clean the hous on cope dr",
-    start: "2021-08-02",
-  },
-  {
-    title: "we have to code all day",
-    start: "2021-08-03",
-  },
-  {
-    title: "we have to code",
-    start: "2021-08-04",
-  },
-  {
-    title: "we have to code day",
-    start: "2021-08-06",
-  },
-];
+// const oldData = [
+//   {
+//     title: "Clean the hous on cope dr",
+//     start: "2021-08-02",
+//   },
+//   {
+//     title: "we have to code all day",
+//     start: "2021-08-03",
+//   },
+//   {
+//     title: "we have to code",
+//     start: "2021-08-04",
+//   },
+//   {
+//     title: "we have to code day",
+//     start: "2021-08-06",
+//   },
+// ];
 
 const Dashboard = () => {
   const [showModal, setShowModal] = useState(false);
@@ -37,6 +37,8 @@ const Dashboard = () => {
     title: "job title",
     start: "2021-08-04",
   });
+
+  
 const [data, setData] = useState ([])
 
   const openModal = () => {
@@ -86,11 +88,11 @@ const [data, setData] = useState ([])
     setShowModal(false);
   };
 
-  const deleteJob = (id) =>  {
-    this.setState((prevState) => ({
-        job: prevState.job.filter(item => item.id !== id),
-    }))
-};
+//   const deleteJob = (id) =>  {
+//     this.setState((prevState) => ({
+//         job: prevState.job.filter(item => item.id !== id),
+//     }))
+// };
   return (
     <div className="main">
       <Container className="boxHedaer">
@@ -118,7 +120,7 @@ const [data, setData] = useState ([])
               <div className="daylist">
                 <FullCalendar
                   ref={calendarRef}
-                  events={data}
+                  events={events}
                   className="dayList"
                   plugins={[listPlugin]}
                   initialView="listMonth"
@@ -171,7 +173,7 @@ const [data, setData] = useState ([])
               <div className="JobList">
                 <ul>
                   <li>
-                    Job Title{" "}
+                  {curentJob.title}
                     <div className="text-center">
                       <Button className ="btn btn-primary ">Write Review</Button>
                       </div>

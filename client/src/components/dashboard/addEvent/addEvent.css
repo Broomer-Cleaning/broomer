@@ -10,6 +10,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 2.5%;
+    width: 100%;
     line-height: 1.8;
     color: #4473B7;
     height: 100%;
@@ -24,17 +26,20 @@
     color: #fff;
     border: none;
   }
-  
-  .form input {
+
+  .form{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
-    width: 100%;
+  }
+  
+  .form input {
+    width: 100px;
     margin: 5%;
   }
   
-  .from textarea{
+  .form textarea{
     width: 100%;
     height: 100%e;
   }
@@ -61,3 +66,5 @@
     align-items: center;
   
   }
+
+ 
