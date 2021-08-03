@@ -81,6 +81,7 @@ const resolvers = {
       return { token, user };
     },
 
+    // ✔️✔️
     // A profile setup; a second step after a User creates their account
     profileDetails: async (parent, { profileInput }, context) => {
 
@@ -99,6 +100,7 @@ const resolvers = {
       }
     },
 
+    // ✔️✔️
     // Creates a Job type with a timestamp
     addAJob: async (parent, args, context) => {
 
@@ -162,16 +164,15 @@ const resolvers = {
       console.log(context.user.username)
 
       if (context.user) {
-        const workerAgree = Job.aggregate(
-          { $match: { _id: jobId } },
+        const workerAgree = await Job.update(
+          { _id: jobId },
           {
             $set:
             { // Timestamps the 'jobStart' moment, adds the worker's username
               dateJobStart: Date(),
               workerUser: context.user.username
             }
-          },
-          { new: true, runValidators: true }
+          } 
         )
         console.log("WorkerAgree HERE", workerAgree)
 
@@ -194,16 +195,20 @@ const resolvers = {
     employerCompleteJob: async (parent, { jobId }, context) => {
 
       if (context.user) {
-        const employerComplete = Job.findByIdAndUpdate(
-          { _id: jobId },
-          {
-            $set:
-            {
-              dateJobEndEmployer: Date(),
-              // dollarsPromised: (est_hours * rate_per_hour)
-            }
-          }, { new: true, runValidators: true }
-        )
+        console.log(jobId)
+        const getJob = await Job.findOne({_id: mongoose.Types.ObjectId(jobId)})
+        const employerComplete = await Job.updateOne(
+          {  _id: mongoose.Types.ObjectId(jobId) },
+          { $set: {
+            dateJobEndEmployer: Date()
+          }},
+          { $mul:
+            { 
+              dollarsPromised: getJob.rate_per_hour * getJob.est_hours
+            } 
+          }
+      )
+        console.log(employerComplete)
         return employerComplete
       }
     },
@@ -212,19 +217,13 @@ const resolvers = {
       console.log(jobId)
 
       if (context.user) {
-        const workerComplete = Job.aggregate([
-          { $match: { _id: jobId } },
-          // { $set: { dateJobEndWorker: Date() } },
-          {
-            $project: {
-              "_id": 1, 
-              "dateJobEndWorker": Date.now(), 
-              "dollarsPromised": { $multiply: ["$est_hours", "$rate_per_hour"] }
-            }
-          }
-          // ,
-          // { new: true, runValidators: true }  
-        ])
+        const workerComplete = await Job.updateOne(
+          {  _id: mongoose.Types.ObjectId(jobId) },
+          { $set: { 
+            dateJobEndWorker: Date() 
+          } 
+        }
+        )
         console.log(workerComplete)
         return workerComplete
       }
@@ -232,17 +231,19 @@ const resolvers = {
     
     closeJobCase: async (parent, { jobId }, context) => {
       if (context.user) {
-        const jobComplete = Job.findByIdAndUpdate(
-          { _id: jobId },
+        const jobComplete = await Job.updateOne(
+          { _id: mongoose.Types.ObjectId(jobId) },
           {
             $set:
             {
               dateCaseClosed: Date()
             }
-          }, { new: true, runValidators: true }
+          }
         )
+
+        console.log(jobComplete)
+        return jobComplete
       }
-      return jobComplete
     },
 
     addReviewWorker: async (parent, args, context) => {

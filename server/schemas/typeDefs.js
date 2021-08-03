@@ -38,8 +38,8 @@ const typeDefs = gql`
         postal_code: String
         employerUser: String
         workerUser: String
-        est_hours: Float
-        rate_per_hour: Float
+        est_hours: Int
+        rate_per_hour: Int
         title: String
         job_description: String
         safety_double_vax: Boolean
@@ -67,8 +67,8 @@ const typeDefs = gql`
     input JobDetails {
         street_address: String
         postal_code: String
-        est_hours: Float
-        rate_per_hour: Float
+        est_hours: Int
+        rate_per_hour: Int
         title: String
         job_description: String
         safety_double_vax: Boolean
@@ -123,6 +123,8 @@ const typeDefs = gql`
         workerCompleteJob(jobId: ID!): Job
         employerCompleteJob(jobId: ID!): Job
         closeJobCase(jobId: ID!): Job
+
+        # The job gets reviewed/critied
         addReviewWorker(jobId: ID!, review_score_worker: Float!, review_text_worker: String!): Job
         addReviewEmployer(jobId: ID!, review_score_employer: Float!, review_text_employer: String!): Job
     }
