@@ -95,11 +95,11 @@ const [data, setData] = useState ([])
     <div className="main">
       <Container className="boxHedaer">
         <div className="postJobBox">
-          <h4>Total of Jod Posted</h4>
+          <h4>Total of Job Posted</h4>
           <p>50 Jods</p>
         </div>
         <div className="compeletJobBox">
-          <h4>Total of Jod Completed</h4>
+          <h4>Total of Job Completed</h4>
           <p>64 Jods</p>
         </div>
         <div className="incomBox">
@@ -139,7 +139,7 @@ const [data, setData] = useState ([])
         <div>
           <Container className="boxSection">
             <div className="postJobBox">
-              <h4>Jod Posted</h4>
+              <h4>Job Posted</h4>
               <div className="JobList">
                 <ul>
                   <li>
@@ -168,11 +168,11 @@ const [data, setData] = useState ([])
               />
             </div>
             <div className="compeletJobBox">
-              <h4>Jod Completed</h4>
+              <h4>Job Completed</h4>
               <div className="JobList">
                 <ul>
                   <li>
-                    Job Tital{" "}
+                    Job Title{" "}
                     <span>
                       <Button variant="info">Write Review</Button>
                     </span>
