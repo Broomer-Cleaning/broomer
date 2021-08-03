@@ -20,10 +20,22 @@ const typeDefs = gql`
         jobs_hired: [Job]
     }
 
+    input profileInput {
+        first_name: String
+        last_name: String
+        date_of_birth: String
+        phone_number: String
+        about_me: String
+        safety_double_vax: Boolean
+        safety_mask: Boolean
+        safety_police_check: Boolean
+        have_pets: Boolean
+    }
+
     type Job {
         _id: ID!
-        street_address: String!
-        postal_code: String!
+        street_address: String
+        postal_code: String
         employerUser: String
         workerUser: String
         est_hours: Float
@@ -52,8 +64,8 @@ const typeDefs = gql`
     }
 
     input JobDetails {
-        street_address: String!
-        postal_code: String!
+        street_address: String
+        postal_code: String
         est_hours: Float
         rate_per_hour: Float
         job_description: String
@@ -61,10 +73,13 @@ const typeDefs = gql`
         safety_mask: Boolean
         safety_police_check: Boolean
         have_pets: Boolean
-        need_supplies_worker: Boolean
         emp_provides_meal: Boolean
         emp_provides_drinks: Boolean
         emp_provides_facilities: Boolean
+        have_equipment_employer: Boolean
+        need_equipment_worker: Boolean
+        have_supplies_employer: Boolean
+        need_supplies_worker: Boolean
     }
 
     type Review {
@@ -83,6 +98,7 @@ const typeDefs = gql`
     type Query {
         users: [User]
         jobs: [Job]
+        me: User
         jobsByUser(profileId: ID): User
         profile(profileId: ID!): User
         specificJob(jobId: ID!): Job
@@ -95,15 +111,17 @@ const typeDefs = gql`
         login(email: String!, password: String!): Auth
     
         # Set User Profile
-        profileDetails(first_name: String, last_name: String, 
-        date_of_birth: String, phone_number: String,
-        about_me: String, safety_double_vax: Boolean,
-        safety_mask: Boolean, safety_police_check: Boolean,
-        have_pets: Boolean): User
+        # profileDetails(first_name: String, last_name: String, 
+        # date_of_birth: String, phone_number: String,
+        # about_me: String, safety_double_vax: Boolean,
+        # safety_mask: Boolean, safety_police_check: Boolean,
+        # have_pets: Boolean): User
+
+        profileDetails(profileInput: profileInput): User
 
         # Creating a job 
-        addAJob(street_address: String, postal_code: String): User
-        updateAJob(jobId: ID!, est_hours: Float, rate_per_hour: Float): Job
+        addAJob: User
+        updateAJob(jobId: ID!, jobInput: JobDetails): Job
 
         # The job-open to job-close sequence
         workerAgreeJob(jobId: ID!): User 
