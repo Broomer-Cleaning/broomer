@@ -48,8 +48,8 @@ const [data, setData] = useState ([])
   
   useEffect(() => {
   axios.get("/api/calender/get-events").then(info => {
-    setData (oldData)
-  //  setData (info)
+    // setData (oldData)
+   setData (info)
   })  
 
   },[]);
@@ -85,6 +85,12 @@ const [data, setData] = useState ([])
   const onClose = () => {
     setShowModal(false);
   };
+
+  const deleteJob = (id) =>  {
+    this.setState((prevState) => ({
+        job: prevState.job.filter(item => item.id !== id),
+    }))
+};
   return (
     <div className="main">
       <Container className="boxHedaer">
@@ -147,7 +153,7 @@ const [data, setData] = useState ([])
                         />
                       </div>
 
-                      <Button variant="danger">Delete Job</Button>
+                      <Button  variant="danger" onClick={() => this.props.onDelete(this.props.title)}>Delete Job</Button>
                       <Button variant="secondary">Done</Button>
                     </span>
                   </li>
