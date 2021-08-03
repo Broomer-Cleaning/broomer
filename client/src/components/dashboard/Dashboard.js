@@ -5,9 +5,17 @@ import { Button, Container } from "react-bootstrap";
 import AddJob from "./addEvent/AddJob";
 import EditJob from "./addEvent/EditJob";
 
+
 import "react-datetime/css/react-datetime.css";
 import FullCalendar from "@fullcalendar/react";
 import listPlugin from "@fullcalendar/list";
+import interactionPlugin from '@fullcalendar/interaction';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import bootstrapPlugin from '@fullcalendar/bootstrap';
+import 'bootstrap/dist/css/bootstrap.css';
+
+
 import Modal from "./addEvent/AddJob";
 import axios from "axios";
 import moment from "moment";
@@ -37,8 +45,6 @@ const Dashboard = () => {
     title: "job title",
     start: "2021-08-04",
   });
-
-  
 const [data, setData] = useState ([])
 
   const openModal = () => {
@@ -119,11 +125,21 @@ const [data, setData] = useState ([])
             <Container>
               <div className="daylist">
                 <FullCalendar
+
+
+
+
                   ref={calendarRef}
                   events={events}
                   className="dayList"
-                  plugins={[listPlugin]}
+                  plugins={[interactionPlugin, dayGridPlugin, timeGridPlugin, listPlugin, bootstrapPlugin]}
                   initialView="listMonth"
+                  themeSystem= 'bootstrap'
+                  headerToolbar= {{
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,listWeek'
+                  }}
                   eventAdd={(event) => handleEventAdd(event)}
                   dateSet={(date) => handleDateSet(date)}
                   eventClick={handleEventClick}
