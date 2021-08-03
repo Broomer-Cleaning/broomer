@@ -29,8 +29,8 @@ nav {
 
 /*Links*/
 nav a.nav-link {
-  font-size: 0.80rem;
-  letter-spacing: 0.6px;
+  font-size: 0.70rem;
+  letter-spacing: 0.5px;
   cursor: pointer;
 }
 
