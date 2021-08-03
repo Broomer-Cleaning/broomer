@@ -6,7 +6,6 @@ import avtar from "../profile/img/avatar.jpeg";
 import { Button } from "react-bootstrap";
 import { MdPhoneIphone } from "react-icons/md";
 import { AiOutlineMail } from "react-icons/ai";
-// import styled from 'styled-components';
 import ReviewsCarousel from "../reviews/ReviewsCarousel";
 import { Container } from "react-bootstrap";
 
@@ -45,21 +44,21 @@ const Profile = () => {
           </p>
           <div>
             <Container className="editFrom">
-              <Button variant="warning"  className="btn" onClick={openModal}>
+              <Button variant="warning" className="btn" onClick={openModal}>
                 Click to edit
               </Button>
               <Modal showModal={showModal} setShowModal={setShowModal} />
             </Container>
           </div>
         </div>
-      </Container>
-      <Container>
-        <div className="reviws">
-          <h2 className="sectionTital">My Reviews</h2>
-          <div className="content">
-            <ReviewsCarousel />
+        <Container>
+          <div className="reviws">
+            <h2 className="sectionTital">My Reviews</h2>
+            <div className="content">
+              <ReviewsCarousel />
+            </div>
           </div>
-        </div>
+        </Container>
       </Container>
     </div>
   );

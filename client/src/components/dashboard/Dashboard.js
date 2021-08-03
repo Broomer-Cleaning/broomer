@@ -1,6 +1,6 @@
 import "./dashboard.css";
 import "./addEvent/addEvent.css";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Button, Container } from "react-bootstrap";
 import AddJob from "./addEvent/AddJob";
 import EditJob from "./addEvent/EditJob";
@@ -12,8 +12,32 @@ import Modal from "./addEvent/AddJob";
 import axios from "axios";
 import moment from "moment";
 
+const oldData = [
+  {
+    title: "Clean the hous on cope dr",
+    start: "2021-08-02",
+  },
+  {
+    title: "we have to code all day",
+    start: "2021-08-03",
+  },
+  {
+    title: "we have to code",
+    start: "2021-08-04",
+  },
+  {
+    title: "we have to code day",
+    start: "2021-08-06",
+  },
+];
+
 const Dashboard = () => {
   const [showModal, setShowModal] = useState(false);
+  const [curentJob, setCurentJob] = useState({
+    title: "job title",
+    start: "2021-08-04",
+  });
+const [data, setData] = useState ([])
 
   const openModal = () => {
     setShowModal((prev) => !prev);
@@ -21,7 +45,16 @@ const Dashboard = () => {
 
   const [events, setEvents] = useState([]);
   const calendarRef = useRef(null);
+  
+  useEffect(() => {
+  axios.get("/api/calender/get-events").then(info => {
+    setData (oldData)
+  //  setData (info)
+  })  
 
+  },[]);
+  
+  
   const onEventAdded = (event) => {
     let calendarApi = calendarRef.current.getApi();
     calendarApi.addEvent({
@@ -29,6 +62,11 @@ const Dashboard = () => {
       end: moment(event.end).toDate(),
       title: event.title,
     });
+  };
+
+  const handleEventClick = ({ event, el }) => {
+    console.log(event);
+    setCurentJob(event);
   };
 
   async function handleEventAdd(data) {
@@ -44,7 +82,9 @@ const Dashboard = () => {
     );
     setEvents(responce.data);
   }
-
+  const onClose = () => {
+    setShowModal(false);
+  };
   return (
     <div className="main">
       <Container className="boxHedaer">
@@ -72,12 +112,13 @@ const Dashboard = () => {
               <div className="daylist">
                 <FullCalendar
                   ref={calendarRef}
-                  events={events}
+                  events={data}
                   className="dayList"
                   plugins={[listPlugin]}
                   initialView="listMonth"
                   eventAdd={(event) => handleEventAdd(event)}
                   dateSet={(date) => handleDateSet(date)}
+                  eventClick={handleEventClick}
                 />
               </div>
 
@@ -96,7 +137,7 @@ const Dashboard = () => {
               <div className="JobList">
                 <ul>
                   <li>
-                    Job Tital
+                    {curentJob.title}
                     <span>
                       <div>
                         <Button onClick={openModal}>Edit Job</Button>
@@ -113,7 +154,12 @@ const Dashboard = () => {
                 </ul>
               </div>
               <Button onClick={openModal}>Add Job</Button>
-              <AddJob showModal={showModal} setShowModal={setShowModal} />
+              <AddJob
+                showModal={showModal}
+                onEventAdded={onEventAdded}
+                setShowModal={setShowModal}
+                onClose={onClose}
+              />
             </div>
             <div className="compeletJobBox">
               <h4>Jod Completed</h4>
