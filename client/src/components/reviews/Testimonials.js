@@ -41,7 +41,10 @@ const Testimonials = () => {
   // }
 
 
-
+  // state = {
+  //   stars: '',
+  //   body: ''
+  // }
 
   const stars = Array(5).fill(0);
   const[currentValue, setCurrentValue]=React.useState(0);
@@ -76,6 +79,7 @@ const Testimonials = () => {
           onClick={()=> handleClick(index + 1)}
           onMouseOver={()=> handleMouseOver(index + 1)}
           onMouseLeave={handleMouseLeave}
+          value={this.state.stars}
        />
         )
       
@@ -84,6 +88,7 @@ const Testimonials = () => {
       <textarea
       placeholder="Please leave your feedback here"
       style={style.textarea}
+      value={this.state.body}
       />
       <button style={style.button}>Submit</button>
     </div>

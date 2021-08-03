@@ -117,9 +117,7 @@ const SignupForm = () => {
         <Button
           disabled={!(userFormData.username && userFormData.email && userFormData.password)}
           type='submit'
-          variant='success' onClick={()=> {
-            // history.push('/')
-          }}>
+          variant='success' >
           Submit
         </Button>
       </Form>
