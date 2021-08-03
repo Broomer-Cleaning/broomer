@@ -29,6 +29,10 @@ const jobSchema = new Schema(
       type: Number,
     },
 
+    title: {
+      type: String,
+    },
+
     job_description: {
       type: String,
     },
