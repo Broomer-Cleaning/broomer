@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
-import Modal from "react-modal";
+// import Modal from "react-modal";
 import Datetime from "react-datetime";
 import { useSpring, animated } from "react-spring";
 import styled from "styled-components";
@@ -53,7 +53,7 @@ const Addjob = ({ isOpen, onClose, onEventAdded, showModal, setShowModal }) => {
   const [start, setStart] = useState(new Date());
   const [end, setEnd] = useState(new Date());
   const onSubmit = (event) => {
-    event.perventDefault();
+    event.preventDefault();
     onEventAdded({
       title,
       start,
@@ -67,7 +67,7 @@ const Addjob = ({ isOpen, onClose, onEventAdded, showModal, setShowModal }) => {
       {showModal ? (
         <div className="Background" onClick={closeModal} ref={modalRef}>
           <animated.div style={animation}>
-            <fomr onSubmit={onSubmit}>
+            <form onSubmit={onSubmit}>
               <input
                 placeholder="Title"
                 value={title}
@@ -91,7 +91,7 @@ const Addjob = ({ isOpen, onClose, onEventAdded, showModal, setShowModal }) => {
               </div>
 
               <button type="submit">Add Job</button>
-            </fomr>
+            </form>
             <CloseModalButton
                 aria-label='Close modal'
                 onClick={() => setShowModal(prev => !prev)}

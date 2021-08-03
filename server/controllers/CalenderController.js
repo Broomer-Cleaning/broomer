@@ -8,7 +8,7 @@ router.post("/create-event", async (req, res) =>{
     res.sendStatus(201);
 })
 
-router.get("/get-events", async (req, trs)=> {
+router.get("/get-events", async (req, res)=> {
     const events = await Event.find({
         start: { $get: moment(req.query.start).toDate()},
         end:   { $lte: moment(req.query.end).toDate()},

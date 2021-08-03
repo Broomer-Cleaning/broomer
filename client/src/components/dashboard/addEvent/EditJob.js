@@ -57,6 +57,8 @@ const CloseModalButton = styled(MdClose)`
   const [description, setDescription] = useState("");
   const [start, setStart] = useState(new Date());
   const [end, setEnd] = useState(new Date());
+
+  
   const onSubmit = (event) => {
     event.perventDefault();
     onEventAdded({

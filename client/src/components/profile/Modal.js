@@ -59,13 +59,14 @@ const CloseModalButton = styled(MdClose)`
           <animated.div style={animation}>
             < div className="ModalWrapper" showModal={showModal}>
               <div className="ModalContent">
-                <form>
+                <form className="form">
                   <input type="file" placeholder="uplode your img"/>
                   <input placeholder="Full Name"/>
                   <input type="email" placeholder="email"/>
                   <input type="number" placeholder="Phone number"/>
                   <textarea placeholder="about me "/>
                 </form>
+                <button className="btn-dark">Updata My Info</button>
               </div>
               <CloseModalButton
                 aria-label='Close modal'

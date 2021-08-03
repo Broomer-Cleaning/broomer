@@ -92,7 +92,7 @@ body {
 .boxSection{
   display: flex;
   flex-direction: column;
-  margin-top: -40%;
+  /* margin-top: -40%; */
   
 }
 .postJobBox,
