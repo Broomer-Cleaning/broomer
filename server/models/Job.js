@@ -22,11 +22,17 @@ const jobSchema = new Schema(
     // basis for total
     est_hours: {
       type: Number,
+      default: 0
     },
 
     // basis for total
     rate_per_hour: {
       type: Number,
+      default: 0
+    },
+
+    title: {
+      type: String,
     },
 
     job_description: {
@@ -99,10 +105,12 @@ const jobSchema = new Schema(
 
     dollarsPromised: {
       type: Number,
+      default: 0
     },
 
     tip: {
       type: Number,
+      default: 0
     },
 
     currency: {

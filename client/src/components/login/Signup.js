@@ -3,6 +3,7 @@ import { Form, Button, Alert} from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 
 
+
 import Auth from '../../utils/auth';
 
 import { useMutation } from '@apollo/react-hooks';
@@ -33,15 +34,15 @@ const SignupForm = () => {
       event.stopPropagation();
     }
 
-    try {
+   try {
       const { data } = await createUser({ variables: { ...userFormData } });
       console.log(data);
       Auth.login(data.createUser.token);
       console.log(Auth.login())
-    } catch (err) {
-      console.error(err);
-      setShowAlert(true);
-    }
+   } catch (err) {
+     console.error(err);
+     setShowAlert(true);
+   }
 
     setUserFormData({
       username: '',
@@ -116,9 +117,7 @@ const SignupForm = () => {
         <Button
           disabled={!(userFormData.username && userFormData.email && userFormData.password)}
           type='submit'
-          variant='success' onClick={()=> {
-            // history.push('/')
-          }}>
+          variant='success' >
           Submit
         </Button>
       </Form>

@@ -7,6 +7,7 @@ mutation createUser($username: String!, $email: String!, $password: String!) {
     user {
       _id
       username
+    
     }
   }
 }
@@ -77,6 +78,7 @@ mutation updateAJob($jobId: ID!, $jobInput: JobDetails) {
     _id
     est_hours
     rate_per_hour
+    title
     job_description
     safety_double_vax
     safety_mask

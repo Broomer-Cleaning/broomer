@@ -10,6 +10,15 @@ import avatar3 from "./img/avatar-3.png";
 import avatar4 from "./img/avatar-4.png";
 
 const ReviewsCarousel = () => {
+
+  //const [reviews, setReviews]=useState({stars: 5})
+  //const stars = reviews.stars
+
+  //useEffect(()=> {
+ //fetch(`${reviews}`)
+ //.then(response => response.json())
+ //.then(json =>)
+  //}, [reviews])
   return (
     <Carousel
     showArrows={true}
@@ -23,6 +32,7 @@ const ReviewsCarousel = () => {
       <img src={avatar1} alt="Slavic O" />
       <div className="myCarousel">
         <h3>Slavic O</h3>
+        {/* <p>{reviews}</p> */}
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis ratione sequi saepe dicta blanditiis, molestias eum excepturi quod fugiat veniam!</p>
       </div>
     </>

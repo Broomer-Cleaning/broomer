@@ -33,6 +33,22 @@ const resolvers = {
     // Returns a specific job based on its ID
     specificJob: async (parent, { jobId }) => {
       return Job.findOne({ _id: jobId })
+    },
+
+    goodReviews: async (parent, args, context) => {
+      // Returns empty array
+      const jobReviews = Job.aggregate([
+        { $unwind: "$Job"},
+        { $project: {
+          review_id: "$Job.review.review._id",
+          review_score_employer: "$Job.review.review_score_employer",
+          review_text_employer: "$Job.review.review_text_employer"
+        }},
+        { $match: { review_id: {$ne: null}}}
+      ])
+
+      // console.log(jobReviews)
+      return jobReviews
     }
 
   },
@@ -65,8 +81,9 @@ const resolvers = {
       return { token, user };
     },
 
+    // ✔️✔️
     // A profile setup; a second step after a User creates their account
-    profileDetails: async (parent, {profileInput}, context) => {
+    profileDetails: async (parent, { profileInput }, context) => {
 
       console.log("context.user._id HERE", context.user._id)
       console.log(profileInput)
@@ -83,6 +100,7 @@ const resolvers = {
       }
     },
 
+    // ✔️✔️
     // Creates a Job type with a timestamp
     addAJob: async (parent, args, context) => {
 
@@ -114,11 +132,11 @@ const resolvers = {
       return userJobUpdate
     },
 
-    updateAJob: async (parent, {jobId, jobInput}, context) => {
+    updateAJob: async (parent, { jobId, jobInput }, context) => {
 
       // console.log("context.user._id HERE", context.user._id)
       // console.log("context.user HERE", context.user)
-      
+
       console.log(jobId)
       console.log(jobInput)
       // Goal: to update the Job type with custom details, based on job's ID
@@ -146,15 +164,15 @@ const resolvers = {
       console.log(context.user.username)
 
       if (context.user) {
-        const workerAgree = Job.findByIdAndUpdate(
+        const workerAgree = await Job.update(
           { _id: jobId },
-          { $set:
+          {
+            $set:
             { // Timestamps the 'jobStart' moment, adds the worker's username
               dateJobStart: Date(),
               workerUser: context.user.username
             }
-          },
-          { new: true, runValidators: true }
+          } 
         )
         console.log("WorkerAgree HERE", workerAgree)
 
@@ -174,76 +192,59 @@ const resolvers = {
       throw new AuthenticationError("Only logged in users can do this.")
     },
 
-    // [Error: "workerCompleteJob" defined in resolvers, but not in schema]
-    workerCompleteJob: async (parent, { jobId }, context) => {
-
-      // if (context.user) {
-      //   const workerComplete = Job.findByIdAndUpdate(
-      //     {_id: jobId},
-      //     { $set: 
-      //       {
-      //         dateJobEndWorker: Date(), 
-      //         // dollarsPromised: (est_hours * rate_per_hour)
-      //       }
-      //     }, { new: true, runValidators: true }
-      //     )
-      //     return workerComplete
-      // }
+    employerCompleteJob: async (parent, { jobId }, context) => {
 
       if (context.user) {
-        const workerComplete = Job.aggregate([
-          {
-            $match: {
-              _id: jobId
-            }
-          },
-          {
-            $set: { dateJobEndWorker: Date() }
-          },
-          {
-            $project: {
-              _id: 1, dateJobEndWorker: 1, dollarsPromised: { $multiply: [ "$est_hours", "$rate_per_hour"]}
-            }
-          },
-          { new: true, runValidators: true }  
-      ])
-      
-    }
-      console.log(workerComplete)
-      return workerComplete
+        console.log(jobId)
+        const getJob = await Job.findOne({_id: mongoose.Types.ObjectId(jobId)})
+        const employerComplete = await Job.updateOne(
+          {  _id: mongoose.Types.ObjectId(jobId) },
+          { $set: {
+            dateJobEndEmployer: Date()
+          }},
+          { $mul:
+            { 
+              dollarsPromised: getJob.rate_per_hour * getJob.est_hours
+            } 
+          }
+      )
+        console.log(employerComplete)
+        return employerComplete
+      }
     },
 
-employerCompleteJob: async (parent, { jobId }, context) => {
+    workerCompleteJob: async (parent, { jobId }, context) => {
+      console.log(jobId)
 
-  if (context.user) {
-    const employerComplete = Job.findByIdAndUpdate(
-      { _id: jobId },
-      {
-        $set:
-        {
-          dateJobEndEmployer: Date(),
-          // dollarsPromised: (est_hours * rate_per_hour)
+      if (context.user) {
+        const workerComplete = await Job.updateOne(
+          {  _id: mongoose.Types.ObjectId(jobId) },
+          { $set: { 
+            dateJobEndWorker: Date() 
+          } 
         }
-      }, { new: true, runValidators: true }
-    )
-    return employerComplete
-  }
-},
-  closeJobCase: async (parent, { jobId }, context) => {
-
-    if (context.user) {
-      const jobComplete = Job.findByIdAndUpdate(
-        { _id: jobId },
-        {
-          $set:
+        )
+        console.log(workerComplete)
+        return workerComplete
+      }
+    },
+    
+    closeJobCase: async (parent, { jobId }, context) => {
+      if (context.user) {
+        const jobComplete = await Job.updateOne(
+          { _id: mongoose.Types.ObjectId(jobId) },
           {
-            dateCaseClosed: Date()
+            $set:
+            {
+              dateCaseClosed: Date()
+            }
           }
-        }, { new: true, runValidators: true }
-      )
-      return jobComplete
-    }
-  },
+        )
+
+        console.log(jobComplete)
+        return jobComplete
+      }
+    },
 
     addReviewWorker: async (parent, args, context) => {
       if (context.user) {
@@ -251,13 +252,13 @@ employerCompleteJob: async (parent, { jobId }, context) => {
       }
     },
 
-      addReviewEmployer: async (parent, args, context) => {
-        if (context.user) {
-          console.log("Need to access nested query")
-        }
+    addReviewEmployer: async (parent, args, context) => {
+      if (context.user) {
+        console.log("Need to access nested query")
+        return context
       }
-  },
-
-};
+    }
+  }
+}
 
 module.exports = resolvers

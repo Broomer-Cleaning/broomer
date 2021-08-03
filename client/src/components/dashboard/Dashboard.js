@@ -5,31 +5,41 @@ import { Button, Container } from "react-bootstrap";
 import AddJob from "./addEvent/AddJob";
 import EditJob from "./addEvent/EditJob";
 
+
 import "react-datetime/css/react-datetime.css";
 import FullCalendar from "@fullcalendar/react";
 import listPlugin from "@fullcalendar/list";
+import interactionPlugin from '@fullcalendar/interaction';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import bootstrapPlugin from '@fullcalendar/bootstrap';
+import 'bootstrap/dist/css/bootstrap.css';
+import '@fortawesome/fontawesome-free/css/all.css';
+
+
+
 import Modal from "./addEvent/AddJob";
 import axios from "axios";
 import moment from "moment";
 
-const oldData = [
-  {
-    title: "Clean the hous on cope dr",
-    start: "2021-08-02",
-  },
-  {
-    title: "we have to code all day",
-    start: "2021-08-03",
-  },
-  {
-    title: "we have to code",
-    start: "2021-08-04",
-  },
-  {
-    title: "we have to code day",
-    start: "2021-08-06",
-  },
-];
+// const oldData = [
+//   {
+//     title: "Clean the hous on cope dr",
+//     start: "2021-08-02",
+//   },
+//   {
+//     title: "we have to code all day",
+//     start: "2021-08-03",
+//   },
+//   {
+//     title: "we have to code",
+//     start: "2021-08-04",
+//   },
+//   {
+//     title: "we have to code day",
+//     start: "2021-08-06",
+//   },
+// ];
 
 const Dashboard = () => {
   const [showModal, setShowModal] = useState(false);
@@ -48,8 +58,8 @@ const [data, setData] = useState ([])
   
   useEffect(() => {
   axios.get("/api/calender/get-events").then(info => {
-    setData (oldData)
-  //  setData (info)
+    // setData (oldData)
+   setData (info)
   })  
 
   },[]);
@@ -85,15 +95,21 @@ const [data, setData] = useState ([])
   const onClose = () => {
     setShowModal(false);
   };
+
+//   const deleteJob = (id) =>  {
+//     this.setState((prevState) => ({
+//         job: prevState.job.filter(item => item.id !== id),
+//     }))
+// };
   return (
     <div className="main">
       <Container className="boxHedaer">
         <div className="postJobBox">
-          <h4>Total of Jod Posted</h4>
+          <h4>Total of Job Posted</h4>
           <p>50 Jods</p>
         </div>
         <div className="compeletJobBox">
-          <h4>Total of Jod Completed</h4>
+          <h4>Total of Job Completed</h4>
           <p>64 Jods</p>
         </div>
         <div className="incomBox">
@@ -111,11 +127,21 @@ const [data, setData] = useState ([])
             <Container>
               <div className="daylist">
                 <FullCalendar
+
+
+
+
                   ref={calendarRef}
-                  events={data}
+                  events={events}
                   className="dayList"
-                  plugins={[listPlugin]}
+                  plugins={[interactionPlugin, dayGridPlugin, timeGridPlugin, listPlugin, bootstrapPlugin]}
                   initialView="listMonth"
+                  themeSystem= 'bootstrap'
+                  headerToolbar= {{
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,listWeek'
+                  }}
                   eventAdd={(event) => handleEventAdd(event)}
                   dateSet={(date) => handleDateSet(date)}
                   eventClick={handleEventClick}
@@ -133,22 +159,21 @@ const [data, setData] = useState ([])
         <div>
           <Container className="boxSection">
             <div className="postJobBox">
-              <h4>Jod Posted</h4>
+              <h4>Job Posted</h4>
               <div className="JobList">
                 <ul>
                   <li>
                     {curentJob.title}
                     <span>
-                      <div>
-                        <Button onClick={openModal}>Edit Job</Button>
+                      <div className="d-grid gap-2 d-md-block text-center">
+                        <Button className="btn-space btn-warning" onClick={openModal} >Edit Job</Button>
                         <EditJob
                           showModal={showModal}
                           setShowModal={setShowModal}
                         />
-                      </div>
-
-                      <Button variant="danger">Delete Job</Button>
+                      <Button  className="btn-space" variant="danger" onClick={() => this.props.onDelete(this.props.title)}>Delete Job</Button>
                       <Button variant="secondary">Done</Button>
+                      </div>
                     </span>
                   </li>
                 </ul>
@@ -162,14 +187,15 @@ const [data, setData] = useState ([])
               />
             </div>
             <div className="compeletJobBox">
-              <h4>Jod Completed</h4>
+              <h4>Job Completed</h4>
               <div className="JobList">
                 <ul>
                   <li>
-                    Job Tital{" "}
-                    <span>
-                      <Button variant="info">Write Review</Button>
-                    </span>
+                  {curentJob.title}
+                    <div className="text-center">
+                      <Button className ="btn btn-primary ">Write Review</Button>
+                      </div>
+                   
                   </li>
                 </ul>
               </div>
