@@ -181,3 +181,7 @@ body > div.ReactModalPortal > div > div{
  #calender > div > div > div{
      height: 350px;
  }
+
+ .btn-space {
+  margin-right: 15px;
+}

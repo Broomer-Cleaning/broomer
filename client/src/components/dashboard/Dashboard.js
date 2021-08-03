@@ -139,16 +139,17 @@ const [data, setData] = useState ([])
                   <li>
                     {curentJob.title}
                     <span>
-                      <div>
-                        <Button onClick={openModal} >Edit Job</Button>
+                      <div className="d-grid gap-2 d-md-block text-center">
+                        <Button className="btn-space btn-warning" onClick={openModal} >Edit Job</Button>
                         <EditJob
                           showModal={showModal}
                           setShowModal={setShowModal}
                         />
-                      </div>
+                      
 
-                      <Button variant="danger">Delete Job</Button>
-                      <Button variant="secondary">Done</Button>
+                      <Button className="btn-space"   variant="danger">Delete Job</Button>
+                      <Button className="btn-space" variant="secondary">Done</Button>
+                      </div>
                     </span>
                   </li>
                 </ul>
@@ -167,9 +168,10 @@ const [data, setData] = useState ([])
                 <ul>
                   <li>
                     Job Title{" "}
-                    <span>
-                      <Button variant="info">Write Review</Button>
-                    </span>
+                    <div className="text-center">
+                      <Button className ="btn btn-primary ">Write Review</Button>
+                      </div>
+                   
                   </li>
                 </ul>
               </div>
