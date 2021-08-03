@@ -88,6 +88,7 @@ query me {
       workerUser
       est_hours
       rate_per_hour
+      title
       job_description
       safety_double_vax
       safety_mask
@@ -123,6 +124,7 @@ query me {
       workerUser
       est_hours
       rate_per_hour
+      title
       job_description
       safety_double_vax
       safety_mask
@@ -165,6 +167,7 @@ query specificJob($jobId: ID!) {
     workerUser
     est_hours
     rate_per_hour
+    title
     job_description
     safety_double_vax
     safety_mask
@@ -207,6 +210,7 @@ query jobs {
     workerUser
     est_hours
     rate_per_hour
+    title
     job_description
     safety_double_vax
     safety_mask

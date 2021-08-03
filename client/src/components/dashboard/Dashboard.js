@@ -140,7 +140,7 @@ const [data, setData] = useState ([])
                     {curentJob.title}
                     <span>
                       <div>
-                        <Button onClick={openModal}>Edit Job</Button>
+                        <Button onClick={openModal} >Edit Job</Button>
                         <EditJob
                           showModal={showModal}
                           setShowModal={setShowModal}

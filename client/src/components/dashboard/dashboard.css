@@ -152,3 +152,32 @@ body > div.ReactModalPortal > div > div{
     flex-direction: column;
   }
 }
+
+#root > div.main > div > div.medSection > div > div > div > div > div.fc-header-toolbar.fc-toolbar > div:nth-child(3) > button,
+#root > div.main > div.rightSide > div.medSection > div > div > div > div > div.fc-header-toolbar.fc-toolbar {
+  display: none !important;
+  
+  
+
+ }
+
+ #root > div.main > div.rightSide > div.medSection > div > div > div > div > div.fc-view-harness.fc-view-harness-active > div{
+     padding: 0;
+     border-radius: 20px;
+     border: 1px solid lightgray;
+     box-shadow: 10px 10px 5px grey;
+     margin-bottom: 2.5%;
+     }
+
+ #root > div.main > div > div.medSection > div > div{
+     height: 5%;
+ }
+
+ #root > div.main > div > div.medSection > div > div > div > div > div.fc-view-harness.fc-view-harness-active > div,
+ #root > div.main > div > div.medSection > div > div > div > div > div.fc-view-harness.fc-view-harness-active{
+     padding-top: 5%;
+     width: 100%;
+ }
+ #calender > div > div > div{
+     height: 350px;
+ }

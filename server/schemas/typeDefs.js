@@ -38,8 +38,9 @@ const typeDefs = gql`
         postal_code: String
         employerUser: String
         workerUser: String
-        est_hours: Float
-        rate_per_hour: Float
+        est_hours: Int
+        rate_per_hour: Int
+        title: String
         job_description: String
         safety_double_vax: Boolean
         safety_mask: Boolean
@@ -66,8 +67,9 @@ const typeDefs = gql`
     input JobDetails {
         street_address: String
         postal_code: String
-        est_hours: Float
-        rate_per_hour: Float
+        est_hours: Int
+        rate_per_hour: Int
+        title: String
         job_description: String
         safety_double_vax: Boolean
         safety_mask: Boolean
@@ -102,22 +104,15 @@ const typeDefs = gql`
         jobsByUser(profileId: ID): User
         profile(profileId: ID!): User
         specificJob(jobId: ID!): Job
+        goodReviews: [Job]
     }
 
     type Mutation {
         
-        # Login/Registration
+        # Login/Registration/Profile Updates
         createUser(username: String!, email: String!, password: String!): Auth
         login(email: String!, password: String!): Auth
-    
-        # Set User Profile
-        # profileDetails(first_name: String, last_name: String, 
-        # date_of_birth: String, phone_number: String,
-        # about_me: String, safety_double_vax: Boolean,
-        # safety_mask: Boolean, safety_police_check: Boolean,
-        # have_pets: Boolean): User
-
-        profileDetails(profileInput: profileInput): User
+            profileDetails(profileInput: profileInput): User
 
         # Creating a job 
         addAJob: User
@@ -128,6 +123,8 @@ const typeDefs = gql`
         workerCompleteJob(jobId: ID!): Job
         employerCompleteJob(jobId: ID!): Job
         closeJobCase(jobId: ID!): Job
+
+        # The job gets reviewed/critied
         addReviewWorker(jobId: ID!, review_score_worker: Float!, review_text_worker: String!): Job
         addReviewEmployer(jobId: ID!, review_score_employer: Float!, review_text_employer: String!): Job
     }
