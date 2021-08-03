@@ -66,7 +66,7 @@ const CloseModalButton = styled(MdClose)`
                   <input type="number" placeholder="Phone number"/>
                   <textarea placeholder="about me "/>
                 </form>
-                <button className="btn-dark">Updata My Info</button>
+                <button className="btn-dark">Update My Info</button>
               </div>
               <CloseModalButton
                 aria-label='Close modal'
