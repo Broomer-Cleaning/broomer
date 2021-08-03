@@ -58,7 +58,7 @@ const CloseModalButton = styled(MdClose)`
   const [start, setStart] = useState(new Date());
   const [end, setEnd] = useState(new Date());
 
-  
+
   const onSubmit = (event) => {
     event.perventDefault();
     onEventAdded({
@@ -73,7 +73,8 @@ const CloseModalButton = styled(MdClose)`
       {showModal ? (
         <div className="Background" onClick={closeModal} ref={modalRef}>
           <animated.div style={animation}>
-            <div>
+          < div className="ModalWrapper" showModal={showModal}>
+            <div className="ModalContent" >
           <fomr onSubmit={onSubmit}>
         <input placeholder="Title" value={title} onChange={e => setTitle(e.target.value)}/>
 
@@ -94,6 +95,7 @@ const CloseModalButton = styled(MdClose)`
                 onClick={() => setShowModal(prev => !prev)}
               />
               </fomr>
+            </div>
             </div>
           </animated.div>
         </div>

@@ -1,3 +1,4 @@
+import "./addEvent.css";
 import React, { useState, useRef, useEffect, useCallback } from "react";
 // import Modal from "react-modal";
 import Datetime from "react-datetime";
@@ -67,35 +68,42 @@ const Addjob = ({ isOpen, onClose, onEventAdded, showModal, setShowModal }) => {
       {showModal ? (
         <div className="Background" onClick={closeModal} ref={modalRef}>
           <animated.div style={animation}>
-            <form onSubmit={onSubmit}>
-              <input
-                placeholder="Title"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-              />
+            <div className="ModalWrapper" showModal={showModal}>
+              <div className="ModalContent">
+                <form onSubmit={onSubmit}>
+                  <input
+                    placeholder="Title"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                  />
 
-              <textarea
-                placeholder="Description"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-              />
+                  <textarea
+                    placeholder="Description"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                  />
 
-              <div>
-                <label>Start Date</label>
-                <Datetime value={start} onChange={(date) => setStart(date)} />
+                  <div>
+                    <label>Start Date</label>
+                    <Datetime
+                      value={start}
+                      onChange={(date) => setStart(date)}
+                    />
+                  </div>
+
+                  <div>
+                    <label>End Date</label>
+                    <Datetime value={end} onChange={(date) => setEnd(date)} />
+                  </div>
+
+                  <button type="submit">Add Job</button>
+                </form>
+                <CloseModalButton
+                  aria-label="Close modal"
+                  onClick={() => setShowModal((prev) => !prev)}
+                />
               </div>
-
-              <div>
-                <label>End Date</label>
-                <Datetime value={end} onChange={(date) => setEnd(date)} />
-              </div>
-
-              <button type="submit">Add Job</button>
-            </form>
-            <CloseModalButton
-                aria-label='Close modal'
-                onClick={() => setShowModal(prev => !prev)}
-              />
+            </div>
           </animated.div>
         </div>
       ) : null}
