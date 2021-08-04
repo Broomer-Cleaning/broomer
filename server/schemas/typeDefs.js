@@ -105,6 +105,9 @@ const typeDefs = gql`
         profile(profileId: ID!): User
         specificJob(jobId: ID!): Job
         goodReviews: [Job]
+        pullOpenJobs: [Job]
+        inProgress: [Job]
+        noReviews: [Job]
     }
 
     type Mutation {
