@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import "./testimonials.css";
 import {FaStar} from "react-icons/fa";
 
-// import { useQuery } from '@apollo/client';
-// import {ADD_REVIEW_WORKER} from "../../utils/mutation"
+import { useMutation } from '@apollo/client';
+import {ADD_REVIEW_WORKER} from "../../utils/mutation"
 
 // import Axios from "axios"
 
@@ -18,11 +18,18 @@ const colors = {
 
 const Testimonials = () => {
 
-//  const [getReviews, { loading, error}] = useQuery(ADD_REVIEW_WORKER, {
+//  const [reviews, setReviews] = useState('');
+//  const [getReviews, { loading, data, error}] = useMutation(ADD_REVIEW_WORKER, {
 //    variables: {stars: '', body: ''}
-//  })
-  const [reviews, setReviews] = useState({ stars: '', body: '' });
-  // const [addReview] = useMutation(ADD_REVIEW_WORKER);
+//  });
+
+ 
+//  if (data) {
+//    console.log(data)
+//  }
+  
+  const [reviews, setReviews] = useState({body: '' }); 
+  const [addReview] = useMutation(ADD_REVIEW_WORKER);
 
 
   const handleChange= (event) => {
@@ -36,6 +43,18 @@ const Testimonials = () => {
     // event.preventDefault(); 
 
     console.log("Hello")
+    
+      // const { data } = addReview({ variables: { ...reviews } });
+      // console.log(data);
+
+      addReview({variables: {
+        stars: currentValue,
+        body: reviews.body
+      }})
+      
+    
+
+   
 
     // Axios.post({
     //   stars: currentValue,
@@ -119,7 +138,8 @@ const Testimonials = () => {
       value={reviews.body}
       onChange={handleChange}
       />
-      <button onClick={() => handleFormSubmit()} className="testB">Submit</button>
+      {/* onClick={() => addReview()} */}
+      <button onClick={() => handleFormSubmit()} type="submit" className="testB">Submit</button>
     </div>
   );
 };
