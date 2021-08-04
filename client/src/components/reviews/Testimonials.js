@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./testimonials.css";
 import {FaStar} from "react-icons/fa";
+
+// import axios from "axios"
 
 // import {SAVE_REVIEW} from "../../utils/mutation"
 // import { useMutation } from '@apollo/react-hooks';
@@ -13,38 +15,43 @@ const colors = {
 
 const Testimonials = () => {
 
-  // const [savedReviewIds, setSavedReviewIds] = useState(getSavedReviewIds());
-
-  // const [saveReviews] = useMutation(SAVE_REVIEW);
-
-  // const handleSaveReview = async (reviewId) => {
-    
-  //    // get token
-  //    const token = Auth.loggedIn() ? Auth.getToken() : null;
  
-  //    if (!token) {
-  //      return false;
-  //    }
- 
-  //    try {
-  //      console.log('reviewToSave', reviewToSave);
-  //      const { data } = await saveReviews({
-  //        variables: { bookData: { ...reviewToSave } }
-  //      });
-  //      console.log('data', data);
- 
-  //      // if review successfully saves to user's account, save review id to state
-  //      setSavedReviewIds([...savedReviewIds, reviewToSave.reviewId]);
-  //    } catch (err) {
-  //      console.error(err);
-  //    }
-  // }
+  const [reviews, setReviews] = useState({ stars: '', body: '' });
+  // const [saveReview] = useMutation(SAVE_REVIEW);
 
 
-  // state = {
-  //   stars: '',
-  //   body: ''
-  // }
+  const handleChange= (event) => {
+    const { name, value } = event.target;
+    setReviews({ ...reviews, [name]: value });
+    console.log(value)
+
+  };
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault(); 
+
+    const payload = {
+     stars: currentValue,
+     body: reviews.body
+
+    };
+   
+
+    // axios({
+    //   url: 'http://localhost:3001/user-routes/savereviews',
+    //   method: 'POST',
+    //   data: payload
+    // })
+    // .then(() => {
+    //   console.log('Data has been sent to the server');
+
+    // })
+    // .catch (() => {
+    //   console.log('Data has been sent to the server');
+    // });
+
+  };
+  
 
   const stars = Array(5).fill(0);
   const[currentValue, setCurrentValue]=React.useState(0);
@@ -52,6 +59,7 @@ const Testimonials = () => {
 
   const handleClick = value => {
     setCurrentValue(value)
+    console.log(value)
   };
 
   const handleMouseOver = value => {
@@ -61,8 +69,9 @@ const Testimonials = () => {
  const handleMouseLeave = () => {
    setHoverValue(undefined)
  }
+ 
   return (
-    <div className="testimonials" style={style.container}>
+    <div className="testimonials" style={style.container} onSubmit={handleFormSubmit}>
       <h2>Please leave your Feedback</h2>
       <div style={style.stars}>
         {stars.map((_, index)=> {
@@ -79,7 +88,9 @@ const Testimonials = () => {
           onClick={()=> handleClick(index + 1)}
           onMouseOver={()=> handleMouseOver(index + 1)}
           onMouseLeave={handleMouseLeave}
-          // value={this.state.stars}
+          // name="stars"
+          // value={reviews.stars}
+          onChange={handleClick}
        />
         )
       
@@ -88,9 +99,11 @@ const Testimonials = () => {
       <textarea
       placeholder="Please leave your feedback here"
       style={style.textarea}
-      // value={this.state.body}
+      name="body"
+      value={reviews.body}
+      onChange={handleChange}
       />
-      <button style={style.button}>Submit</button>
+      <button type='submit' style={style.button}>Submit</button>
     </div>
   );
 };
