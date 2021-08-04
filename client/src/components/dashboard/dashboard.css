@@ -79,7 +79,7 @@ body {
   color: #4473B7;
 }
 
-.JobList h5 {
+.JobList h5, .JobList {
   text-transform: capitalize;
 }
 
