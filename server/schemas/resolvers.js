@@ -32,10 +32,66 @@ const resolvers = {
       return Job.findOne({ _id: jobId})
     },
 
+<<<<<<< HEAD
     pullOpenJobs: async () => {
       return Job.find({
         dateJobStart:null
       })
+=======
+    pullOpenJobs: async() => {
+      return Job.find({ 
+        $and: [ {dateJobStart: null }, {dateCaseOpened: {$ne: null}} ]
+      }
+      )
+    },
+
+    inProgress: async() => {
+      return Job.find(
+        { 
+          $and: [ 
+            { 
+              $or: [ 
+                {dateJobEndWorker: null }, 
+                {dateJobEndEmployer: null} 
+              ] 
+            }, 
+            { 
+              dateJobStart: 
+                {$ne: null } 
+              } 
+            ]
+          }
+        )
+      },
+
+    noReviews: async() => {
+      return Job.find({
+        $and: [ 
+          {dateJobEndWorker: {$ne:null} }, 
+          {dateJobEndEmployer: {$ne:null}}, 
+          {dateCaseClosed: null} 
+        ]
+      })
+    },
+
+    goodReviews: async (parent, args, context) => {
+      // Returns empty array
+
+      const allJobs = Job.find({})
+
+      // const jobReviews = Job.aggregate([
+      //   { $unwind: "$Job"},
+      //   { $project: {
+      //     review_id: "$Job.review.review._id",
+      //     review_score_employer: "$Job.review.review_score_employer",
+      //     review_text_employer: "$Job.review.review_text_employer"
+      //   }},
+      //   { $match: { review_id: {$ne: null}}}
+      // ])
+
+      // console.log(jobReviews)
+      // return jobReviews
+>>>>>>> 6fbdebfee16022755d47c4a42ff352f0587808e3
     }
 
   },

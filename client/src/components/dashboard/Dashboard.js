@@ -127,10 +127,6 @@ const [data, setData] = useState ([])
             <Container>
               <div className="daylist">
                 <FullCalendar
-
-
-
-
                   ref={calendarRef}
                   events={events}
                   className="dayList"
@@ -140,7 +136,7 @@ const [data, setData] = useState ([])
                   headerToolbar= {{
                     left: 'prev,next today',
                     center: 'title',
-                    right: 'dayGridMonth,timeGridWeek,listWeek'
+                    right: 'dayGridMonth,timeGridWeek,listDay'
                   }}
                   eventAdd={(event) => handleEventAdd(event)}
                   dateSet={(date) => handleDateSet(date)}

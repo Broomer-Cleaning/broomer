@@ -57,17 +57,9 @@
         "dateJobStart": "July 18 2021",
         "dateJobEndWorker": "July 19 2021",
         "dateJobEndEmployer": "July 19 2021",
-        "dateCaseClosed": "July 20 2021",
         "tip": 20,
-        "currency": "CAD",
-        "review": [
-            {
-                "review_score_worker": 4.5,
-                "review_text_worker": "This was an easy host to work for. Looking forward to do repeat jobs if possible.",
-                "review_score_employer": 5,
-                "review_text_employer": "Very happy with their service"
-            }
-        ]
+        "currency": "CAD"
+
     },
     {
         "street_address": "33 Hazel Street",
