@@ -48,17 +48,23 @@ const Addjob = ({ onClose, onEventAdded, showModal, setShowModal }) => {
     return () => document.removeEventListener("keydown", keyPress);
   }, [keyPress]);
 
+  
+
   const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
+  const [job_description, setDescription] = useState("");
+  const [street_address, setStreetAddress] = useState("");
+  const [postal_code, setPostalCode] = useState("");
   const [start, setStart] = useState(new Date());
-  const [end, setEnd] = useState(new Date());
+  // const [end, setEnd] = useState(new Date());
   const onSubmit = (event) => {
     event.preventDefault();
     onEventAdded({
       title,
+      street_address,
       start,
-      end,
-      description,
+      // end,
+      job_description,
+      postal_code,
     });
     onClose();
   };
@@ -76,11 +82,21 @@ const Addjob = ({ onClose, onEventAdded, showModal, setShowModal }) => {
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                   />
-
                   <textarea
                     placeholder="Description"
-                    value={description}
+                    value={job_description}
                     onChange={(e) => setDescription(e.target.value)}
+                  />
+                  <input
+                    placeholder="Address"
+                    value={street_address}
+                    onChange={(e) => setStreetAddress(e.target.value)}
+                  />
+
+                  <input
+                    placeholder="Postal Code"
+                    value={postal_code}
+                    onChange={(e) => setPostalCode(e.target.value)}
                   />
 
                   <div>
@@ -91,14 +107,13 @@ const Addjob = ({ onClose, onEventAdded, showModal, setShowModal }) => {
                     />
                   </div>
 
-                  <div>
+                  {/* <div>
                     <label>End Date</label>
                     <Datetime value={end} onChange={(date) => setEnd(date)} />
-                  </div>
+                  </div> */}
                   <div>
-                  <button type="submit">Add Job</button>
+                    <button type="submit">Add Job</button>
                   </div>
-
                 </form>
                 <CloseModalButton
                   aria-label="Close modal"

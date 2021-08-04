@@ -49,8 +49,8 @@ const Dashboard = () => {
     let calendarApi = calendarRef.current.getApi();
     calendarApi.addEvent({
       start: moment(event.start).toDate(),
-      title: event.title
-      // description: event.description
+      title: event.title,
+      description: event.description
     });
   };
 
@@ -59,12 +59,12 @@ const Dashboard = () => {
   };
 
   async function handleEventAdd(data) {
-    await axios.post("/api/dashboard/create-event", data.event);
+    await axios.post("/api/calendar/create-event", data.event);
   }
 
   async function handleDateSet(data) {
     const responce = await axios.get(
-      "/api/dashboard/get-events?start=" + moment(data.start).toISOString()
+      "/api/calendar/get-events?start=" + moment(data.start).toISOString()
     );
     setEvents(responce.data);
   }
@@ -102,7 +102,7 @@ const Dashboard = () => {
               >
                 <FullCalendar
                   ref={calendarRef}
-                  events={events}
+                   events={events}
                   className="dayList"
                   plugins={[
                     interactionPlugin,
@@ -119,7 +119,7 @@ const Dashboard = () => {
                   headerToolbar={{
                     left: "prev,next today",
                     center: "title",
-                    right: "dayGridMonth,timeGridWeek,listDay",
+                    right: "dayGridMonth,listDay",
                   }}
                   showModal={showModal}
                   setShowModal={setShowModal}
@@ -138,6 +138,7 @@ const Dashboard = () => {
                   <li>
                    <h5>{curentJob.title}</h5> 
                     <p>{curentJob.description}</p>
+                    {/* <p>{curentJob.}</p> */}
                     <span>
                       <div className="d-grid gap-2 d-md-block text-center">
                         <Button
