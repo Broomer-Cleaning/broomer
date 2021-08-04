@@ -167,7 +167,7 @@ const [data, setData] = useState ([])
                           showModal={showModal}
                           setShowModal={setShowModal}
                         />
-                      <Button  className="btn-space" variant="danger" onClick={() => this.props.onDelete(this.props.title)}>Delete Job</Button>
+                      <Button  className="btn-space m-1" variant="danger" onClick={() => this.props.onDelete(this.props.title)}>Delete Job</Button>
                       <Button variant="secondary">Done</Button>
                       </div>
                     </span>
