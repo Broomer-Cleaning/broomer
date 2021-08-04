@@ -214,6 +214,8 @@ export const ADD_REVIEW_WORKER = gql`
     review_text_worker
     review_score_employer
     review_text_employer
+  }
+}
 `
 
 // Updates when all has been submitted, with reviews exchanged.

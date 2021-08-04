@@ -2,8 +2,10 @@ import React, { useState } from 'react'
 import "./testimonials.css";
 import {FaStar} from "react-icons/fa";
 
+// import { useQuery } from '@apollo/client';
+// import {ADD_REVIEW_WORKER} from "../../utils/mutation"
 
-import Axios from "axios"
+// import Axios from "axios"
 
 // import {ADD_REVIEW_WORKER} from "../../utils/mutation"
 // import { useMutation } from '@apollo/react-hooks';
@@ -16,7 +18,9 @@ const colors = {
 
 const Testimonials = () => {
 
- 
+//  const [getReviews, { loading, error}] = useQuery(ADD_REVIEW_WORKER, {
+//    variables: {stars: '', body: ''}
+//  })
   const [reviews, setReviews] = useState({ stars: '', body: '' });
   // const [addReview] = useMutation(ADD_REVIEW_WORKER);
 
@@ -28,8 +32,8 @@ const Testimonials = () => {
 
   };
 
-  const handleFormSubmit = async (event) => {
-    event.preventDefault(); 
+  const handleFormSubmit = async () => {
+    // event.preventDefault(); 
 
     console.log("Hello")
 
@@ -115,7 +119,7 @@ const Testimonials = () => {
       value={reviews.body}
       onChange={handleChange}
       />
-      <button className="testB">Submit</button>
+      <button onClick={() => handleFormSubmit()} className="testB">Submit</button>
     </div>
   );
 };
