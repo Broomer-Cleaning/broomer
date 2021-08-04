@@ -75,7 +75,7 @@ body {
   
 } 
 
-.boxHedaer h4 {
+.boxHedaer h4, .postJobBox h4, .compeletJobBox h4 {
   color: #4473B7;
 }
 
