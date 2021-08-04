@@ -2,9 +2,10 @@ import React, { useState } from 'react'
 import "./testimonials.css";
 import {FaStar} from "react-icons/fa";
 
-// import axios from "axios"
 
-// import {SAVE_REVIEW} from "../../utils/mutation"
+import Axios from "axios"
+
+// import {ADD_REVIEW_WORKER} from "../../utils/mutation"
 // import { useMutation } from '@apollo/react-hooks';
 // import Auth from '../../utils/auth';
 
@@ -17,7 +18,7 @@ const Testimonials = () => {
 
  
   const [reviews, setReviews] = useState({ stars: '', body: '' });
-  // const [saveReview] = useMutation(SAVE_REVIEW);
+  // const [addReview] = useMutation(ADD_REVIEW_WORKER);
 
 
   const handleChange= (event) => {
@@ -30,11 +31,22 @@ const Testimonials = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault(); 
 
-    const payload = {
-     stars: currentValue,
-     body: reviews.body
+    console.log("Hello")
 
-    };
+    // Axios.post({
+    //   stars: currentValue,
+    //   body: reviews.body
+    // })
+    // .then(res=> {
+    //   console.log(res.reviews)
+    //   console.log(currentValue)
+    // })
+
+    // const payload = {
+    //  stars: currentValue,
+    //  body: reviews.body
+
+    // };
    
 
     // axios({
@@ -103,7 +115,7 @@ const Testimonials = () => {
       value={reviews.body}
       onChange={handleChange}
       />
-      <button type='submit' style={style.button}>Submit</button>
+      <button className="testB">Submit</button>
     </div>
   );
 };
@@ -122,14 +134,8 @@ const style = {
     minHeight: 100,
     padding: 10
 
-  },
-  button: {
-    border: "1px solid #4473b7",
-    width: 300,
-    padding: 10,
-    marginBottom: "4rem"
-
   }
+ 
 }
 
 export default Testimonials
