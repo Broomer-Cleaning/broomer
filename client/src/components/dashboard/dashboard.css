@@ -126,13 +126,8 @@ body {
   list-style-type: none; 
 }
 
-/* body > div.ReactModalPortal > div{
-  
-  height: 50%;
-}
-body > div.ReactModalPortal > div > div{
- margin: 5%;
-} */
+
+
 
 @media screen and (max-width: 600px){
   .main{
@@ -151,35 +146,26 @@ body > div.ReactModalPortal > div > div{
     display: flex;
     flex-direction: column;
   }
+  #root > div.main > div.boxHedaer.container{
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 
- /* #root > div.main > div.rightSide > div.medSection > div > div > div > div > div.fc-view-harness.fc-view-harness-active > div{
-     padding: 0;
-     border-radius: 20px;
-     border: 1px solid lightgray;
-     box-shadow: 10px 10px 5px grey;
-     margin-bottom: 2.5%;
-     } */
 
  #root > div.main > div > div.medSection > div > div{
      height: 5%;
  }
 
- /* #root > div.main > div > div.medSection > div > div > div > div > div.fc-view-harness.fc-view-harness-active > div,
- #root > div.main > div > div.medSection > div > div > div > div > div.fc-view-harness.fc-view-harness-active{
-     padding-top: 5%;
-     width: 100%;
- } */
+
+
+ #calender > div > div > div > div.fc-header-toolbar.fc-toolbar.fc-toolbar-ltr{
+   padding: 1%;
+ }
  #calender > div > div > div{
   padding: 0;
-  border-radius: 20px;
   border: 1px solid lightgray;
-  box-shadow: 10px 10px 5px grey;
   margin-bottom: 2.5%;
-     height: 400px;
+  height: 400px;
  }
-
- /* .btn-space {
-  margin-right: 15px;
-} */
