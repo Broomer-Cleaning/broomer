@@ -286,10 +286,23 @@ const resolvers = {
     },
 
     addReviewWorker: async (parent, args, context) => {
+      console.log(args)
+      console.log(context.user.username)
       if (context.user) {
-        console.log("Need to access nested query")
-      }
-    },
+
+        // Refactor to be dependent on the user who is logged in 
+          const jobToReview = Job.findOneAndUpdate(
+            { _id: args.jobId },
+            { $set: {
+                review_score_worker : args.review_score_worker,
+                review_text_worker : args.review_text_worker
+                }
+              }
+            )
+
+          return jobToReview
+        }
+      },
 
     addReviewEmployer: async (parent, args, context) => {
       if (context.user) {

@@ -61,7 +61,10 @@ const typeDefs = gql`
         dollarsPromised: Int
         tip: Int
         currency: String
-        review: [Review]
+        review_score_worker: Int
+        review_text_worker: String
+        review_score_employer: Int
+        review_text_employer: String
     }
 
     input JobDetails {
@@ -84,13 +87,13 @@ const typeDefs = gql`
         need_supplies_worker: Boolean
     }
 
-    type Review {
-        _id: ID!
-        review_score_worker: Float
-        review_text_worker: String
-        review_score_employer: Float
-        review_text_employer: String
-    }
+    # type Review {
+    #     _id: ID!
+    #     review_score_worker: Int
+    #     review_text_worker: String
+    #     review_score_employer: Int
+    #     review_text_employer: String
+    # }
 
     type Auth {
         token: String!
@@ -128,8 +131,8 @@ const typeDefs = gql`
         closeJobCase(jobId: ID!): Job
 
         # The job gets reviewed/critied
-        addReviewWorker(jobId: ID!, review_score_worker: Float!, review_text_worker: String!): Job
-        addReviewEmployer(jobId: ID!, review_score_employer: Float!, review_text_employer: String!): Job
+        addReviewWorker(jobId: ID!, review_score_worker: Int!, review_text_worker: String!): Job
+        addReviewEmployer(jobId: ID!, review_score_employer: Int!, review_text_employer: String!): Job
     }
 `
 
