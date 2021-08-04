@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Button, Alert} from 'react-bootstrap';
-import { Link, useHistory } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 
 
 
@@ -52,7 +52,6 @@ const SignupForm = () => {
     
   };
 
-   let history = useHistory();
 
   return (
     <>
@@ -102,18 +101,6 @@ const SignupForm = () => {
           />
           <Form.Control.Feedback type='invalid'>Password is required!</Form.Control.Feedback>
         </Form.Group>
-        {/* <Form.Group>
-          <Form.Label htmlFor='password-confirmation'>Password Confirmation</Form.Label>
-          <Form.Control
-            type='password'
-            placeholder='Confirm password'
-            name='password-confirmation'
-            onChange={handleInputChange}
-            value={userFormData.password}
-            required
-          />
-          <Form.Control.Feedback type='invalid'>Passwords don't match!</Form.Control.Feedback>
-        </Form.Group> */}
         <Button
           disabled={!(userFormData.username && userFormData.email && userFormData.password)}
           type='submit'
