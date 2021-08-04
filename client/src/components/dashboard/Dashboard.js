@@ -29,6 +29,12 @@ const Dashboard = () => {
     start: "2021-08-04",
     description:"job Descrip"
   });
+
+  const removeJob = index => {
+    const newTodos = [...events];
+    newTodos.splice(index, 1);
+    setData(curentJob);
+  };
   const [data, setData] = useState([]);
 
   const openModal = () => {
@@ -154,7 +160,7 @@ const Dashboard = () => {
                         <Button
                           className="btn-space m-1"
                           variant="danger"
-                          onClick={() => this.props.onDelete(this.props.title)}
+                          onClick={() => removeJob(curentJob)}
                         >
                           Delete Job
                         </Button>
