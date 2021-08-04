@@ -16,7 +16,7 @@ const CloseModalButton = styled(MdClose)`
   z-index: 10;
 `;
 
-const Addjob = ({ isOpen, onClose, onEventAdded, showModal, setShowModal }) => {
+const Addjob = ({ onClose, onEventAdded, showModal, setShowModal }) => {
   const modalRef = useRef();
 
   const animation = useSpring({
@@ -51,13 +51,14 @@ const Addjob = ({ isOpen, onClose, onEventAdded, showModal, setShowModal }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [start, setStart] = useState(new Date());
-  // const [end, setEnd] = useState(new Date());
+  const [end, setEnd] = useState(new Date());
   const onSubmit = (event) => {
     event.preventDefault();
     onEventAdded({
       title,
       start,
-      // end,
+      end,
+      description,
     });
     onClose();
   };
@@ -90,12 +91,14 @@ const Addjob = ({ isOpen, onClose, onEventAdded, showModal, setShowModal }) => {
                     />
                   </div>
 
-                  {/* <div>
+                  <div>
                     <label>End Date</label>
                     <Datetime value={end} onChange={(date) => setEnd(date)} />
-                  </div> */}
-
+                  </div>
+                  <div>
                   <button type="submit">Add Job</button>
+                  </div>
+
                 </form>
                 <CloseModalButton
                   aria-label="Close modal"
