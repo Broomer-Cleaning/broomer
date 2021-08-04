@@ -79,6 +79,10 @@ body {
   color: #4473B7;
 }
 
+.JobList h5 {
+  text-transform: capitalize;
+}
+
 .boxHedaer > .postJobBox,
 .boxHedaer > .compeletJobBox,
 .boxHedaer > .incomBox{
