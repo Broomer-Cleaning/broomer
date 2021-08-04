@@ -290,7 +290,7 @@ const resolvers = {
       console.log(context.user.username)
       if (context.user) {
 
-        // Refactor to be dependent on the user who is logged in 
+        // Refactor to be dependent on the user who is logged in
           const jobToReview = Job.findOneAndUpdate(
             { _id: args.jobId },
             { $set: {
