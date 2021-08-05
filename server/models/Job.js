@@ -117,26 +117,22 @@ const jobSchema = new Schema(
       type: String,
     },
 
-    review: [
-      {
-        // This is the review ISSUED BY the worker
-        review_score_worker: {
-          type: Number
-        },
-        review_text_worker: {
-            type: String,
-        },
-        
-        // This is the review ISSUED BY the employer
-        review_score_employer: {
-            type: Number
-        },
-        review_text_employer: {
-            type: String,
-        },
-
-      }
-    ]
+    // This is the review ISSUED BY the worker
+    review_score_worker: {
+      type: Number
+    },
+    review_text_worker: {
+        type: String,
+    },
+    
+    // This is the review ISSUED BY the employer
+    review_score_employer: {
+        type: Number
+    },
+    review_text_employer: {
+        type: String,
+    }
+    
   })
 
  const Job = model('Job', jobSchema);

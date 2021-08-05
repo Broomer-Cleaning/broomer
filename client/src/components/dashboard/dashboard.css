@@ -45,6 +45,7 @@ body {
 .main { 
   display: flex;
   flex-direction: column;
+  margin-top: 4rem;
 }
 
 
@@ -74,14 +75,20 @@ body {
   
 } 
 
+.boxHedaer h4, .postJobBox h4, .compeletJobBox h4 {
+  color: #4473B7;
+}
+
+.JobList h5, .JobList {
+  text-transform: capitalize;
+}
+
 .boxHedaer > .postJobBox,
 .boxHedaer > .compeletJobBox,
 .boxHedaer > .incomBox{
   height: 100%;
   width: 100%;
-  border-radius: 20px;
   border: 1px solid lightgray;
-  box-shadow: 10px 10px 5px grey;
   font-weight: bold;
   text-align: center;
   margin-left: 2.5%;
@@ -101,9 +108,7 @@ body {
 
   height: 100%;
   width: 100%;
-  border-radius: 20px;
   border: 1px solid lightgray;
-  box-shadow: 10px 10px 5px grey;
   font-weight: bold;
   text-align: center;
   margin-top: 2.5%;
@@ -126,8 +131,9 @@ body {
   list-style-type: none; 
 }
 
-
-
+.compeletJobBox {
+ margin-bottom: 4rem;
+}
 
 @media screen and (max-width: 600px){
   .main{

@@ -47,17 +47,10 @@ query profile($profileId: ID!) {
     have_pets
     jobs_worked {
       _id
-      review {
-        _id
-      }
     }
     jobs_hired {
       _id
-      review {
-        _id
-      }
     }
-    
   }
 }
 `;
@@ -109,13 +102,10 @@ query me {
       dollarsPromised
       tip
       currency
-      review {
-        _id
-        review_score_worker
-        review_text_worker
-        review_score_employer
-        review_text_employer
-      }
+      review_score_worker
+      review_text_worker
+      review_score_employer
+      review_text_employer
     }
     jobs_hired _id
       street_address
@@ -145,13 +135,10 @@ query me {
       dollarsPromised
       tip
       currency
-      review {
-        _id
-        review_score_worker
-        review_text_worker
-        review_score_employer
-        review_text_employer
-      }
+      review_score_worker
+      review_text_worker
+      review_score_employer
+      review_text_employer
     }
   }
 }`;
@@ -188,19 +175,16 @@ query specificJob($jobId: ID!) {
     dollarsPromised
     tip
     currency
-    review {
-      _id
-      review_score_worker
-      review_text_worker
-      review_score_employer
-      review_text_employer
-    }
+    review_score_worker
+    review_text_worker
+    review_score_employer
+    review_text_employer
   }
 }
 `
 
-// Returns all jobs
-export const GET_ALL_JOBs = gql`
+// Returns all jobs in existence
+export const GET_ALL_JOBS = gql`
 query jobs {
   jobs {
     _id
@@ -231,13 +215,80 @@ query jobs {
     dollarsPromised
     tip
     currency
-    review {
-      _id
-      review_score_worker
-      review_text_worker
-      review_score_employer
-      review_text_employer
-    }
+    review_score_worker
+    review_text_worker
+    review_score_employer
+    review_text_employer
   }
 }
+`
+
+// Finds all jobs without a start date
+// Is used to find out which jobs a worker can apply to in the marketplace.
+export const JOBS_ON_MARKET = gql`
+query pullOpenJobs {
+  pullOpenJobs {
+    _id
+    street_address
+    postal_code
+    employerUser
+    workerUser
+    est_hours
+    rate_per_hour
+    title
+    job_description
+    safety_double_vax
+    safety_mask
+    safety_police_check
+    have_pets
+    have_equipment_employer
+    need_equipment_worker
+    have_supplies_employer
+    need_supplies_worker
+    emp_provides_meal
+    emp_provides_drinks
+    emp_provides_facilities
+    dateCaseOpened
+  }
+}
+`
+
+// Finds all jobs which have been started, but not deemed 'completed' by either the worker or employer
+// Is used to determine which jobs are 'in progress'.
+export const JOBS_IN_PROGRESS = gql`
+  query inProgress {
+  inProgress {
+    _id
+    street_address
+    postal_code
+    employerUser
+    workerUser
+    est_hours
+    rate_per_hour
+    title
+    job_description
+    safety_double_vax
+    safety_mask
+    safety_police_check
+    have_pets
+    have_equipment_employer
+    need_equipment_worker
+    have_supplies_employer
+    need_supplies_worker
+    emp_provides_meal
+    emp_provides_drinks
+    emp_provides_facilities
+    dateCaseOpened
+    dateJobStart	
+    dateJobEndWorker
+    dateJobEndEmployer
+    dateCaseClosed
+  }
+}
+`
+
+// Finds all jobs which both the worker and employer have completed, but no review left
+// Your dashboard will prompt you to 'leave a review'
+export const DONE_NO_REVIEWS = gql`
+
 `

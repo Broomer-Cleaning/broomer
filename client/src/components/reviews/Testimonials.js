@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./testimonials.css";
 import {FaStar} from "react-icons/fa";
 
-// import {SAVE_REVIEW} from "../../utils/mutation"
+import { useMutation } from '@apollo/client';
+import {ADD_REVIEW_WORKER} from "../../utils/mutation"
+
+// import Axios from "axios"
+
+// import {ADD_REVIEW_WORKER} from "../../utils/mutation"
 // import { useMutation } from '@apollo/react-hooks';
 // import Auth from '../../utils/auth';
 
@@ -13,38 +18,75 @@ const colors = {
 
 const Testimonials = () => {
 
-  // const [savedReviewIds, setSavedReviewIds] = useState(getSavedReviewIds());
+//  const [reviews, setReviews] = useState('');
+//  const [getReviews, { loading, data, error}] = useMutation(ADD_REVIEW_WORKER, {
+//    variables: {stars: '', body: ''}
+//  });
 
-  // const [saveReviews] = useMutation(SAVE_REVIEW);
+ 
+//  if (data) {
+//    console.log(data)
+//  }
+  
+  const [reviews, setReviews] = useState({body: '' }); 
+  const [addReview] = useMutation(ADD_REVIEW_WORKER);
 
-  // const handleSaveReview = async (reviewId) => {
+
+  const handleChange= (event) => {
+    const { name, value } = event.target;
+    setReviews({ ...reviews, [name]: value });
+    console.log(value)
+
+  };
+
+  const handleFormSubmit = async () => {
+    // event.preventDefault(); 
+
+    console.log("Hello")
     
-  //    // get token
-  //    const token = Auth.loggedIn() ? Auth.getToken() : null;
- 
-  //    if (!token) {
-  //      return false;
-  //    }
- 
-  //    try {
-  //      console.log('reviewToSave', reviewToSave);
-  //      const { data } = await saveReviews({
-  //        variables: { bookData: { ...reviewToSave } }
-  //      });
-  //      console.log('data', data);
- 
-  //      // if review successfully saves to user's account, save review id to state
-  //      setSavedReviewIds([...savedReviewIds, reviewToSave.reviewId]);
-  //    } catch (err) {
-  //      console.error(err);
-  //    }
-  // }
+      // const { data } = addReview({ variables: { ...reviews } });
+      // console.log(data);
 
+      addReview({variables: {
+        stars: currentValue,
+        body: reviews.body
+      }})
+      
+    
 
-  // state = {
-  //   stars: '',
-  //   body: ''
-  // }
+   
+
+    // Axios.post({
+    //   stars: currentValue,
+    //   body: reviews.body
+    // })
+    // .then(res=> {
+    //   console.log(res.reviews)
+    //   console.log(currentValue)
+    // })
+
+    // const payload = {
+    //  stars: currentValue,
+    //  body: reviews.body
+
+    // };
+   
+
+    // axios({
+    //   url: 'http://localhost:3001/user-routes/savereviews',
+    //   method: 'POST',
+    //   data: payload
+    // })
+    // .then(() => {
+    //   console.log('Data has been sent to the server');
+
+    // })
+    // .catch (() => {
+    //   console.log('Data has been sent to the server');
+    // });
+
+  };
+  
 
   const stars = Array(5).fill(0);
   const[currentValue, setCurrentValue]=React.useState(0);
@@ -52,6 +94,7 @@ const Testimonials = () => {
 
   const handleClick = value => {
     setCurrentValue(value)
+    console.log(value)
   };
 
   const handleMouseOver = value => {
@@ -61,8 +104,9 @@ const Testimonials = () => {
  const handleMouseLeave = () => {
    setHoverValue(undefined)
  }
+ 
   return (
-    <div className="testimonials" style={style.container}>
+    <div className="testimonials" style={style.container} onSubmit={handleFormSubmit}>
       <h2>Please leave your Feedback</h2>
       <div style={style.stars}>
         {stars.map((_, index)=> {
@@ -79,7 +123,9 @@ const Testimonials = () => {
           onClick={()=> handleClick(index + 1)}
           onMouseOver={()=> handleMouseOver(index + 1)}
           onMouseLeave={handleMouseLeave}
-          // value={this.state.stars}
+          // name="stars"
+          // value={reviews.stars}
+          onChange={handleClick}
        />
         )
       
@@ -88,9 +134,12 @@ const Testimonials = () => {
       <textarea
       placeholder="Please leave your feedback here"
       style={style.textarea}
-      // value={this.state.body}
+      name="body"
+      value={reviews.body}
+      onChange={handleChange}
       />
-      <button style={style.button}>Submit</button>
+      {/* onClick={() => addReview()} */}
+      <button onClick={() => handleFormSubmit()} type="submit" className="testB">Submit</button>
     </div>
   );
 };
@@ -109,14 +158,8 @@ const style = {
     minHeight: 100,
     padding: 10
 
-  },
-  button: {
-    border: "1px solid #4473b7",
-    width: 300,
-    padding: 10,
-    marginBottom: "4rem"
-
   }
+ 
 }
 
 export default Testimonials

@@ -5,13 +5,14 @@ body {
 }
 
 
-/* .container-testimonials {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-} */
 
 .testimonials h2 {
   margin-top: 5rem;
+}
+
+.testB {
+  background-color: #4473b7;
+  width: 300;
+  padding: 10;
+  margin-bottom: 4rem;
 }
