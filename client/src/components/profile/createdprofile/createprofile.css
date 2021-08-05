@@ -89,7 +89,7 @@ body {
   margin-right: 1rem;
 }
 
-.itemContainer a span {
+.itemContainer a  {
   text-decoration: none !important;
   color: #081525;
 }

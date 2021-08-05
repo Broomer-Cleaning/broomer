@@ -1,7 +1,12 @@
 import React from 'react'
 
+import "./createprofile.css";
+
 import { useQuery } from "@apollo/client";
 import {GET_ME} from "../../../utils/queries"
+
+import { useMutation } from "@apollo/client";
+import {UPDATE_PROFILE} from "../../../utils/mutation"
 
 import {Container} from "react-bootstrap"
 
@@ -13,6 +18,18 @@ import { AiOutlineMail } from "react-icons/ai";
 import ReviewsCarousel from "../../reviews/ReviewsCarousel";
 
 const CreatedProfile = () => {
+
+  const [profileDetails, { error }] = useMutation(UPDATE_PROFILE);
+
+  // const { data } = profileDetails({
+  //   variables: {
+  //     first_name,
+  //     last_name,
+  //     date_of_birth,
+  //     phone_number,
+  //     about_me
+  //   }
+  // })
 
   const { loading, data } = useQuery(GET_ME);
   let userData=""

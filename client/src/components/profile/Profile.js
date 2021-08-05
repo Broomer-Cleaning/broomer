@@ -11,20 +11,7 @@ import {GET_ME} from "../../utils/queries"
 import { useMutation } from "@apollo/client";
 import {UPDATE_PROFILE} from "../../utils/mutation"
 
-// const Radio = ({label, id, handleChange, name, form}) => (
-//   <>
-//   <input
-//   type="radio"
-//   id={id}
-//   name={name}
-//   onChange={handleCheckBox}
-//   value={id}
-//   checked={form[name]===id}
-//   />
-//   <label htmlFor={id}>{label}</label>
-//   <br/>
-//   </>
-// )
+
 
 const Profile = () => {
   // const [showModal, setShowModal] = useState(false);
@@ -59,7 +46,7 @@ const Profile = () => {
 
 
   const handleChange= (event) => {
-    const { name, value, data } = event.target;
+    const { name, value, id } = event.target;
     console.log(event.target)
     console.log (name, value)
    
@@ -75,12 +62,12 @@ const Profile = () => {
       setPhone_number(value);
     }else if (name === 'description') {
       setAbout_me(value);
-    }else if ( data === 'yes'){
+    }else if ( id === 'formHorizontalRadios1'){
       setisFullyVax(true)
-      console.log(data)
-    }else if ( data === 'yes'){
+      console.log(id)
+    }else if ( id === 'formHorizontalRadios3'){
       setPoliceCheck(true)
-      console.log(data)
+      console.log(id)
     }
     // setFirst_name(first_name);
     // console.log(value)
@@ -228,7 +215,7 @@ const Profile = () => {
               label="YES"
               name="police"
               title="YES"
-              id="formHorizontalRadios1"
+              id="formHorizontalRadios3"
               onChange={handleChange}
             />
             <Form.Check

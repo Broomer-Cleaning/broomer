@@ -29,13 +29,13 @@ const Testimonials = () => {
 //  }
   
   const [reviews, setReviews] = useState({body: '' }); 
-  const [addReview] = useMutation(ADD_REVIEW_WORKER);
+  const [addReviewWorker] = useMutation(ADD_REVIEW_WORKER);
 
 
   const handleChange= (event) => {
     const { name, value } = event.target;
     setReviews({ ...reviews, [name]: value });
-    console.log(value, "value")
+    console.log(value)
 
   };
 
@@ -47,7 +47,7 @@ const Testimonials = () => {
       // const { data } = addReview({ variables: { ...reviews } });
       // console.log(data);
 
-      addReview({variables: {
+      addReviewWorker({variables: {
         jobId: '610b3b6c2f8b7d3c65d5981d',
         review_score_worker: currentValue,
         review_text_worker: reviews.body
