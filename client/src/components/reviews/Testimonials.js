@@ -8,11 +8,7 @@ import {FaStar} from "react-icons/fa";
 import { useMutation } from '@apollo/client';
 import {ADD_REVIEW_WORKER} from "../../utils/mutation"
 
-// import Axios from "axios"
 
-// import {ADD_REVIEW_WORKER} from "../../utils/mutation"
-// import { useMutation } from '@apollo/react-hooks';
-// import Auth from '../../utils/auth';
 
 const colors = {
   yellow: "#F2B212",
@@ -21,15 +17,7 @@ const colors = {
 
 const Testimonials = () => {
 
-//  const [reviews, setReviews] = useState('');
-//  const [getReviews, { loading, data, error}] = useMutation(ADD_REVIEW_WORKER, {
-//    variables: {stars: '', body: ''}
-//  });
 
- 
-//  if (data) {
-//    console.log(data)
-//  }
   
   const [reviews, setReviews] = useState({body: '' }); 
   const [addReviewWorker] = useMutation(ADD_REVIEW_WORKER);
@@ -46,66 +34,14 @@ const Testimonials = () => {
     // event.preventDefault(); 
 
     console.log("Hello")
-    
-      // const { data } = addReview({ variables: { ...reviews } });
-      // console.log(data);
-
+   
       addReviewWorker({variables: {
         jobId: '610b3b6c2f8b7d3c65d5981d',
         review_score_worker: currentValue,
         review_text_worker: reviews.body
       }})
 
-      // try {
-      //   const { data } = await addReviewWorker({
-      //     variables: {
-      //       addReviewWorker: {
-      //         jobId: '610b3b6c2f8b7d3c65d5981d',
-      //         review_score_worker: currentValue,
-      //         review_text_worker: reviews.body
-            
-      //       }
-      //     },
-      //   });
-  
-      //   window.location.reload();
-      // } catch (err) {
-      //   console.error(err);
-      // }
-    
-      
-    
-
-   
-
-    // Axios.post({
-    //   stars: currentValue,
-    //   body: reviews.body
-    // })
-    // .then(res=> {
-    //   console.log(res.reviews)
-    //   console.log(currentValue)
-    // })
-
-    // const payload = {
-    //  stars: currentValue,
-    //  body: reviews.body
-
-    // };
-   
-
-    // axios({
-    //   url: 'http://localhost:3001/user-routes/savereviews',
-    //   method: 'POST',
-    //   data: payload
-    // })
-    // .then(() => {
-    //   console.log('Data has been sent to the server');
-
-    // })
-    // .catch (() => {
-    //   console.log('Data has been sent to the server');
-    // });
+     
 
   };
   
