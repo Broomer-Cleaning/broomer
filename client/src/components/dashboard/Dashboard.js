@@ -4,9 +4,17 @@ import "bootstrap/dist/css/bootstrap.css";
 import "@fortawesome/fontawesome-free/css/all.css";
 import "react-datetime/css/react-datetime.css";
 
-// import React, { useState, useRef,  } from "react";
+import React, { 
+  // useState,
+  //  useRef,
+    } from "react";
 import { Button, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
+
+import { useQuery } from "@apollo/client";
+import {GET_ALL_JOBS, JOBS_ON_MARKET } from "../../utils/queries"
+import { useMutation } from "@apollo/client";
+import {UPDATE_JOB} from "../../utils/mutation"
 
 import FullCalendar from "@fullcalendar/react";
 import listPlugin from "@fullcalendar/list";
@@ -18,6 +26,17 @@ import bootstrapPlugin from "@fullcalendar/bootstrap";
 
 
 const Dashboard = () => {
+
+  const { loading, data } = useQuery(GET_ALL_JOBS, JOBS_ON_MARKET);
+    let allJobData = "";
+    let openJob ="";
+  if (loading) {
+    console.log("Loading");
+  } else {
+     allJobData = data?.jobs|| {};
+     openJob = data?.pullOpenJobs|| {};
+    console.log(allJobData, openJob);
+  }
 
 
   return (
