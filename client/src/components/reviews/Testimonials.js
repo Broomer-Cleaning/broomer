@@ -35,7 +35,7 @@ const Testimonials = () => {
   const handleChange= (event) => {
     const { name, value } = event.target;
     setReviews({ ...reviews, [name]: value });
-    console.log(value)
+    console.log(value, "value")
 
   };
 
@@ -48,8 +48,9 @@ const Testimonials = () => {
       // console.log(data);
 
       addReview({variables: {
-        stars: currentValue,
-        body: reviews.body
+        jobId: '610b3b6c2f8b7d3c65d5981d',
+        review_score_worker: currentValue,
+        review_text_worker: reviews.body
       }})
       
     

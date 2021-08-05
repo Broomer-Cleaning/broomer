@@ -5,6 +5,11 @@
   align-items: center;
 }
 
+.aboutMeSection h1 {
+  margin-top: 4rem;
+
+}
+
 .avatr {
   height: 30%;
   width: 30%;
@@ -48,6 +53,10 @@
   color: #fff;
   font-size: 24px;
   cursor: pointer;
+}
+
+.prof {
+  margin-top: 4rem;
 }
 
 .editFrom {

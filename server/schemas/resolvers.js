@@ -19,10 +19,10 @@ const resolvers = {
 
     // ✔️✔️
     me: async (parent, args, context) => {
-      if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate("jobs");
-      }
-      throw new AuthenticationError("You have to be logged in to see this information.")
+      // if (context.user) {
+      return User.findOne({ _id: context.user._id }).populate("jobs");
+      // }
+      // throw new AuthenticationError("You have to be logged in to see this information.")
     },
 
     // ✔️✔️
@@ -36,38 +36,38 @@ const resolvers = {
       return Job.findOne({ _id: jobId })
     },
 
-    pullOpenJobs: async() => {
-      return Job.find({ 
-        $and: [ {dateJobStart: null }, {dateCaseOpened: {$ne: null}} ]
+    pullOpenJobs: async () => {
+      return Job.find({
+        $and: [{ dateJobStart: null }, { dateCaseOpened: { $ne: null } }]
       }
       )
     },
 
-    inProgress: async() => {
+    inProgress: async () => {
       return Job.find(
-        { 
-          $and: [ 
-            { 
-              $or: [ 
-                {dateJobEndWorker: null }, 
-                {dateJobEndEmployer: null} 
-              ] 
-            }, 
-            { 
-              dateJobStart: 
-                {$ne: null } 
-              } 
-            ]
-          }
-        )
-      },
+        {
+          $and: [
+            {
+              $or: [
+                { dateJobEndWorker: null },
+                { dateJobEndEmployer: null }
+              ]
+            },
+            {
+              dateJobStart:
+                { $ne: null }
+            }
+          ]
+        }
+      )
+    },
 
-    noReviews: async() => {
+    noReviews: async () => {
       return Job.find({
-        $and: [ 
-          {dateJobEndWorker: {$ne:null} }, 
-          {dateJobEndEmployer: {$ne:null}}, 
-          {dateCaseClosed: null} 
+        $and: [
+          { dateJobEndWorker: { $ne: null } },
+          { dateJobEndEmployer: { $ne: null } },
+          { dateCaseClosed: null }
         ]
       })
     },
@@ -214,7 +214,7 @@ const resolvers = {
               dateJobStart: Date(),
               workerUser: context.user.username
             }
-          } 
+          }
         )
         console.log("WorkerAgree HERE", workerAgree)
 
@@ -238,16 +238,19 @@ const resolvers = {
 
       if (context.user) {
         console.log(jobId)
-        const getJob = await Job.findOne({_id: mongoose.Types.ObjectId(jobId)})
+        const getJob = await Job.findOne({ _id: mongoose.Types.ObjectId(jobId) })
         const employerComplete = await Job.updateOne(
-          {  _id: mongoose.Types.ObjectId(jobId) },
-          { $set: {
-            dateJobEndEmployer: Date()
-          }},
-          { $mul:
-            { 
+          { _id: mongoose.Types.ObjectId(jobId) },
+          {
+            $set: {
+              dateJobEndEmployer: Date()
+            }
+          },
+          {
+            $mul:
+            {
               dollarsPromised: getJob.rate_per_hour * getJob.est_hours
-            } 
+            }
           }
         )
         console.log(employerComplete)
@@ -261,18 +264,19 @@ const resolvers = {
 
       if (context.user) {
         const workerComplete = await Job.updateOne(
-          {  _id: mongoose.Types.ObjectId(jobId) },
-          { $set: { 
-            dateJobEndWorker: Date() 
-          } 
-        }
+          { _id: mongoose.Types.ObjectId(jobId) },
+          {
+            $set: {
+              dateJobEndWorker: Date()
+            }
+          }
         )
         console.log(workerComplete)
         return workerComplete
       }
       throw new AuthenticationError("You have to be logged in to see this information.")
     },
-    
+
     closeJobCase: async (parent, { jobId }, context) => {
       if (context.user) {
         const jobComplete = await Job.updateOne(
@@ -296,19 +300,20 @@ const resolvers = {
       console.log(context.user.username)
       if (context.user) {
 
-          // Refactor to be dependent on the user who is logged in
-          const jobToReview = Job.findOneAndUpdate(
-            { _id: args.jobId },
-            { $set: {
-                review_score_worker : args.review_score_worker,
-                review_text_worker : args.review_text_worker
-                }
-              }
-            )
+        // Refactor to be dependent on the user who is logged in
+        const jobToReview = Job.findOneAndUpdate(
+          { _id: args.jobId },
+          {
+            $set: {
+              review_score_worker: args.review_score_worker,
+              review_text_worker: args.review_text_worker
+            }
+          }
+        )
 
-          return jobToReview
-        }
-        throw new AuthenticationError("You have to be logged in to see this information.")
+        return jobToReview
+      }
+      throw new AuthenticationError("You have to be logged in to see this information.")
     },
 
     addReviewEmployer: async (parent, args, context) => {
