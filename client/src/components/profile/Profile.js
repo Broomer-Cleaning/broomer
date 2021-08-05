@@ -3,6 +3,7 @@ import "./modal.css";
 import React, { useState } from "react";
 import {Form, Row, Button, Container, Col} from "react-bootstrap"
 // import Modal from "./Modal";
+import { Link } from "react-router-dom";
 
 
 import { useQuery } from "@apollo/client";
@@ -88,11 +89,13 @@ const Profile = () => {
     try {
       const { data } = await profileDetails({
         variables: {
+          profileInput: {
           first_name,
           last_name,
           date_of_birth,
           phone_number,
           about_me
+          }
         },
       });
 
@@ -236,13 +239,12 @@ const Profile = () => {
           label="Agree to terms and conditions"
           feedback="You must agree before submitting."
          />
-         </Form.Group>
-
-           
-
+         </Form.Group> 
+         <Link to="/userprofile">
              <Button  className="btn btn-primary prof text-center" onClick={() => handleFormSubmit()} >
                 Create Profile
               </Button>
+              </Link>
              </Form>
 
         </div>

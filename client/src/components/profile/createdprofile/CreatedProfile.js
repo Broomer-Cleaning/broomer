@@ -44,10 +44,12 @@ const CreatedProfile = () => {
       <Container >
         <div className="profileSection">
           <img className="avatar" src={avatar} alt="avatr" />
-            <div className="itemContainer">
+          
 
-          <h2>{userData.first_name && userData.last_name}</h2>
-         
+          <h2>{userData.first_name}   {userData.last_name}</h2>
+          <div className="itemContainer">
+          
+           <div className="emailPhone">
             <AiOutlineMail className="icon" size={24} />
             <a href="mailto:test@addres.com">
               <span>Email</span>
@@ -56,6 +58,7 @@ const CreatedProfile = () => {
             <a href={userData.phone_number}>
               <span>Call Me</span>
             </a>
+            </div>
           </div>
 
           <p>

@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+
+import { Link } from "react-router-dom";
+
 import "./testimonials.css";
 import {FaStar} from "react-icons/fa";
 
@@ -52,6 +55,24 @@ const Testimonials = () => {
         review_score_worker: currentValue,
         review_text_worker: reviews.body
       }})
+
+      // try {
+      //   const { data } = await addReviewWorker({
+      //     variables: {
+      //       addReviewWorker: {
+      //         jobId: '610b3b6c2f8b7d3c65d5981d',
+      //         review_score_worker: currentValue,
+      //         review_text_worker: reviews.body
+            
+      //       }
+      //     },
+      //   });
+  
+      //   window.location.reload();
+      // } catch (err) {
+      //   console.error(err);
+      // }
+    
       
     
 
@@ -139,8 +160,9 @@ const Testimonials = () => {
       value={reviews.body}
       onChange={handleChange}
       />
-      {/* onClick={() => addReview()} */}
+      <Link to="/dashboard">
       <button onClick={() => handleFormSubmit()} type="submit" className="testB">Submit</button>
+      </Link>
     </div>
   );
 };
