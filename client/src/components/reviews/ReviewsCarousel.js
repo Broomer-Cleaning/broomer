@@ -1,4 +1,10 @@
-import React from 'react'
+import React, {useState} from 'react'
+
+import { useQuery } from "@apollo/client";
+import {GET_ME} from "../../utils/queries"
+
+
+
 import "./reviews.css";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -10,6 +16,32 @@ import avatar3 from "./img/avatar-3.png";
 import avatar4 from "./img/avatar-4.png";
 
 const ReviewsCarousel = () => {
+
+  // const [reviews, setReviews]=useState({stars: 5})
+  // const stars = reviews.review_score_worker
+
+  const { loading, data } = useQuery(GET_ME);
+  let userData=""
+  if (loading) {
+    console.log("Loading");
+  } else {
+    userData = data?.me || {};
+    // setReviews(stars)
+    console.log(userData.username);
+    console.log(userData.review_text_worker)
+  }
+
+  // const {  data } = useQuery(GET_ALL_JOBS);
+  // let jobsData=""
+ 
+  //   jobsData = data?.jobs || {};
+    
+  //   console.log(jobsData.review_text_worker);
+   
+  
+
+
+
 
   //const [reviews, setReviews]=useState({stars: 5})
   //const stars = reviews.stars
@@ -31,9 +63,9 @@ const ReviewsCarousel = () => {
     <>
       <img src={avatar1} alt="Slavic O" />
       <div className="myCarousel">
-        <h3>Slavic O</h3>
-        {/* <p>{reviews}</p> */}
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis ratione sequi saepe dicta blanditiis, molestias eum excepturi quod fugiat veniam!</p>
+        <h3>{userData.first_name}  {userData.last_name}</h3>
+        <p>{userData.review_score_worker} Stars</p>
+        <p>{userData.review_text_worker}</p>
       </div>
     </>
     <>

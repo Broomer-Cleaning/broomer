@@ -105,14 +105,7 @@ const Profile = () => {
     }
   };
 
-  
-  // const handleCheckBox = event => {
-  //   console.log(event.target.value)
-  // }
 
-  
-
-  
   return (
     <div>
       <Container >

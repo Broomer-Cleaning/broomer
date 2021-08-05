@@ -73,13 +73,13 @@ const AddJobForm = (onJobAdded) => {
               <Form.Check
                 type="radio"
                 label="YES"
-                name="formHorizontalRadios"
+                name="policeCheck"
                 id="formHorizontalRadios1"
               />
               <Form.Check
                 type="radio"
                 label="NO"
-                name="formHorizontalRadios"
+                name="policeCheck"
                 id="formHorizontalRadios2"
               />
             </Col>
@@ -92,13 +92,13 @@ const AddJobForm = (onJobAdded) => {
               <Form.Check
                 type="radio"
                 label="YES"
-                name="formHorizontalRadios"
+                name="mask"
                 id="formHorizontalRadios1"
               />
               <Form.Check
                 type="radio"
                 label="NO"
-                name="formHorizontalRadios"
+                name="mask"
                 id="formHorizontalRadios2"
               />
             </Col>
@@ -154,18 +154,18 @@ const AddJobForm = (onJobAdded) => {
 
         <Row>
           <Form.Group className="mb-1" id="formGridCheckbox">
-            <Form.Label>Equipmen Provided</Form.Label>
+            <Form.Label>Equipment Provided</Form.Label>
             <Col sm={10}>
               <Form.Check
                 type="radio"
                 label="YES"
-                name="formHorizontalRadios"
+                name="equipment"
                 id="formHorizontalRadios1"
               />
               <Form.Check
                 type="radio"
                 label="NO"
-                name="formHorizontalRadios"
+                name="equipment"
                 id="formHorizontalRadios2"
               />
             </Col>
@@ -173,18 +173,18 @@ const AddJobForm = (onJobAdded) => {
         </Row>
         <Row>
           <Form.Group className="mb-1" id="formGridCheckbox">
-            <Form.Label>Need to Bring Equipmen</Form.Label>
+            <Form.Label>Need to Bring Equipment</Form.Label>
             <Col sm={10}>
               <Form.Check
                 type="radio"
                 label="YES"
-                name="formHorizontalRadios"
+                name="bringEquipment"
                 id="formHorizontalRadios1"
               />
               <Form.Check
                 type="radio"
                 label="NO"
-                name="formHorizontalRadios"
+                name="bringEquipment"
                 id="formHorizontalRadios2"
               />
             </Col>
@@ -201,13 +201,13 @@ const AddJobForm = (onJobAdded) => {
               <Form.Check
                 type="radio"
                 label="YES"
-                name="formHorizontalRadios"
+                name="fullyVax"
                 id="formHorizontalRadios1"
               />
               <Form.Check
                 type="radio"
                 label="NO"
-                name="formHorizontalRadios"
+                name="fullyVax"
                 id="formHorizontalRadios2"
               />
             </Col>
@@ -220,13 +220,13 @@ const AddJobForm = (onJobAdded) => {
               <Form.Check
                 type="radio"
                 label="YES"
-                name="formHorizontalRadios"
+                name="pets"
                 id="formHorizontalRadios1"
               />
               <Form.Check
                 type="radio"
                 label="NO"
-                name="formHorizontalRadios"
+                name="pets"
                 id="formHorizontalRadios2"
               />
             </Col>
