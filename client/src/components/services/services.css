@@ -22,6 +22,6 @@ body {
   font-weight: bold;
 }
 
-img {
+.inside-img, .outside-img, .car-img {
   width: 5rem;
 }

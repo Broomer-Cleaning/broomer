@@ -34,13 +34,13 @@ const typeDefs = gql`
 
     type Job {
         _id: ID!
+        title: String
         street_address: String
         postal_code: String
         employerUser: String
         workerUser: String
         est_hours: Int
         rate_per_hour: Int
-        title: String
         job_description: String
         safety_double_vax: Boolean
         safety_mask: Boolean
@@ -86,14 +86,6 @@ const typeDefs = gql`
         have_supplies_employer: Boolean
         need_supplies_worker: Boolean
     }
-
-    # type Review {
-    #     _id: ID!
-    #     review_score_worker: Int
-    #     review_text_worker: String
-    #     review_score_employer: Int
-    #     review_text_employer: String
-    # }
 
     type Auth {
         token: String!

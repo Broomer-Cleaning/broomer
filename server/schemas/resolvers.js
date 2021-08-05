@@ -19,6 +19,7 @@ const resolvers = {
       } else {
         return User.findOne({ _id: profileId }).populate("jobs")
       }
+      throw new AuthenticationError("You have to be logged in to see this information.")
     },
 
     // ✔️✔️
@@ -32,38 +33,38 @@ const resolvers = {
       return Job.findOne({ _id: jobId})
     },
 
-    pullOpenJobs: async() => {
-      return Job.find({ 
-        $and: [ {dateJobStart: null }, {dateCaseOpened: {$ne: null}} ]
+    pullOpenJobs: async () => {
+      return Job.find({
+        $and: [{ dateJobStart: null }, { dateCaseOpened: { $ne: null } }]
       }
       )
     },
 
-    inProgress: async() => {
+    inProgress: async () => {
       return Job.find(
-        { 
-          $and: [ 
-            { 
-              $or: [ 
-                {dateJobEndWorker: null }, 
-                {dateJobEndEmployer: null} 
-              ] 
-            }, 
-            { 
-              dateJobStart: 
-                {$ne: null } 
-              } 
-            ]
-          }
-        )
-      },
+        {
+          $and: [
+            {
+              $or: [
+                { dateJobEndWorker: null },
+                { dateJobEndEmployer: null }
+              ]
+            },
+            {
+              dateJobStart:
+                { $ne: null }
+            }
+          ]
+        }
+      )
+    },
 
-    noReviews: async() => {
+    noReviews: async () => {
       return Job.find({
-        $and: [ 
-          {dateJobEndWorker: {$ne:null} }, 
-          {dateJobEndEmployer: {$ne:null}}, 
-          {dateCaseClosed: null} 
+        $and: [
+          { dateJobEndWorker: { $ne: null } },
+          { dateJobEndEmployer: { $ne: null } },
+          { dateCaseClosed: null }
         ]
       })
     },
@@ -133,6 +134,8 @@ const resolvers = {
         console.log(updateUser)
         return updateUser
       }
+
+      throw new AuthenticationError("You have to be logged in to see this information.")
     },
 
 
@@ -205,8 +208,12 @@ const resolvers = {
               dateJobStart: Date(), 
               workerUser: context.user.username 
             }
+<<<<<<< HEAD
           },
           { new: true, runValidators: true }
+=======
+          }
+>>>>>>> ee192aee1282538a65bfad9204e2a323a70da80e
         )
         console.log("WorkerAgree HERE", workerAgree)
 
@@ -228,6 +235,7 @@ const resolvers = {
     workerCompleteJob: async (parent, { jobId }, context) => {
 
       if (context.user) {
+<<<<<<< HEAD
         const workerComplete = Job.findByIdAndUpdate(
           {_id: jobId},
           { $set: 
@@ -256,11 +264,34 @@ const resolvers = {
       //     return workerComplete
       // }
 
+=======
+        console.log(jobId)
+        const getJob = await Job.findOne({ _id: mongoose.Types.ObjectId(jobId) })
+        const employerComplete = await Job.updateOne(
+          { _id: mongoose.Types.ObjectId(jobId) },
+          {
+            $set: {
+              dateJobEndEmployer: Date()
+            }
+          },
+          {
+            $mul:
+            {
+              dollarsPromised: getJob.rate_per_hour * getJob.est_hours
+            }
+          }
+        )
+        console.log(employerComplete)
+        return employerComplete
+      }
+      throw new AuthenticationError("You have to be logged in to see this information.")
+>>>>>>> ee192aee1282538a65bfad9204e2a323a70da80e
     },
 
     employerCompleteJob: async (parent, { jobId }, context) => {
 
       if (context.user) {
+<<<<<<< HEAD
         const employerComplete = Job.findByIdAndUpdate(
           {_id: jobId},
           { $set: 
@@ -271,8 +302,25 @@ const resolvers = {
           }, { new: true, runValidators: true }
           )
           return employerComplete
+=======
+        const workerComplete = await Job.updateOne(
+          { _id: mongoose.Types.ObjectId(jobId) },
+          {
+            $set: {
+              dateJobEndWorker: Date()
+            }
+          }
+        )
+        console.log(workerComplete)
+        return workerComplete
+>>>>>>> ee192aee1282538a65bfad9204e2a323a70da80e
       }
+      throw new AuthenticationError("You have to be logged in to see this information.")
     },
+<<<<<<< HEAD
+=======
+
+>>>>>>> ee192aee1282538a65bfad9204e2a323a70da80e
     closeJobCase: async (parent, { jobId }, context) => {
 
       if (context.user) {
@@ -286,6 +334,7 @@ const resolvers = {
           )
           return jobComplete
       }
+      throw new AuthenticationError("You have to be logged in to see this information.")
     },
 
     addReviewWorker: async (parent, args, context) => {
@@ -294,18 +343,20 @@ const resolvers = {
       if (context.user) {
 
         // Refactor to be dependent on the user who is logged in
-          const jobToReview = Job.findOneAndUpdate(
-            { _id: args.jobId },
-            { $set: {
-                review_score_worker : args.review_score_worker,
-                review_text_worker : args.review_text_worker
-                }
-              }
-            )
+        const jobToReview = Job.findOneAndUpdate(
+          { _id: args.jobId },
+          {
+            $set: {
+              review_score_worker: args.review_score_worker,
+              review_text_worker: args.review_text_worker
+            }
+          }
+        )
 
-          return jobToReview
-        }
-      },
+        return jobToReview
+      }
+      throw new AuthenticationError("You have to be logged in to see this information.")
+    },
 
     addReviewEmployer: async (parent, args, context) => {
       if (context.user) {

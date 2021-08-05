@@ -1,13 +1,20 @@
 import "./dashboard.css";
-import "./addEvent/addEvent.css";
+// import "./addEvent/addEvent.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "@fortawesome/fontawesome-free/css/all.css";
 import "react-datetime/css/react-datetime.css";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { 
+  // useState,
+  //  useRef,
+    } from "react";
 import { Button, Container } from "react-bootstrap";
-import AddJob from "./addEvent/AddJob";
-import EditJob from "./addEvent/EditJob";
+import { Link } from "react-router-dom";
+
+import { useQuery } from "@apollo/client";
+import {GET_ALL_JOBS, JOBS_ON_MARKET } from "../../utils/queries"
+import { useMutation } from "@apollo/client";
+import {UPDATE_JOB} from "../../utils/mutation"
 
 import FullCalendar from "@fullcalendar/react";
 import listPlugin from "@fullcalendar/list";
@@ -16,69 +23,22 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import bootstrapPlugin from "@fullcalendar/bootstrap";
 
-import axios from "axios";
-import moment from "moment";
-import { Link } from "react-router-dom";
-
 
 
 const Dashboard = () => {
-  const [showModal, setShowModal] = useState(false);
-  const [curentJob, setCurentJob] = useState({
-    title: "job title",
-    start: "2021-08-04",
-    description:"job Descrip"
-  });
 
-  const removeJob = index => {
-    const newTodos = [...events];
-    newTodos.splice(index, 1);
-    setData(curentJob);
-  };
-  const [data, setData] = useState([]);
-
-  const openModal = () => {
-    setShowModal((prev) => !prev);
-  };
-
-  const [events, setEvents] = useState([]);
-  const calendarRef = useRef(null);
-
-  useEffect(() => {
-    axios.get("/api/calendar/get-events").then((info) => {
-      // setData (oldData)
-      setData(info);
-    });
-  }, []);
-
-  const onEventAdded = (event) => {
-    let calendarApi = calendarRef.current.getApi();
-    calendarApi.addEvent({
-      start: moment(event.start).toDate(),
-      title: event.title,
-      description: event.description
-    });
-  };
-
-  const handleEventClick = ({ event, el }) => {
-    setCurentJob(event);
-  };
-
-  async function handleEventAdd(data) {
-    await axios.post("/api/calendar/create-event", data.event);
+  const { loading, data } = useQuery(GET_ALL_JOBS, JOBS_ON_MARKET);
+    let allJobData = "";
+    let openJob ="";
+  if (loading) {
+    console.log("Loading");
+  } else {
+     allJobData = data?.jobs|| {};
+     openJob = data?.pullOpenJobs|| {};
+    console.log(allJobData, openJob);
   }
 
-  async function handleDateSet(data) {
-    const responce = await axios.get(
-      "/api/calendar/get-events?start=" + moment(data.start).toISOString()
-    );
-    setEvents(responce.data);
-  }
-  const onClose = () => {
-    setShowModal(false);
-  };
 
-  
   return (
     <div className="main">
       <Container className="boxHedaer">
@@ -103,12 +63,8 @@ const Dashboard = () => {
         <div className="medSection">
           <div className="listview" id="calender">
             <Container>
-              <div
-                className="daylist"
-              >
+              <div className="daylist">
                 <FullCalendar
-                  ref={calendarRef}
-                   events={events}
                   className="dayList"
                   plugins={[
                     interactionPlugin,
@@ -118,18 +74,12 @@ const Dashboard = () => {
                     bootstrapPlugin,
                   ]}
                   initialView="listMonth"
-                  eventAdd={(event) => handleEventAdd(event)}
-                  dateSet={(date) => handleDateSet(date)}
                   themeSystem="bootstrap"
-                  eventClick={handleEventClick}
                   headerToolbar={{
                     left: "prev,next today",
                     center: "title",
                     right: "dayGridMonth,listDay",
                   }}
-                  showModal={showModal}
-                  setShowModal={setShowModal}
-                  onEventAdded={(event) => onEventAdded(event)}
                 />
               </div>
             </Container>
@@ -142,25 +92,18 @@ const Dashboard = () => {
               <div className="JobList">
                 <ul>
                   <li>
-                   <h5>{curentJob.title}</h5> 
-                    <p>{curentJob.description}</p>
-                    {/* <p>{curentJob.}</p> */}
                     <span>
                       <div className="d-grid gap-2 d-md-block text-center">
                         <Button
                           className="btn-space btn-warning"
-                          onClick={openModal}
+                         
                         >
                           Edit Job
                         </Button>
-                        <EditJob
-                          showModal={showModal}
-                          setShowModal={setShowModal}
-                        />
+                        
                         <Button
                           className="btn-space m-1"
                           variant="danger"
-                          onClick={() => removeJob(curentJob)}
                         >
                           Delete Job
                         </Button>
@@ -170,24 +113,37 @@ const Dashboard = () => {
                   </li>
                 </ul>
               </div>
-              <Button onClick={openModal}>Add Job</Button>
-              <AddJob
-                showModal={showModal}
-                onEventAdded={onEventAdded}
-                setShowModal={setShowModal}
-                onClose={onClose}
-              />
+              <Link to="/addJob">
+                <Button>Add Job</Button>
+              </Link>
             </div>
             <div className="compeletJobBox">
               <h4>Job Completed</h4>
               <div className="JobList">
                 <ul>
                   <li>
-                    {curentJob.title}
+                    
                     <div className="text-center">
                       <Link to="/testimonials">
-                      <Button className="btn btn-primary ">Write Review</Button>
+                        <Button className="btn btn-primary ">
+                          Write Review
+                        </Button>
                       </Link>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="compeletJobBox">
+              <h4>Recommend Job</h4>
+              <div className="JobList">
+                <ul>
+                  <li>
+                  
+                    <div className="text-center">
+                        <Button className="btn btn-primary ">
+                          Accept Job
+                        </Button>
                     </div>
                   </li>
                 </ul>
