@@ -292,5 +292,33 @@ export const JOBS_IN_PROGRESS = gql`
 // Finds all jobs which both the worker and employer have completed, but no review left
 // Your dashboard will prompt you to 'leave a review'
 export const DONE_NO_REVIEWS = gql`
-
+query noReviews {
+  noReviews {
+    _id
+    street_address
+    postal_code
+    employerUser
+    workerUser
+    est_hours
+    rate_per_hour
+    title
+    job_description
+    safety_double_vax
+    safety_mask
+    safety_police_check
+    have_pets
+    have_equipment_employer
+    need_equipment_worker
+    have_supplies_employer
+    need_supplies_worker
+    emp_provides_meal
+    emp_provides_drinks
+    emp_provides_facilities
+    dateCaseOpened
+    dateJobStart	
+    dateJobEndWorker
+    dateJobEndEmployer
+    dateCaseClosed
+  }
+}
 `
