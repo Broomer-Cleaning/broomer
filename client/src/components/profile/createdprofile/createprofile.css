@@ -1,0 +1,154 @@
+.aboutMeSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.aboutMeSection h1 {
+  margin-top: 4rem;
+
+}
+
+/* .avatr img {
+  height: 30%;
+  width: 30% ;
+} */
+
+.fullName {
+  font-weight: bold;
+  color: #4473b7;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+}
+
+.itemContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2.5%;
+}
+
+.reviws {
+  margin-bottom: 5%;
+  background-image: url(img/people.png);
+  background-size: cover;
+  background-color: var(--primary-dark-blue);
+  text-align: center;
+  padding-bottom: 4rem;
+  margin-bottom: 3rem;
+  width: 100%;
+}
+
+.reviws h2 {
+  color: var(--primary-white);
+  padding: 3rem 0;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.btn {
+  border-radius: 4px;
+  border: none;
+  background: #141414;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.prof {
+  margin-top: 4rem;
+}
+
+.editFrom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
+}
+
+.content {
+  background-color: #081525;
+  opacity: 70%;
+}
+
+.itemContainer .icon {
+  margin-right: 0.1rem;
+}
+
+.itemContainer span {
+  margin-right: 1rem;
+}
+
+.itemContainer a span {
+  text-decoration: none !important;
+  color: #081525;
+}
+
+.itemContainer a:hover {
+  color: #4473b7;
+}
+
+.aboutMeSection p {
+  margin-bottom: 3rem;
+  margin-top: 1rem;
+}
+
+.editBtn {
+  margin-bottom: 2rem;
+}
+
+
+.sectionTital {
+  color: #4473b7;
+  text-align: center;
+  font-weight: bold;
+}
+
+.reviws {
+  margin-bottom: 5%;
+  background-image: url(img/people.png);
+  background-size: cover;
+  background-color: var(--primary-dark-blue);
+  text-align: center;
+  padding-bottom: 4rem;
+  margin-bottom: 3rem;
+  width: 100%;
+}
+
+.reviws h2 {
+  color: var(--primary-white);
+  padding: 3rem 0;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+/* #root
+  > div:nth-child(2)
+  > div.reviws
+  > div.carousel-root
+  > div
+  > div
+  > ul
+  > li
+  > div
+  > h3,
+#root
+  > div:nth-child(2)
+  > div.reviws
+  > div.carousel-root
+  > div
+  > div
+  > ul
+  > li
+  > div
+  > p,
+#root
+  > div:nth-child(2)
+  > div.reviws
+  > div.carousel-root
+  > div
+  > button.control-arrow.control-next {
+  color: black;
+} */
