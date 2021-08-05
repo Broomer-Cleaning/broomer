@@ -116,7 +116,7 @@ const Dashboard = () => {
               </div>
             </div>
             <div className="compeletJobBox">
-              <h4>Recomned Job</h4>
+              <h4>Recommend Job</h4>
               <div className="JobList">
                 <ul>
                   <li>
