@@ -45,6 +45,7 @@ const AddJobForm = (onJobAdded) => {
             <Form.Label>Job Title</Form.Label>
             <Form.Control
               value={title}
+              
               type="text"
               placeholder="Car washing"
               onChange={(event) => setTitle(event.target.value)}
