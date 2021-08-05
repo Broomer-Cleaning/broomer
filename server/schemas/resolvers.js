@@ -208,12 +208,7 @@ const resolvers = {
               dateJobStart: Date(), 
               workerUser: context.user.username 
             }
-<<<<<<< HEAD
-          },
-          { new: true, runValidators: true }
-=======
           }
->>>>>>> ee192aee1282538a65bfad9204e2a323a70da80e
         )
         console.log("WorkerAgree HERE", workerAgree)
 
@@ -235,36 +230,6 @@ const resolvers = {
     workerCompleteJob: async (parent, { jobId }, context) => {
 
       if (context.user) {
-<<<<<<< HEAD
-        const workerComplete = Job.findByIdAndUpdate(
-          {_id: jobId},
-          { $set: 
-            {
-              dateJobEndWorker: Date(), 
-              // dollarsPromised: (est_hours * rate_per_hour)
-            }
-          }, { new: true, runValidators: true }
-          )
-          return workerComplete
-      }
-
-      // if (context.user) {
-      //   const workerComplete = Job.aggregate([
-      //     {$match: {
-      //       _id: jobId}
-      //     },
-      //     { $group: 
-      //       { dateJobEndWorker: Date(),
-      //         dollarsPromised: { $sum: { $multiply: ["$est_hours", "$rate_per_hour"]}} 
-      //       }
-      //     }, 
-      //     { new: true, runValidators: true }
-      //   ])
-      //     console.log(workerComplete)
-      //     return workerComplete
-      // }
-
-=======
         console.log(jobId)
         const getJob = await Job.findOne({ _id: mongoose.Types.ObjectId(jobId) })
         const employerComplete = await Job.updateOne(
@@ -285,24 +250,11 @@ const resolvers = {
         return employerComplete
       }
       throw new AuthenticationError("You have to be logged in to see this information.")
->>>>>>> ee192aee1282538a65bfad9204e2a323a70da80e
     },
 
     employerCompleteJob: async (parent, { jobId }, context) => {
 
       if (context.user) {
-<<<<<<< HEAD
-        const employerComplete = Job.findByIdAndUpdate(
-          {_id: jobId},
-          { $set: 
-            {
-              dateJobEndEmployer: Date(), 
-              // dollarsPromised: (est_hours * rate_per_hour)
-            }
-          }, { new: true, runValidators: true }
-          )
-          return employerComplete
-=======
         const workerComplete = await Job.updateOne(
           { _id: mongoose.Types.ObjectId(jobId) },
           {
@@ -313,14 +265,9 @@ const resolvers = {
         )
         console.log(workerComplete)
         return workerComplete
->>>>>>> ee192aee1282538a65bfad9204e2a323a70da80e
       }
       throw new AuthenticationError("You have to be logged in to see this information.")
     },
-<<<<<<< HEAD
-=======
-
->>>>>>> ee192aee1282538a65bfad9204e2a323a70da80e
     closeJobCase: async (parent, { jobId }, context) => {
 
       if (context.user) {
