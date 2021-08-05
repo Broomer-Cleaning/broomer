@@ -1,4 +1,12 @@
-.aboutMeSection {
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+
+body {
+  font-family: "Roboto Condensed", san-serif !important;
+}
+
+
+
+.profileSection {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -12,10 +20,10 @@
 
 }
 
-/* .avatr img {
+.avatar img {
   height: 30%;
   width: 30% ;
-} */
+}
 
 .fullName {
   font-weight: bold;

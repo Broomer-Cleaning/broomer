@@ -11,7 +11,20 @@ import {GET_ME} from "../../utils/queries"
 import { useMutation } from "@apollo/client";
 import {UPDATE_PROFILE} from "../../utils/mutation"
 
-
+// const Radio = ({label, id, handleChange, name, form}) => (
+//   <>
+//   <input
+//   type="radio"
+//   id={id}
+//   name={name}
+//   onChange={handleCheckBox}
+//   value={id}
+//   checked={form[name]===id}
+//   />
+//   <label htmlFor={id}>{label}</label>
+//   <br/>
+//   </>
+// )
 
 const Profile = () => {
   // const [showModal, setShowModal] = useState(false);
@@ -20,36 +33,65 @@ const Profile = () => {
   //   setShowModal((prev) => !prev);
   // };
 
-  const { loading, data } = useQuery(GET_ME);
-    let userData = "";
-  if (loading) {
-    console.log("Loading");
-  } else {
-    const userData = data?.me || {};
-    console.log(userData.username);
-  }
+
+  
 
   const [first_name, setFirst_name] = useState("");
   const [last_name, setLast_name] = useState("");
   const [date_of_birth, setDate_of_birth] = useState("");
   const [phone_number, setPhone_number] = useState("");
   const [about_me, setAbout_me] = useState("");
+  const [isFullyVax, setisFullyVax] =useState("")
+  const [policeCheck, setPoliceCheck]=useState("")
   
 
   const [profileDetails, { error }] = useMutation(UPDATE_PROFILE);
 
+  const { loading, data } = useQuery(GET_ME);
+  let userData=""
+  if (loading) {
+    console.log("Loading");
+  } else {
+    userData = data?.me || {};
+    console.log(userData.username);
+  }
+  
+
+
   const handleChange= (event) => {
-    const { name, value } = event.target;
-    setFirst_name({ ...profileDetails, [name]: value });
-    console.log(value)
-    setLast_name({ ...profileDetails, [name]: value });
-    console.log(value)
-    setDate_of_birth({ ...profileDetails, [name]: value });
-    console.log(value)
-    setPhone_number({ ...profileDetails, [name]: value });
-    console.log(value)
-    setAbout_me({ ...profileDetails, [name]: value });
-    console.log(value)
+    const { name, value, data } = event.target;
+    console.log(event.target)
+    console.log (name, value)
+   
+
+    // Based on the input type, we set the state of either email, username, and password
+    if (name === 'first') {
+      setFirst_name(value);
+    } else if (name === 'last') {
+      setLast_name(value);
+    } else if (name === 'dob') {
+      setDate_of_birth(value);
+    } else if (name === 'phone') {
+      setPhone_number(value);
+    }else if (name === 'description') {
+      setAbout_me(value);
+    }else if ( data === 'yes'){
+      setisFullyVax(true)
+      console.log(data)
+    }else if ( data === 'yes'){
+      setPoliceCheck(true)
+      console.log(data)
+    }
+    // setFirst_name(first_name);
+    // console.log(value)
+    // setLast_name({ ...profileDetails, [name]: value });
+    // console.log(value)
+    // setDate_of_birth({ ...profileDetails, [name]: value });
+    // console.log(value)
+    // setPhone_number({ ...profileDetails, [name]: value });
+    // console.log(value)
+    // setAbout_me({ ...profileDetails, [name]: value });
+    // console.log(value)
 
   };
 
@@ -59,11 +101,11 @@ const Profile = () => {
     try {
       const { data } = await profileDetails({
         variables: {
-          first_name:profileDetails.first_name,
-          last_name:profileDetails.last_name,
-          date_of_birth:profileDetails.date_of_birth,
-          phone_number:profileDetails.phone_number,
-          about_me:profileDetails.about_me
+          first_name,
+          last_name,
+          date_of_birth,
+          phone_number,
+          about_me
         },
       });
 
@@ -74,6 +116,10 @@ const Profile = () => {
   };
 
   
+  // const handleCheckBox = event => {
+  //   console.log(event.target.value)
+  // }
+
   
 
   
@@ -103,7 +149,7 @@ const Profile = () => {
               <Form.Group as={Col} controlId="formGridPassword" >
               <Form.Label>Last Name</Form.Label>
              <Form.Control 
-             
+             className="firstName"
              value={last_name}
              type="name" 
              name="last"
@@ -157,16 +203,19 @@ const Profile = () => {
           <Form.Label>Fully Vacinated</Form.Label>
           <Col sm={10}>
             <Form.Check
-              type="radio"
-              label="YES"
-              name="formHorizontalRadios"
-              id="formHorizontalRadios1"
+               type="radio"
+               label="YES"
+               name="vax"
+               data-vax="yes"
+               id="formHorizontalRadios1"
+               onChange={handleChange}
             />
             <Form.Check
               type="radio"
               label="NO"
-              name="formHorizontalRadios"
+              name="vax"
               id="formHorizontalRadios2"
+              onChange={handleChange}
             />
           </Col>
         </Form.Group>
@@ -177,14 +226,18 @@ const Profile = () => {
             <Form.Check
               type="radio"
               label="YES"
-              name="formHorizontalRadios"
+              name="police"
+              title="YES"
               id="formHorizontalRadios1"
+              onChange={handleChange}
             />
             <Form.Check
               type="radio"
               label="NO"
-              name="formHorizontalRadios"
+              title="YES"
+              name="police"
               id="formHorizontalRadios2"
+              onChange={handleChange}
             />
            </Col>
            </Form.Group>

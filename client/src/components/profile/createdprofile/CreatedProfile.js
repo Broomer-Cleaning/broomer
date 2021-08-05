@@ -15,19 +15,21 @@ import ReviewsCarousel from "../../reviews/ReviewsCarousel";
 const CreatedProfile = () => {
 
   const { loading, data } = useQuery(GET_ME);
-    let userData = "";
+  let userData=""
   if (loading) {
     console.log("Loading");
   } else {
-    const userData = data?.me || {};
-    console.log(userData.username);
+    userData = data?.me || {};
+    console.log(userData.first_name);
   }
   return (
-    <div>
+   
       <Container >
-        <div className="aboutMeSection">
-          <img className="avatr" src={avatar} alt="avatr" />
+        <div className="profileSection">
+          <img className="avatar" src={avatar} alt="avatr" />
             <div className="itemContainer">
+
+          <h2>{userData.first_name && userData.last_name}</h2>
          
             <AiOutlineMail className="icon" size={24} />
             <a href="mailto:test@addres.com">
@@ -40,15 +42,7 @@ const CreatedProfile = () => {
           </div>
 
           <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged. It was popularised in the 1960s
-            with the release of Letraset sheets containing Lorem Ipsum passages,
-            and more recently with desktop publishing software like Aldus
-            PageMaker including versions of Lorem Ipsum.
+          {userData.about_me}
           </p>
 
            {/* <div> */}
@@ -72,7 +66,7 @@ const CreatedProfile = () => {
 
         </div>
         </Container>
-    </div>
+    
   )
 }
 

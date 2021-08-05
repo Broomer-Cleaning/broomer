@@ -19,10 +19,10 @@ const resolvers = {
 
     // ✔️✔️
     me: async (parent, args, context) => {
-      // if (context.user) {
-      return User.findOne({ _id: context.user._id }).populate("jobs");
-      // }
-      // throw new AuthenticationError("You have to be logged in to see this information.")
+      if (context.user) {
+        return User.findOne({ _id: context.user._id }).populate("jobs");
+      }
+      throw new AuthenticationError("You have to be logged in to see this information.")
     },
 
     // ✔️✔️
