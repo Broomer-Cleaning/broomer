@@ -32,12 +32,6 @@ const resolvers = {
       return Job.findOne({ _id: jobId})
     },
 
-<<<<<<< HEAD
-    pullOpenJobs: async () => {
-      return Job.find({
-        dateJobStart:null
-      })
-=======
     pullOpenJobs: async() => {
       return Job.find({ 
         $and: [ {dateJobStart: null }, {dateCaseOpened: {$ne: null}} ]
@@ -91,7 +85,6 @@ const resolvers = {
 
       // console.log(jobReviews)
       // return jobReviews
->>>>>>> 6fbdebfee16022755d47c4a42ff352f0587808e3
     }
 
   },
