@@ -107,7 +107,8 @@ query me {
       review_score_employer
       review_text_employer
     }
-    jobs_hired _id
+    jobs_hired {
+      _id
       street_address
       postal_code
       employerUser
@@ -141,7 +142,8 @@ query me {
       review_text_employer
     }
   }
-}`;
+}
+`;
 
 // Returns a specific job based on jobId
 export const GET_SINGLE_JOB = gql`

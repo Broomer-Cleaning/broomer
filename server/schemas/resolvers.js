@@ -22,6 +22,7 @@ const resolvers = {
       if (context.user) {
         return User.findOne({ _id: context.user._id }).populate("jobs");
       }
+      throw new AuthenticationError("You have to be logged in to see this information.")
     },
 
     // ✔️✔️
@@ -137,6 +138,8 @@ const resolvers = {
         console.log(updateUser)
         return updateUser
       }
+
+      throw new AuthenticationError("You have to be logged in to see this information.")
     },
 
     // ✔️✔️
@@ -246,10 +249,11 @@ const resolvers = {
               dollarsPromised: getJob.rate_per_hour * getJob.est_hours
             } 
           }
-      )
+        )
         console.log(employerComplete)
         return employerComplete
       }
+      throw new AuthenticationError("You have to be logged in to see this information.")
     },
 
     workerCompleteJob: async (parent, { jobId }, context) => {
@@ -266,6 +270,7 @@ const resolvers = {
         console.log(workerComplete)
         return workerComplete
       }
+      throw new AuthenticationError("You have to be logged in to see this information.")
     },
     
     closeJobCase: async (parent, { jobId }, context) => {
@@ -283,6 +288,7 @@ const resolvers = {
         console.log(jobComplete)
         return jobComplete
       }
+      throw new AuthenticationError("You have to be logged in to see this information.")
     },
 
     addReviewWorker: async (parent, args, context) => {
@@ -290,7 +296,7 @@ const resolvers = {
       console.log(context.user.username)
       if (context.user) {
 
-        // Refactor to be dependent on the user who is logged in
+          // Refactor to be dependent on the user who is logged in
           const jobToReview = Job.findOneAndUpdate(
             { _id: args.jobId },
             { $set: {
@@ -302,7 +308,8 @@ const resolvers = {
 
           return jobToReview
         }
-      },
+        throw new AuthenticationError("You have to be logged in to see this information.")
+    },
 
     addReviewEmployer: async (parent, args, context) => {
       if (context.user) {
