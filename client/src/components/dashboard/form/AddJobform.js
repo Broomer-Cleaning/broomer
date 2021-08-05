@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+
+
 import { Form, Row, Button, Container, Col } from "react-bootstrap";
 import { useMutation } from "@apollo/client";
-import { ADD_JOB } from "../../../utils/mutation";
+import { ADD_JOB, UPDATE_JOB } from "../../../utils/mutation";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./formStyli.css";
 
@@ -13,7 +16,7 @@ const AddJobForm = (onJobAdded) => {
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
 
-  const [addJob, { error }] = useMutation(ADD_JOB);
+  const [addJob, { error }] = useMutation(ADD_JOB, UPDATE_JOB);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -45,7 +48,6 @@ const AddJobForm = (onJobAdded) => {
             <Form.Label>Job Title</Form.Label>
             <Form.Control
               value={title}
-              
               type="text"
               placeholder="Car washing"
               onChange={(event) => setTitle(event.target.value)}
@@ -62,6 +64,25 @@ const AddJobForm = (onJobAdded) => {
               onChange={(event) => setJob_description(event.target.value)}
               style={{ height: "100px" }}
             />
+          </Form.Group>
+        </Row>
+        <Row>
+          <Form.Group className="mb-1" id="formGridCheckbox">
+            <Form.Label>Police Record Check</Form.Label>
+            <Col sm={10}>
+              <Form.Check
+                type="radio"
+                label="YES"
+                name="formHorizontalRadios"
+                id="formHorizontalRadios1"
+              />
+              <Form.Check
+                type="radio"
+                label="NO"
+                name="formHorizontalRadios"
+                id="formHorizontalRadios2"
+              />
+            </Col>
           </Form.Group>
         </Row>
         <Row>
@@ -127,31 +148,100 @@ const AddJobForm = (onJobAdded) => {
           </Form.Group>
         </Row>
 
+        <hr/>
+        <h4 className="mt-4">Utilty Information</h4>
+
+
+        <Row>
+          <Form.Group className="mb-1" id="formGridCheckbox">
+            <Form.Label>Equipmen Provided</Form.Label>
+            <Col sm={10}>
+              <Form.Check
+                type="radio"
+                label="YES"
+                name="formHorizontalRadios"
+                id="formHorizontalRadios1"
+              />
+              <Form.Check
+                type="radio"
+                label="NO"
+                name="formHorizontalRadios"
+                id="formHorizontalRadios2"
+              />
+            </Col>
+          </Form.Group>
+        </Row>
+        <Row>
+          <Form.Group className="mb-1" id="formGridCheckbox">
+            <Form.Label>Need to Bring Equipmen</Form.Label>
+            <Col sm={10}>
+              <Form.Check
+                type="radio"
+                label="YES"
+                name="formHorizontalRadios"
+                id="formHorizontalRadios1"
+              />
+              <Form.Check
+                type="radio"
+                label="NO"
+                name="formHorizontalRadios"
+                id="formHorizontalRadios2"
+              />
+            </Col>
+          </Form.Group>
+        </Row>
+
         <hr />
 
         <h4>Health Information</h4>
-
-        <Form.Group className="mb-1" id="formGridCheckbox">
-          <Form.Label>Fully Vacinated</Form.Label>
-          <Col sm={10}>
-            <Form.Check
-              type="radio"
-              label="YES"
-              name="formHorizontalRadios"
-              id="formHorizontalRadios1"
-            />
-            <Form.Check
-              type="radio"
-              label="NO"
-              name="formHorizontalRadios"
-              id="formHorizontalRadios2"
-            />
-          </Col>
-        </Form.Group>
+        <Row>
+          <Form.Group className="mb-1" id="formGridCheckbox">
+            <Form.Label>Fully Vacinated</Form.Label>
+            <Col sm={10}>
+              <Form.Check
+                type="radio"
+                label="YES"
+                name="formHorizontalRadios"
+                id="formHorizontalRadios1"
+              />
+              <Form.Check
+                type="radio"
+                label="NO"
+                name="formHorizontalRadios"
+                id="formHorizontalRadios2"
+              />
+            </Col>
+          </Form.Group>
+        </Row>
+        <Row>
+          <Form.Group className="mb-1" id="formGridCheckbox">
+            <Form.Label>Have Pets</Form.Label>
+            <Col sm={10}>
+              <Form.Check
+                type="radio"
+                label="YES"
+                name="formHorizontalRadios"
+                id="formHorizontalRadios1"
+              />
+              <Form.Check
+                type="radio"
+                label="NO"
+                name="formHorizontalRadios"
+                id="formHorizontalRadios2"
+              />
+            </Col>
+          </Form.Group>
+        </Row>
+        <hr/>
 
         <Button variant="primary" type="submit">
           Submit
         </Button>
+        <Link to="/dashboard">
+        <Button variant="dark" type="submit">
+          Back to Dashborad
+        </Button>
+        </Link>
       </Form>
     </Container>
   );
