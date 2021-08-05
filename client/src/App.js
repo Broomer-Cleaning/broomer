@@ -15,6 +15,7 @@ import Testimonials from './components/reviews/Testimonials';
 import Login from './components/login/Login';
 import Signup from './components/login/Signup';
 import Footer from './components/footer/Footer';
+import AddJobform from './components/dashboard/form/AddJobform';
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -54,6 +55,7 @@ function App() {
      <Route exact path="/signup" component={Signup} />
      <Route exact path="/profile" component={Profile} />
      <Route exact path="/testimonials" component={Testimonials} />
+     <Route exact path="/addJob" component={AddJobform} />
      </Switch>
      <Footer/>
       </>
