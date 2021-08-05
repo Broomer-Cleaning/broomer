@@ -20,17 +20,15 @@ import axios from "axios";
 import moment from "moment";
 import { Link } from "react-router-dom";
 
-
-
 const Dashboard = () => {
   const [showModal, setShowModal] = useState(false);
   const [curentJob, setCurentJob] = useState({
     title: "job title",
     start: "2021-08-04",
-    description:"job Descrip"
+    description: "job Descrip",
   });
 
-  const removeJob = index => {
+  const removeJob = (index) => {
     const newTodos = [...events];
     newTodos.splice(index, 1);
     setData(curentJob);
@@ -56,7 +54,7 @@ const Dashboard = () => {
     calendarApi.addEvent({
       start: moment(event.start).toDate(),
       title: event.title,
-      description: event.description
+      description: event.description,
     });
   };
 
@@ -78,7 +76,6 @@ const Dashboard = () => {
     setShowModal(false);
   };
 
-  
   return (
     <div className="main">
       <Container className="boxHedaer">
@@ -103,12 +100,10 @@ const Dashboard = () => {
         <div className="medSection">
           <div className="listview" id="calender">
             <Container>
-              <div
-                className="daylist"
-              >
+              <div className="daylist">
                 <FullCalendar
                   ref={calendarRef}
-                   events={events}
+                  events={events}
                   className="dayList"
                   plugins={[
                     interactionPlugin,
@@ -142,7 +137,7 @@ const Dashboard = () => {
               <div className="JobList">
                 <ul>
                   <li>
-                   <h5>{curentJob.title}</h5> 
+                    <h5>{curentJob.title}</h5>
                     <p>{curentJob.description}</p>
                     {/* <p>{curentJob.}</p> */}
                     <span>
@@ -170,13 +165,9 @@ const Dashboard = () => {
                   </li>
                 </ul>
               </div>
-              <Button onClick={openModal}>Add Job</Button>
-              <AddJob
-                showModal={showModal}
-                onEventAdded={onEventAdded}
-                setShowModal={setShowModal}
-                onClose={onClose}
-              />
+              <Link to="/addJob">
+                <Button onClick={openModal}>Add Job</Button>
+              </Link>
             </div>
             <div className="compeletJobBox">
               <h4>Job Completed</h4>
@@ -186,7 +177,9 @@ const Dashboard = () => {
                     {curentJob.title}
                     <div className="text-center">
                       <Link to="/testimonials">
-                      <Button className="btn btn-primary ">Write Review</Button>
+                        <Button className="btn btn-primary ">
+                          Write Review
+                        </Button>
                       </Link>
                     </div>
                   </li>
