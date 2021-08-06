@@ -1,5 +1,19 @@
 [
     {
+        "username": "anastasiasorkin",
+        "email": "anasork@gmail.com",
+        "password": "broomer123",
+        "first_name": "Anastasia",
+        "last_name": "Sorkin",
+        "date_of_birth": "1986-04-25",
+        "phone_number": "613-844-5555",
+        "about_me": "Hi! I'm a hard worker and aim to please. I specialize in cleaning garages and cars.",
+        "safety_double_vax": true,
+        "safety_mask": true,
+        "safety_police_check": true
+
+    },
+    {
         "username": "gabsparks22",
         "email": "gabw@gmail.com",
         "password": "allworknoplay",

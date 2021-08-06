@@ -59,12 +59,12 @@ const userSchema = new Schema(
     },
     jobs_worked: [{
       type: Schema.Types.ObjectId,
-      ref: "jobs"
+      ref: "Job"
     }],
 
     jobs_hired: [{
       type: Schema.Types.ObjectId,
-      ref: "jobs"
+      ref: "Job"
     }],
   },
   // set this to use virtual below

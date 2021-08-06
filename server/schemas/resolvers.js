@@ -6,7 +6,7 @@ const mongoose = require('mongoose')
 const resolvers = {
   Query: {
     users: async () => {
-      return User.find({});
+      return User.find({}).populate("jobs_hired").populate("jobs_worked");
     },
 
     jobs: async () => {
@@ -14,13 +14,13 @@ const resolvers = {
     },
 
     jobsByUser: async (parent, { profileId }, context) => {
-      return User.findOne({ _id: profileId }).populate("jobs")
+      return User.findOne({ _id: profileId }).populate("jobs_hired").populate("jobs_worked")
     },
 
     // ✔️✔️
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate("jobs");
+        return User.findOne({ _id: context.user._id }).populate("jobs_hired").populate("jobs_worked");
       }
       throw new AuthenticationError("You have to be logged in to see this information.")
     },
