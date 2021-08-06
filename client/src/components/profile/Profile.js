@@ -48,7 +48,6 @@ const Profile = () => {
     const idArr = id.split("-");
     if (idArr.length === 2) {
       const boolVal = idArr[1] === 'true';
-      // console.log(boolVal, typeof boolVal)
       setPoliceCheck(boolVal)
     }
   }
@@ -81,21 +80,11 @@ const Profile = () => {
     } else if (name === 'description') {
       setAbout_me(value);
     }
-    // setFirst_name(first_name);
-    // console.log(value)
-    // setLast_name({ ...profileDetails, [name]: value });
-    // console.log(value)
-    // setDate_of_birth({ ...profileDetails, [name]: value });
-    // console.log(value)
-    // setPhone_number({ ...profileDetails, [name]: value });
-    // console.log(value)
-    // setAbout_me({ ...profileDetails, [name]: value });
-    // console.log(value)
 
   };
 
   const handleFormSubmit = async () => {
-    // event.preventDefault();
+
 
     try {
       const { data } = await profileDetails({
@@ -254,8 +243,6 @@ const Profile = () => {
           </div>
         </Container>
       ) : (
-
-
         <Container>
           <div className="profileSection">
             <img className="avatar" src={avatar} alt="avatr" />
