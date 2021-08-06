@@ -110,7 +110,7 @@ const typeDefs = gql`
         # Login/Registration/Profile Updates
         createUser(username: String!, email: String!, password: String!): Auth
         login(email: String!, password: String!): Auth
-            profileDetails(profileInput: profileInput): User
+        profileDetails(profileInput: profileInput): User
 
         # Creating a job 
         addAJob: User

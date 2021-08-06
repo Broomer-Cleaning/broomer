@@ -122,16 +122,16 @@ const resolvers = {
     },
 
     // A profile setup; a second step after a User creates their account
-    profileDetails: async (parent, args, context) => {
+    profileDetails: async (parent, {profileInput}, context) => {
 
       console.log("context.user._id HERE", context.user._id)
-      console.log(args)
+      console.log(profileInput)
       
       // Goal: Find a User type by its ID and update its custom values
       if (context.user) {
         const updateUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $set: args },
+          { $set: profileInput },
           { new: true, runValidators: true }
         )
         console.log(updateUser)
@@ -174,8 +174,8 @@ const resolvers = {
       return  userJobUpdate
     },
 
-    updateAJob: async (parent, args, context) => {
-      console.log(args)
+    updateAJob: async (parent, {jobId, jobInput}, context) => {
+      console.log(jobInput)
       console.log("context.user._id HERE", context.user._id)
       console.log("context.user HERE", context.user)
       console.log("context.job HERE", context.job)
@@ -184,8 +184,8 @@ const resolvers = {
       if (context.user) {
 
         const update = Job.findByIdAndUpdate(
-          { _id: args.jobId },
-          { $set: args },
+          { _id: jobId },
+          { $set: jobInput },
           { new: true, runValidators: true }
         )
 
