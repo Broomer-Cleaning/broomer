@@ -31,6 +31,8 @@ const ReviewsCarousel = () => {
     console.log(userData.jobs_worked.review_text_worker)
   }
 
+  
+
   // const {  data } = useQuery(GET_ALL_JOBS);
   // let jobsData=""
  
