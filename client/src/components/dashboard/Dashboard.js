@@ -12,10 +12,9 @@ import { Button, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import { useQuery } from "@apollo/client";
-import {GET_ALL_JOBS, JOBS_ON_MARKET } from "../../utils/queries"
-import { useMutation } from "@apollo/client";
-import {UPDATE_JOB} from "../../utils/mutation"
+import {GET_ALL_JOBS } from "../../utils/queries"
 
+// Calendar Plugin
 import FullCalendar from "@fullcalendar/react";
 import listPlugin from "@fullcalendar/list";
 import interactionPlugin from "@fullcalendar/interaction";
@@ -27,17 +26,16 @@ import bootstrapPlugin from "@fullcalendar/bootstrap";
 
 const Dashboard = () => {
 
-  const { loading, data } = useQuery(GET_ALL_JOBS, JOBS_ON_MARKET);
+  const { loading, data } = useQuery( GET_ALL_JOBS );
     let allJobData = "";
-    let openJob ="";
+
   if (loading) {
     console.log("Loading");
   } else {
      allJobData = data?.jobs|| {};
-     openJob = data?.pullOpenJobs|| {};
-    console.log(allJobData, openJob);
+ 
+    console.log( allJobData );
   }
-
 
   return (
     <div className="main">
@@ -92,11 +90,12 @@ const Dashboard = () => {
               <div className="JobList">
                 <ul>
                   <li>
+                    <h5>{allJobData.title}</h5>
+                    <p>{allJobData.job_description}</p>
                     <span>
                       <div className="d-grid gap-2 d-md-block text-center">
                         <Button
                           className="btn-space btn-warning"
-                         
                         >
                           Edit Job
                         </Button>
@@ -122,28 +121,12 @@ const Dashboard = () => {
               <div className="JobList">
                 <ul>
                   <li>
-                    
                     <div className="text-center">
                       <Link to="/testimonials">
                         <Button className="btn btn-primary ">
                           Write Review
                         </Button>
                       </Link>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className="compeletJobBox">
-              <h4>Recommend Job</h4>
-              <div className="JobList">
-                <ul>
-                  <li>
-                  
-                    <div className="text-center">
-                        <Button className="btn btn-primary ">
-                          Accept Job
-                        </Button>
                     </div>
                   </li>
                 </ul>

@@ -15,11 +15,13 @@ const AddJobForm = (onJobAdded) => {
   const [postal_code, setPostal_code] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
+  const [safety_double_vax, setSafety_double_vax] =useState("")
+  const [safety_police_check, setSafety_police_check]=useState("")
 
   const [addJob, { error }] = useMutation(ADD_JOB, UPDATE_JOB);
 
   const handleFormSubmit = async (event) => {
-    event.preventDefault();
+    // event.preventDefault();
 
     try {
       const { data } = await addJob({
@@ -30,6 +32,8 @@ const AddJobForm = (onJobAdded) => {
           city,
           state,
           postal_code,
+          safety_police_check,
+          safety_double_vax
         },
       });
 
@@ -116,7 +120,10 @@ const AddJobForm = (onJobAdded) => {
 
         <Form.Group className="mb-1" controlId="formGridAddress2">
           <Form.Label>Address 2</Form.Label>
-          <Form.Control placeholder="Apartment, studio, or floor" />
+          <Form.Control value={street_address}
+           placeholder="Apartment, studio, or floor"
+           onChange={(event) => setStreet_address(event.target.value)}
+           />
         </Form.Group>
 
         <Row className="mb-1">
@@ -233,10 +240,11 @@ const AddJobForm = (onJobAdded) => {
           </Form.Group>
         </Row>
         <hr/>
-
-        <Button variant="primary" type="submit">
+        <Link to="/dashboard">
+        <Button variant="primary" type="submit" onClick={() => handleFormSubmit()}>
           Submit
         </Button>
+        </Link>
         <Link to="/dashboard">
         <Button variant="dark" type="submit">
           Back to Dashborad

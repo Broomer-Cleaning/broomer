@@ -28,8 +28,10 @@ const ReviewsCarousel = () => {
     userData = data?.me || {};
     // setReviews(stars)
     console.log(userData.username);
-    console.log(userData.review_text_worker)
+    console.log(userData.jobs_worked.review_text_worker)
   }
+
+  
 
   // const {  data } = useQuery(GET_ALL_JOBS);
   // let jobsData=""
