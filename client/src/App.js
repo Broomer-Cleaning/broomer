@@ -10,7 +10,7 @@ import Dashboard from './components/dashboard/CompainDashboard';
 import AboutUs from './components/about/AboutUs';
 import Services from './components/services/Services';
 import Contact from './components/contact/Contact';
-import CombinedProfile from './components/combinedprofile/CombinedProfile'
+import Profile from './components/profile/Profile'
 import Testimonials from './components/reviews/Testimonials';
 import Login from './components/login/Login';
 import Signup from './components/login/Signup';
@@ -53,7 +53,7 @@ function App() {
      <Route exact path="/contact" component={Contact} />
      <Route exact path="/login" component={Login} />
      <Route exact path="/signup" component={Signup} />
-     <Route exact path="/profile" component={CombinedProfile} />
+     <Route exact path="/profile" component={Profile} />
      <Route exact path="/testimonials" component={Testimonials} />
      <Route exact path="/addJob" component={AddJobform} />
      </Switch>
