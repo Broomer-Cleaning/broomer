@@ -27,8 +27,8 @@ const Profile = () => {
   const [date_of_birth, setDate_of_birth] = useState("");
   const [phone_number, setPhone_number] = useState("");
   const [about_me, setAbout_me] = useState("");
-  const [isFullyVax, setisFullyVax] = useState("")
-  const [policeCheck, setPoliceCheck] = useState("")
+  const [safety_double_vax, setisFullyVax] = useState("")
+  const [safety_police_check, setPoliceCheck] = useState("")
 
 
   const [profileDetails, { error }] = useMutation(UPDATE_PROFILE);
@@ -42,7 +42,25 @@ const Profile = () => {
     console.log(userData.username);
   }
 
+  const handlePoliceCheckbox = (event) => {
+    console.log(event.target)
+    const { id } = event.target;
+    const idArr = id.split("-");
+    if (idArr.length === 2) {
+      const boolVal = idArr[1] === 'true';
+      setPoliceCheck(boolVal)
+    }
+  }
 
+  const handleVaxCheckbox = (event) => {
+    console.log(event.target)
+    const { id } = event.target;
+    const idArr = id.split("-");
+    if (idArr.length === 2) {
+      const boolVal = idArr[1] === 'true';
+      setisFullyVax(boolVal)
+    }
+  }
 
   const handleChange = (event) => {
     const { name, value, id } = event.target;
@@ -61,28 +79,12 @@ const Profile = () => {
       setPhone_number(value);
     } else if (name === 'description') {
       setAbout_me(value);
-    } else if (id === 'formHorizontalRadios1') {
-      setisFullyVax(true)
-      console.log(id)
-    } else if (id === 'formHorizontalRadios3') {
-      setPoliceCheck(true)
-      console.log(id)
     }
-    // setFirst_name(first_name);
-    // console.log(value)
-    // setLast_name({ ...profileDetails, [name]: value });
-    // console.log(value)
-    // setDate_of_birth({ ...profileDetails, [name]: value });
-    // console.log(value)
-    // setPhone_number({ ...profileDetails, [name]: value });
-    // console.log(value)
-    // setAbout_me({ ...profileDetails, [name]: value });
-    // console.log(value)
 
   };
 
   const handleFormSubmit = async () => {
-    // event.preventDefault();
+
 
     try {
       const { data } = await profileDetails({
@@ -92,7 +94,10 @@ const Profile = () => {
             last_name,
             date_of_birth,
             phone_number,
-            about_me
+            about_me,
+            safety_double_vax,
+            safety_police_check
+
           }
         },
       });
@@ -185,15 +190,15 @@ const Profile = () => {
                     label="YES"
                     name="vax"
                     data-vax="yes"
-                    id="formHorizontalRadios1"
-                    onChange={handleChange}
+                    id="vax-true"
+                    onChange={handleVaxCheckbox}
                   />
                   <Form.Check
                     type="radio"
                     label="NO"
                     name="vax"
-                    id="formHorizontalRadios2"
-                    onChange={handleChange}
+                    id="vax-false"
+                    onChange={handleVaxCheckbox}
                   />
                 </Col>
               </Form.Group>
@@ -206,16 +211,16 @@ const Profile = () => {
                     label="YES"
                     name="police"
                     title="YES"
-                    id="formHorizontalRadios3"
-                    onChange={handleChange}
+                    id="police-true"
+                    onChange={handlePoliceCheckbox}
                   />
                   <Form.Check
                     type="radio"
                     label="NO"
                     title="YES"
                     name="police"
-                    id="formHorizontalRadios2"
-                    onChange={handleChange}
+                    id="police-false"
+                    onChange={handlePoliceCheckbox}
                   />
                 </Col>
               </Form.Group>
@@ -238,8 +243,6 @@ const Profile = () => {
           </div>
         </Container>
       ) : (
-
-
         <Container>
           <div className="profileSection">
             <img className="avatar" src={avatar} alt="avatr" />
