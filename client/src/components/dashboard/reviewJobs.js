@@ -8,38 +8,41 @@ import React from // useState,
 //  useRef,
 "react";
 import { Button } from "react-bootstrap";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { useQuery } from "@apollo/client";
-import { JOBS_ON_MARKET } from "../../utils/queries";
+import { DONE_NO_REVIEWS } from "../../utils/queries";
 
 const ReviweJob = () => {
 
 
-    const { loading, data } = useQuery( JOBS_ON_MARKET );
-    let openJob ="";
+    const { loading, data } = useQuery( DONE_NO_REVIEWS );
+    let reviweJob ="";
   if (loading) {
     console.log("Loading");
   } else {
-     openJob = data?.pullOpenJobs|| {};
-    console.log( openJob );
+     reviweJob = data?.pullOpenJobs|| {};
+    console.log( reviweJob );
   }
-
-
 
   return (
     <div className="compeletJobBox">
-      <h4>Reviwe Job</h4>
-      <div className="JobList">
-        <ul>
-          <li>
-            <div className="text-center">
-              <Button className="btn btn-primary ">Accept Job</Button>
+              <h4>Job Completed</h4>
+              <div className="JobList">
+                <ul>
+                  <li>
+                    <h4>{reviweJob.title}</h4>
+                    <div className="text-center">
+                      <Link to="/testimonials">
+                        <Button className="btn btn-primary ">
+                          Write Review
+                        </Button>
+                      </Link>
+                    </div>
+                  </li>
+                </ul>
+              </div>
             </div>
-          </li>
-        </ul>
-      </div>
-    </div>
   );
 };
 

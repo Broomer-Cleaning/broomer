@@ -27,13 +27,12 @@ import bootstrapPlugin from "@fullcalendar/bootstrap";
 const Dashboard = () => {
 
   const { loading, data } = useQuery(GET_ALL_JOBS);
-  let allJobData = "";
+  // let allJobData = "";
+  const allJobData = data?.jobs || {};
 
   if (loading) {
     console.log("Loading");
   } else {
-    allJobData = data?.jobs || {};
-
     console.log(allJobData);
   }
 
@@ -42,20 +41,20 @@ const Dashboard = () => {
       <Container className="boxHedaer">
         <div className="postJobBox">
           <h4>Total of Job Posted</h4>
-          <p>50 Jobs</p>
+          <p>{allJobData.length} Jobs</p>
         </div>
         <div className="compeletJobBox">
-          <h4>Total of Job Completed</h4>
-          <p>64 Jobs</p>
+          <h4>Job Completed</h4>
+          <p>{allJobData.length} Jobs</p>
         </div>
-        <div className="incomBox">
+        {/* <div className="incomBox">
           <h4> Total of Income</h4>
           <p>2000 $</p>
         </div>
         <div className="incomBox">
           <h4> Total of Outcome</h4>
           <p>350 $</p>
-        </div>
+        </div> */}
       </Container>
       <div className="rightSide">
         <div className="medSection">
@@ -90,8 +89,14 @@ const Dashboard = () => {
               <div className="JobList">
                 <ul>
                   <li>
-                    <h5>{allJobData.title}</h5>
-                    <p>{allJobData.job_description}</p>
+                    {allJobData.Dashboard?.map((jobs) => {
+                      return(
+                        <>
+                        <h5 key={jobs._id}>{jobs.title}</h5>
+                        <p>{jobs.job_description}</p>
+                        </>
+                      )
+                    })}
                     <span>
                       <div className="d-grid gap-2 d-md-block text-center">
                         <Button

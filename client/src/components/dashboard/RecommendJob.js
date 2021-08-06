@@ -15,13 +15,14 @@ import { JOBS_ON_MARKET } from "../../utils/queries";
 
 const RecommendJob = () => {
 
-
-    const { loading, data } = useQuery( JOBS_ON_MARKET );
-    let openJob ="";
+  
+  
+  const { loading, data } = useQuery( JOBS_ON_MARKET );
+  const openJob = data?.pullOpenJobs|| {};
+    // let openJob ="";
   if (loading) {
     console.log("Loading");
   } else {
-     openJob = data?.pullOpenJobs|| {};
     console.log( openJob );
   }
 
@@ -33,6 +34,14 @@ const RecommendJob = () => {
       <div className="JobList">
         <ul>
           <li>
+          {openJob.RecommendJob?.map((pullOpenJobs) => {
+                      return(
+                        <>
+                        <h5 key={pullOpenJobs._id}>{pullOpenJobs.title}</h5>
+                        <p>{pullOpenJobs.job_description}</p>
+                        </>
+                      )
+                    })}
             <div className="text-center">
               <Button className="btn btn-primary ">Accept Job</Button>
             </div>
