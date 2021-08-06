@@ -16,64 +16,77 @@
 
 # Description
 
- A sophisticated application which allows users to connect - allowing them request and accepts local cleaning tasks from one another for some quick cash. Creating a profile allows users post and accepts jobs around you. Each job is specific and  exclusive to whoever accepts it. A set wage and tip is given after task are completed with the option of leaving a review of both sides of the experience. All information is logged and saved so users are capable of viewing lifetime jobs given, accepted and currency acquired throughout their Broomer Cleaning Career.
+ Broomer is a MERN+GraphQL stack application that connects local cleaning tasks to qualified workers with one another for some quick cash. Creating a profile allows usersto  post and accept jobs in your surrounding areas. Jobs available to you are specific to your qualifications as a worker, and vice versa. A set hourly wage, estimated number of hours, and tip is decided on after each task is completed with the option for both the worker and employer to leave a review. Your work information is tracked in your dashboard, upon which you can view your lifetime jobs, as well as your total monies made through their Broomer Cleaning Career.
 
 # User Story
 
- Employer:
- AS a person with a messy house and not enough time
+ ## Employer
+ <pre> AS a person with a messy house and not enough time
  I WANT an online service that quickly finds cleaners for my living spaces (houses, garages, cars).
- THEN I pay workers upon completion of job
+ THEN I pay workers upon completion of job</pre>
 
- Worker:
- OR AS a worker who is willing to clean for others
+ ## Worker
+</pre> AS a worker who is willing to clean for others
  I WANT an online platform to offer my services and to get hired for quick jobs.
- THEN receiving pay upon completion of each job
+ THEN receiving pay upon completion of each job</pre>
 
- AS a user
+## As a User..
+<pre> 
  WHEN I reach the homepage
  THEN I am given a log-in/sign-up option to provide credentials
  WHEN I provide the proper credentials
- THEN I am taken to my dashboard, allow access to all features
+ THEN I am taken to my dashboard, allow access to all features</pre>
 
- AS a employer
- ONCE I am logged in
+## As an Employer..
+ <pre>  ONCE I am logged in
  WHEN viewing the dashboard, I am able to post jobs
  THEN allowing workers to accept 
  WHEN job is accepted, worker arrives and completes job
  THEN being given from wages promised, the employer pays the worker with the option of a tip
+ Outside of the application, the worker presumably visits the work site and fulfills the job requirements.
  WHEN both parties validate the job is complete
- THEN the job closes, logging the information on both users dashboard
+ THEN the job closes, logging the information on both users dashboard</pre>
 
- As a worker
- ONCE I am logged in
+## As a Worker..
+<pre>  ONCE I am logged in
  I can see my dashboard with available jobs within a selected range
  WHEN viewing jobs, workers are presented a variety of jobs from multiple employers
  THEN allowing workers to access information regarding each job such as pay, address and equipment required
  WHEN accepting a job, a time period is give to arrive and begin the job
- THEN notifying the employer of your arrival
+ Outside of the application, the worker presumably visits the work site and fulfills the job requirements.
  WHEN completing a job, both employer and worker verify completion 
  THEN worker gets paid with promised wage and a tip from employers decision with the option of leaving a review
- THEN the job closes, logging the information on both users dashboard
-
+ THEN the job closes, logging the information on both users dashboard</pre>
 
 # Installation
 
- The following are steps to install the application: npm install, npm run build to access react files, npm run seeds/seed.js to seed data, node server.js to start server.
+ The following are steps to install the application: run `npm run seeds` in the `server` folder to seed data, `npm install` on the main `broomer` folder, then `npm run build` or `npm run develop` to access React files and to run the website. For backend testing run `node server.js` or `nodemon server`
 
 # Functionality
 
- -GraphQL
- GraphQL is a query language for your API, and a server-side runtime for executing queries using a type system you define for your data. GraphQL isn't tied to any specific database or storage engine and is instead backed by your existing code and data. In GraphQL, there are only two types of operations you can perform: queries and mutations.
+GraphQL:
+Through MongoDB, Node.js, and Express.js, this project runs GraphQL to provide dynamic data to the front end. The following is a breakdown of its queries and mutations:
 
- -Mutations
- Mutation queries modify data in the data store and returns a value. It can be used to insert, update, or delete data. Mutations are defined as a part of the schema.
+# Queries
+- **Return all existing users**: `users`: all signed up users appear in this list
+- **Return all existing jobs**: `jobs`: these range from unmatched to closed cases.
+- **Return a specific job**: `specificJob`: Requires the job's jobId
+- **Return all of the user's info**: `me`: Returns their profile/dashboard information, including all jobs they've worked or hired for, and all reviews. 
+- **Jobs with no match**: `pullOpenJobs`: where jobCaseOpen has a value but jobCaseStart does not
+- **Jobs in progress**: `inProgress`: where jobCaseStart has a value but JobCaseEnd does not
+- **Jobs with no review**: `noReviews`: i.e., with dateJobEndWorker and dateJobEndEmployer but no dateJobCaseClosed - will appear in the ‘Jobs Completed’ section of the dashboard
 
- -Queries
- A GraphQL operation can either be a read or a write operation. A GraphQL query is used to read or fetch values while a mutation is used to write or post values. In either case, the operation is a simple string that a GraphQL server can parse and respond to with data in a specific format. The popular response format that is usually used for mobile and web applications is JSON.
 
- -Server-side config (resolvers)
- Server-side resolvers for mutations involve code that changes state in some way.
+# Mutation Timeline
+- **Create the user**: `createUser`: Provide the username, email, and password to create a User type
+- **Login**: `login`: Enter your registered credentials into the login form
+- **Update the user**: `profileDetails`: While logged in, the user will update their profile and provide details such as first_name, last_name, date_of_birth
+- **Create a job**: `addAJob`: After providing the profile information, a user can create a job; the Job type returned includes the _id and the username of the Employer/User who submitted the mutation.
+- **Fill out job information**: `updateAJob`: The employer then fills out the mandatory information (is blocked by front-end, not by GraphQL, if not filled out). The description, and safety-related accommodation booleans are updated. The `dateCaseStart` variable is timestamped with `Date.now()`.
+- **Worker agrees to a job**: `workerAgreeJob`. A different user - the worker - agrees to a job (no additional vetting required), at which point the `dateJobStart` variable is updated to `Date.now()`. 
+- **Worker submits job for review**: `workerCompleteJob`: When the worker is finished, they submit their work as completed; the `dateJobEndWorker` variable gets timestamped to `Date.now()`
+- **Employer approves job as complete**: `employerCompleteJob`. The employer agrees that the job is complete. The `dateJobEndEmployer` variable gets timestamped to `Date.now()`
+**Both parties submit reviews**: `addReviewWorker`: Separately, the worker and the employer may submit their review score and explanatory text. These get added to their associated Job type and `closeJobCase` gets updated to `Date.now()`. So far, as the code is set up, only the worker can add a review to a job. 
 
  -React
 
@@ -91,14 +104,12 @@
 # Deployment of application
 
   To run a project, please follow the link 
-
   [https://broomer-cleaning.herokuapp.com/](https://broomer-cleaning.herokuapp.com/)
 
 # Application Code
 
-  To view application code, please follow the link 
-
-  []()
+  To view application code, please follow the link:
+  https://github.com/Broomer-Cleaning/broomer.git 
 
 # Future Developments
  
