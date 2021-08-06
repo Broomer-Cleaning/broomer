@@ -4,7 +4,8 @@ import { Form, Row, Button, Container, Col } from "react-bootstrap"
 
 import "./profile.css";
 import "./createprofile.css";
-import "./modal.css";
+import "./modal.css"
+
 
 import { useQuery } from "@apollo/client";
 import { GET_ME } from "../../utils/queries"
@@ -39,11 +40,9 @@ const Profile = () => {
     console.log("Loading");
   } else {
     userData = data?.me || {};
-    console.log(userData.username);
   }
 
   const handlePoliceCheckbox = (event) => {
-    console.log(event.target)
     const { id } = event.target;
     const idArr = id.split("-");
     if (idArr.length === 2) {
@@ -53,7 +52,6 @@ const Profile = () => {
   }
 
   const handleVaxCheckbox = (event) => {
-    console.log(event.target)
     const { id } = event.target;
     const idArr = id.split("-");
     if (idArr.length === 2) {
@@ -64,11 +62,10 @@ const Profile = () => {
 
   const handleChange = (event) => {
     const { name, value, id } = event.target;
-    console.log(event.target)
-    console.log(name, value)
 
 
-    // Based on the input type, we set the state of either email, username, and password
+
+    // Based on the input type, we set the state 
     if (name === 'first') {
       setFirst_name(value);
     } else if (name === 'last') {
@@ -263,9 +260,12 @@ const Profile = () => {
               </div>
             </div>
 
-            <p>
-              {userData.about_me}
-            </p>
+            <div className="about-mepar">
+
+              <p>
+                {userData.about_me}
+              </p>
+            </div>
           </div>
           <Container>
             <div className="reviws">

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import { useQuery } from "@apollo/client";
 import { GET_ME } from "../../utils/queries"
@@ -17,8 +17,6 @@ import avatar4 from "./img/avatar-4.png";
 
 const ReviewsCarousel = () => {
 
-  // const [reviews, setReviews]=useState({stars: 5})
-  // const stars = reviews.review_score_worker
 
   const { loading, data } = useQuery(GET_ME);
   let userData = ""
@@ -26,33 +24,9 @@ const ReviewsCarousel = () => {
     console.log("Loading");
   } else {
     userData = data?.me || {};
-    // setReviews(stars)
-    console.log(userData.username);
-    // console.log(userData.jobs_worked.review_text_worker)
+
   }
 
-
-
-  // const {  data } = useQuery(GET_ALL_JOBS);
-  // let jobsData=""
-
-  //   jobsData = data?.jobs || {};
-
-  //   console.log(jobsData.review_text_worker);
-
-
-
-
-
-
-  //const [reviews, setReviews]=useState({stars: 5})
-  //const stars = reviews.stars
-
-  //useEffect(()=> {
-  //fetch(`${reviews}`)
-  //.then(response => response.json())
-  //.then(json =>)
-  //}, [reviews])
   return (
     <Carousel
       showArrows={true}

@@ -4,15 +4,15 @@ import "bootstrap/dist/css/bootstrap.css";
 import "@fortawesome/fontawesome-free/css/all.css";
 import "react-datetime/css/react-datetime.css";
 
-import React, { 
+import React, {
   // useState,
   //  useRef,
-    } from "react";
+} from "react";
 import { Button, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import { useQuery } from "@apollo/client";
-import {GET_ALL_JOBS } from "../../utils/queries"
+import { GET_ALL_JOBS } from "../../utils/queries"
 
 // Calendar Plugin
 import FullCalendar from "@fullcalendar/react";
@@ -26,15 +26,15 @@ import bootstrapPlugin from "@fullcalendar/bootstrap";
 
 const Dashboard = () => {
 
-  const { loading, data } = useQuery( GET_ALL_JOBS );
-    let allJobData = "";
+  const { loading, data } = useQuery(GET_ALL_JOBS);
+  let allJobData = "";
 
   if (loading) {
     console.log("Loading");
   } else {
-     allJobData = data?.jobs|| {};
- 
-    console.log( allJobData );
+    allJobData = data?.jobs || {};
+
+    console.log(allJobData);
   }
 
   return (
@@ -42,11 +42,11 @@ const Dashboard = () => {
       <Container className="boxHedaer">
         <div className="postJobBox">
           <h4>Total of Job Posted</h4>
-          <p>50 Jods</p>
+          <p>50 Jobs</p>
         </div>
         <div className="compeletJobBox">
           <h4>Total of Job Completed</h4>
-          <p>64 Jods</p>
+          <p>64 Jobs</p>
         </div>
         <div className="incomBox">
           <h4> Total of Income</h4>
@@ -99,7 +99,7 @@ const Dashboard = () => {
                         >
                           Edit Job
                         </Button>
-                        
+
                         <Button
                           className="btn-space m-1"
                           variant="danger"

@@ -11,6 +11,11 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 10rem;
+}
+
+.profileSection h2 {
+ font-weight: bold;
 }
 
 
@@ -37,6 +42,10 @@ body {
   justify-content: center;
   align-items: center;
   margin-bottom: 2.5%;
+}
+
+.about-mepar p {
+  margin-top: 5rem;
 }
 
 .reviws {
@@ -133,32 +142,3 @@ body {
 }
 
 
-
-/* #root
-  > div:nth-child(2)
-  > div.reviws
-  > div.carousel-root
-  > div
-  > div
-  > ul
-  > li
-  > div
-  > h3,
-#root
-  > div:nth-child(2)
-  > div.reviws
-  > div.carousel-root
-  > div
-  > div
-  > ul
-  > li
-  > div
-  > p,
-#root
-  > div:nth-child(2)
-  > div.reviws
-  > div.carousel-root
-  > div
-  > button.control-arrow.control-next {
-  color: black;
-} */

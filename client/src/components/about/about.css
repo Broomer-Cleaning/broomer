@@ -21,12 +21,6 @@ body {
   padding-bottom: 1rem;
 }
 
-/* .about-us h3 {
-  text-align: center;
-  margin-top: 2rem !important;
-} */
-
-
 @media (max-width: 991px) {
   .about-us {
   text-align: center;

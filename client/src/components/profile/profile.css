@@ -6,12 +6,10 @@
 }
 
 
-
 .aboutMeSection h1 {
   margin-top: 4rem;
 
 }
-
 
 
 .fullName {
@@ -38,11 +36,3 @@
 .firstName {
   width: 50%;
 }
-
-/* .editFrom {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 20vh;
-} */
-

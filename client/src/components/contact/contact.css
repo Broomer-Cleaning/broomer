@@ -85,19 +85,9 @@ input:focus+.line, textarea:focus+.line {
   transition: width 0.5s ease-in-out;
 }
 
-/* input.form-control {
-  margin: -0.3rem 0;
-} */
-
 textarea.form-control {
   margin: -0.3rem 0;
 }
-
-/* .error-message {
-  color: var(--primary-white);
-  background: var(--primary-hover-red);
-  text-align: left;
-} */
 
 .success-message {
   font-weight: 900;
