@@ -1,18 +1,16 @@
 import "./dashboard.css";
-// import "./addEvent/addEvent.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "@fortawesome/fontawesome-free/css/all.css";
 import "react-datetime/css/react-datetime.css";
 
-import React, {
-  // useState,
-  //  useRef,
-} from "react";
+import React from // useState,
+//  useRef,
+"react";
 import { Button, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import { useQuery } from "@apollo/client";
-import { GET_ALL_JOBS } from "../../utils/queries"
+import { GET_ALL_JOBS } from "../../utils/queries";
 
 // Calendar Plugin
 import FullCalendar from "@fullcalendar/react";
@@ -22,13 +20,10 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import bootstrapPlugin from "@fullcalendar/bootstrap";
 
-
-
 const Dashboard = () => {
-
   const { loading, data } = useQuery(GET_ALL_JOBS);
   // let allJobData = "";
-  const allJobData = data?.jobs || {};
+  const allJobData = data?.jobs || [] ;
 
   if (loading) {
     console.log("Loading");
@@ -88,54 +83,34 @@ const Dashboard = () => {
               <h4>Job Posted</h4>
               <div className="JobList">
                 <ul>
-                  <li>
-                    {allJobData.Dashboard?.map((jobs) => {
-                      return(
-                        <>
-                        <h5 key={jobs._id}>{jobs.title}</h5>
+                  {allJobData.map((jobs) => {
+                    return (
+                      <li className="joblist" key={jobs._id}>
+                        <div>
+                        <h5 key={jobs.title}>{jobs.title}</h5>
                         <p>{jobs.job_description}</p>
-                        </>
-                      )
-                    })}
-                    <span>
-                      <div className="d-grid gap-2 d-md-block text-center">
-                        <Button
-                          className="btn-space btn-warning"
-                        >
-                          Edit Job
-                        </Button>
-
-                        <Button
-                          className="btn-space m-1"
-                          variant="danger"
-                        >
-                          Delete Job
-                        </Button>
-                        <Button variant="secondary">Done</Button>
-                      </div>
-                    </span>
-                  </li>
+                        </div>
+                        <div>
+                          <div className="d-grid gap-2 d-md-block text-center">
+                            <Link to="/addJob">
+                              <Button className="btn-space btn-warning">
+                                Edit Job
+                              </Button>
+                            </Link>
+                            <Button className="btn-space m-1" variant="danger">
+                              Delete Job
+                            </Button>
+                            <Button variant="secondary">Done</Button>
+                          </div>
+                        </div>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
               <Link to="/addJob">
                 <Button>Add Job</Button>
               </Link>
-            </div>
-            <div className="compeletJobBox">
-              <h4>Job Completed</h4>
-              <div className="JobList">
-                <ul>
-                  <li>
-                    <div className="text-center">
-                      <Link to="/testimonials">
-                        <Button className="btn btn-primary ">
-                          Write Review
-                        </Button>
-                      </Link>
-                    </div>
-                  </li>
-                </ul>
-              </div>
             </div>
           </Container>
         </div>

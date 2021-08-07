@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import "../dashboard.css"
 
 
 import { Form, Row, Button, Container, Col } from "react-bootstrap";

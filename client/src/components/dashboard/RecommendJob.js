@@ -4,9 +4,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "@fortawesome/fontawesome-free/css/all.css";
 import "react-datetime/css/react-datetime.css";
 
-import React from // useState,
-//  useRef,
-"react";
+import React from "react"; //  useRef, // useState,
 import { Button } from "react-bootstrap";
 // import { Link } from "react-router-dom";
 
@@ -14,38 +12,31 @@ import { useQuery } from "@apollo/client";
 import { JOBS_ON_MARKET } from "../../utils/queries";
 
 const RecommendJob = () => {
+  const { loading, data } = useQuery(JOBS_ON_MARKET);
+  const openJob = data?.pullOpenJobs || [];
 
-  
-  
-  const { loading, data } = useQuery( JOBS_ON_MARKET );
-  const openJob = data?.pullOpenJobs|| {};
-    // let openJob ="";
   if (loading) {
     console.log("Loading");
   } else {
-    console.log( openJob );
+    console.log(openJob);
   }
-
-
 
   return (
     <div className="compeletJobBox">
       <h4>Recommend Job</h4>
       <div className="JobList">
         <ul>
-          <li>
-          {openJob.RecommendJob?.map((pullOpenJobs) => {
-                      return(
-                        <>
-                        <h5 key={pullOpenJobs._id}>{pullOpenJobs.title}</h5>
-                        <p>{pullOpenJobs.job_description}</p>
-                        </>
-                      )
-                    })}
-            <div className="text-center">
-              <Button className="btn btn-primary ">Accept Job</Button>
-            </div>
-          </li>
+          {openJob.map((pullOpenJobs) => {
+            return (
+              <li>
+                <h5 key={pullOpenJobs._id}>{pullOpenJobs.title}</h5>
+                <p>{pullOpenJobs.job_description}</p>
+                <div className="text-ceter">
+                  <Button className="btn btn-primary ">Accept Job</Button>
+                </div>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </div>

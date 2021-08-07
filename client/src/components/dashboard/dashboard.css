@@ -135,6 +135,10 @@ body {
  margin-bottom: 4rem;
 }
 
+.joblist{
+  display: flex;
+}
+
 @media screen and (max-width: 600px){
   .main{
     flex-direction: column;

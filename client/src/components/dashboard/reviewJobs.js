@@ -17,11 +17,11 @@ const ReviweJob = () => {
 
 
     const { loading, data } = useQuery( DONE_NO_REVIEWS );
-    let reviweJob ="";
+    const reviweJob = data?.noReviews || [];
+   
   if (loading) {
     console.log("Loading");
   } else {
-     reviweJob = data?.pullOpenJobs|| {};
     console.log( reviweJob );
   }
 
@@ -30,8 +30,12 @@ const ReviweJob = () => {
               <h4>Job Completed</h4>
               <div className="JobList">
                 <ul>
-                  <li>
-                    <h4>{reviweJob.title}</h4>
+                {reviweJob.map((noReviews) => {
+                  return (
+                    <li key={noReviews._id}>
+                    <h4>{noReviews.title}</h4>
+                    <p>{noReviews.job_description}</p>
+
                     <div className="text-center">
                       <Link to="/testimonials">
                         <Button className="btn btn-primary ">
@@ -40,6 +44,9 @@ const ReviweJob = () => {
                       </Link>
                     </div>
                   </li>
+                  )
+
+                })}  
                 </ul>
               </div>
             </div>
