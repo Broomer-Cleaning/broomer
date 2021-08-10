@@ -31,7 +31,7 @@ const Contact = () => {
   const sendEmail = (serviceID, templateID, variables, userID) => {
     emailjs.send(serviceID, templateID, variables, userID)
       .then(() => {
-        setSuccessMessage("Form sent successfully! I'll contact you as soon as possible.");
+        setSuccessMessage("Form sent successfully! We'll contact you as soon as possible.");
       }).catch(err => console.error(`Something went wrong ${err}`));
   }
 

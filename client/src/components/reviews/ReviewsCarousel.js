@@ -20,11 +20,23 @@ const ReviewsCarousel = () => {
 
   const { loading, data } = useQuery(GET_ME);
   let userData = ""
+  let reviewsArr = [];
   if (loading) {
     console.log("Loading");
   } else {
     userData = data?.me || {};
-
+    console.log(userData)
+    console.log(userData.jobs_worked)
+    const { jobs_worked } = userData;
+    if (!!jobs_worked && jobs_worked.length > 0) {
+      jobs_worked.forEach(job => {
+        const reviewObj = {
+          review: job.review_text_worker,
+          // starts: ...etc
+        }
+        reviewsArr.push(reviewObj)
+      });
+    }
   }
 
   return (

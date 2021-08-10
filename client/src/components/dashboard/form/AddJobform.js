@@ -129,7 +129,7 @@ const AddJobForm = (onJobAdded) => {
       setStreet_address(value);
     } else if (name === 'postl') {
       setPostal_code(value);
-    } 
+    }
   };
 
   return (
@@ -162,27 +162,27 @@ const AddJobForm = (onJobAdded) => {
           </Form.Group>
         </Row>
         <Row>
-        <Form.Group className="mb-1" id="formGridCheckbox">
-                <Form.Label>Police Check</Form.Label>
-                <Col sm={10}>
-                  <Form.Check
-                    type="radio"
-                    label="YES"
-                    name="police"
-                    title="YES"
-                    id="police-true"
-                    onChange={handlePoliceCheckbox}
-                  />
-                  <Form.Check
-                    type="radio"
-                    label="NO"
-                    title="YES"
-                    name="police"
-                    id="police-false"
-                    onChange={handlePoliceCheckbox}
-                  />
-                </Col>
-              </Form.Group>
+          <Form.Group className="mb-1" id="formGridCheckbox">
+            <Form.Label>Police Check</Form.Label>
+            <Col sm={10}>
+              <Form.Check
+                type="radio"
+                label="YES"
+                name="police"
+                title="YES"
+                id="police-true"
+                onChange={handlePoliceCheckbox}
+              />
+              <Form.Check
+                type="radio"
+                label="NO"
+                title="YES"
+                name="police"
+                id="police-false"
+                onChange={handlePoliceCheckbox}
+              />
+            </Col>
+          </Form.Group>
 
         </Row>
         <Row>
@@ -227,7 +227,7 @@ const AddJobForm = (onJobAdded) => {
           </Form.Group>
         </Row>
 
-        <hr/>
+        <hr />
         <h4 className="mt-4">Utilty Information</h4>
 
 
@@ -279,25 +279,25 @@ const AddJobForm = (onJobAdded) => {
         <h4>Health Information</h4>
         <Row>
           <Form.Group className="mb-1" id="formGridCheckbox">
-                <Form.Label>Fully Vacinated</Form.Label>
-                <Col sm={10}>
-                  <Form.Check
-                    type="radio"
-                    label="YES"
-                    name="vax"
-                    data-vax="yes"
-                    id="vax-true"
-                    onChange={handleVaxCheckbox}
-                  />
-                  <Form.Check
-                    type="radio"
-                    label="NO"
-                    name="vax"
-                    id="vax-false"
-                    onChange={handleVaxCheckbox}
-                  />
-                </Col>
-              </Form.Group>
+            <Form.Label>Fully Vacinated</Form.Label>
+            <Col sm={10}>
+              <Form.Check
+                type="radio"
+                label="YES"
+                name="vax"
+                data-vax="yes"
+                id="vax-true"
+                onChange={handleVaxCheckbox}
+              />
+              <Form.Check
+                type="radio"
+                label="NO"
+                name="vax"
+                id="vax-false"
+                onChange={handleVaxCheckbox}
+              />
+            </Col>
+          </Form.Group>
         </Row>
         <Row>
           <Form.Group className="mb-1" id="formGridCheckbox">
@@ -320,16 +320,16 @@ const AddJobForm = (onJobAdded) => {
             </Col>
           </Form.Group>
         </Row>
-        <hr/>
+        <hr />
         <Link to="/dashboard">
-        <Button variant="primary" type="submit" onClick={() => handleFormSubmit()}>
-          Submit
-        </Button>
+          <Button variant="primary" type="submit" onClick={() => handleFormSubmit()}>
+            Submit
+          </Button>
         </Link>
         <Link to="/dashboard">
-        <Button variant="dark" type="submit">
-          Back to Dashborad
-        </Button>
+          <Button style={{ marginLeft: "1rem" }} variant="dark" type="submit">
+            Back to Dashborad
+          </Button>
         </Link>
       </Form>
     </Container>
