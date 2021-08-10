@@ -35,7 +35,6 @@ app.get('*', (req, res) => {
 
 
 app.use(routes);
-app.use("/api/calendar", require("./controllers/CalenderController"));
 
 db.once('open', () => {
   app.listen(PORT, () => {
