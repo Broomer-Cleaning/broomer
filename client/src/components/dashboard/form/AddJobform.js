@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../dashboard.css"
+import { useHistory } from 'react-router-dom';
 
 
 import { Form, Row, Button, Container, Col } from "react-bootstrap";
@@ -10,7 +11,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./formStyli.css";
 
 const AddJobForm = (onJobAdded) => {
-  const [title, setTitle] = useState("");
+  const [titleValue, setTitleValue] = useState("");
   const [job_description, setJob_description] = useState("");
   const [safety_mask, setSafety_mask] = useState("")
   const [street_address, setStreet_address] = useState("");
@@ -21,16 +22,17 @@ const AddJobForm = (onJobAdded) => {
   const [have_equipment_employer, setHave_equipment_employer] = useState("")
   const [have_pets, setHave_pets] = useState("")
 
-
+  let history = useHistory();
   const [addJob, { error }] = useMutation(ADD_JOB);
 
   const handleFormSubmit = async (event) => {
     // event.preventDefault();
 
     try {
-      const { data } = await addJob({
-        variables: {
-          title,
+      console.log({
+                variables: {
+          
+          title: titleValue,
           job_description,
           street_address,
           postal_code,
@@ -41,9 +43,26 @@ const AddJobForm = (onJobAdded) => {
           need_equipment_worker,
           have_pets
         },
-      });
+      })
 
-      window.location.reload();
+      // const { data } = await addJob({
+      //   variables: {
+          
+      //     title: titleValue,
+      //     job_description,
+      //     street_address,
+      //     postal_code,
+      //     safety_police_check,
+      //     safety_double_vax,
+      //     safety_mask,
+      //     have_equipment_employer,
+      //     need_equipment_worker,
+      //     have_pets
+      //   },
+      // });
+
+      // history.push(`/dashboard/${data.addJob.title}`);
+      // window.location.reload();
     } catch (err) {
       console.error(err);
     }
@@ -121,8 +140,9 @@ const AddJobForm = (onJobAdded) => {
 
 
     // Based on the input type, we set the state of either email, username, and password
-    if (name === 'title') {
-      setTitle(value);
+    if (name === 'jobTitle') {
+      setTitleValue(value);
+      console.log("hello")
     } else if (name === 'description') {
       setJob_description(value);
     } else if (name === 'address') {
@@ -140,9 +160,9 @@ const AddJobForm = (onJobAdded) => {
           <Form.Group controlId="formGridEmail">
             <Form.Label>Job Title</Form.Label>
             <Form.Control
-              value={title}
+              value={titleValue}
               type="text"
-              name="title"
+              name="jobTitle"
               placeholder="Car washing"
               onChange={handleChange}
             />
