@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Form, Button, Alert} from 'react-bootstrap';
-import { Link} from 'react-router-dom';
+import { Form, Button, Alert } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 
 
@@ -25,7 +25,7 @@ const SignupForm = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    
+
 
     // check if form has everything (as per react-bootstrap docs)
     const form = event.currentTarget;
@@ -34,80 +34,80 @@ const SignupForm = () => {
       event.stopPropagation();
     }
 
-   try {
+    try {
       const { data } = await createUser({ variables: { ...userFormData } });
-      console.log(data);
+      console.log(data.createUser);
       Auth.login(data.createUser.token);
       console.log(Auth.login())
-   } catch (err) {
-     console.error(err);
-     setShowAlert(true);
-   }
+    } catch (err) {
+      console.error(err);
+      setShowAlert(true);
+    }
 
     setUserFormData({
       username: '',
       email: '',
       password: '',
     });
-    
+
   };
 
 
   return (
     <>
-   <div className="card mx-auto">
-      <h2 className="text-center mb-4">Sign Up</h2>
-      {/* This is needed for the validation functionality above */}
-      <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
-        {/* show alert if server response is bad */}
-        <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
-          Something went wrong with your signup!
-        </Alert>
-        <Form.Group>
-          <Form.Label htmlFor='username'>Username</Form.Label>
-          <Form.Control
-            type='text'
-            placeholder='Your username'
-            name='username'
-            onChange={handleInputChange}
-            value={userFormData.username}
-            required
-          />
-          <Form.Control.Feedback type='invalid'>Username is required!</Form.Control.Feedback>
-        </Form.Group>
+      <div className="card mx-auto">
+        <h2 className="text-center mb-4">Sign Up</h2>
+        {/* This is needed for the validation functionality above */}
+        <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
+          {/* show alert if server response is bad */}
+          <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
+            Something went wrong with your signup!
+          </Alert>
+          <Form.Group>
+            <Form.Label htmlFor='username'>Username</Form.Label>
+            <Form.Control
+              type='text'
+              placeholder='Your username'
+              name='username'
+              onChange={handleInputChange}
+              value={userFormData.username}
+              required
+            />
+            <Form.Control.Feedback type='invalid'>Username is required!</Form.Control.Feedback>
+          </Form.Group>
 
-        <Form.Group>
-          <Form.Label htmlFor='email'>Email</Form.Label>
-          <Form.Control
-            type='email'
-            placeholder='Your email address'
-            name='email'
-            onChange={handleInputChange}
-            value={userFormData.email}
-            required
-          />
-          <Form.Control.Feedback type='invalid'>Email is required!</Form.Control.Feedback>
-        </Form.Group>
+          <Form.Group>
+            <Form.Label htmlFor='email'>Email</Form.Label>
+            <Form.Control
+              type='email'
+              placeholder='Your email address'
+              name='email'
+              onChange={handleInputChange}
+              value={userFormData.email}
+              required
+            />
+            <Form.Control.Feedback type='invalid'>Email is required!</Form.Control.Feedback>
+          </Form.Group>
 
-        <Form.Group>
-          <Form.Label htmlFor='password'>Password</Form.Label>
-          <Form.Control
-            type='password'
-            placeholder='Your password'
-            name='password'
-            onChange={handleInputChange}
-            value={userFormData.password}
-            required
-          />
-          <Form.Control.Feedback type='invalid'>Password is required!</Form.Control.Feedback>
-        </Form.Group>
-        <Button
-          disabled={!(userFormData.username && userFormData.email && userFormData.password)}
-          type='submit'
-          variant='success' >
-          Submit
-        </Button>
-      </Form>
+          <Form.Group>
+            <Form.Label htmlFor='password'>Password</Form.Label>
+            <Form.Control
+              type='password'
+              placeholder='Your password'
+              name='password'
+              onChange={handleInputChange}
+              value={userFormData.password}
+              required
+            />
+            <Form.Control.Feedback type='invalid'>Password is required!</Form.Control.Feedback>
+          </Form.Group>
+          <Button
+            disabled={!(userFormData.username && userFormData.email && userFormData.password)}
+            type='submit'
+            variant='success' >
+            Submit
+          </Button>
+        </Form>
       </div>
       <div className=" question w-100 text-center mt-2">Already have an account? <Link to="login" className="nav-link">Login</Link></div>
     </>
