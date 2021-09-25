@@ -13,7 +13,3 @@ mongoose.connect(
   });
 
 module.exports = mongoose.connection;
-
-
-// Some issues with seeding, etc.
-//process.env.MONGODB_URI || 

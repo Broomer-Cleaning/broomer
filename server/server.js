@@ -24,18 +24,22 @@ server.applyMiddleware({ app });
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// app.use(express.static(path.join(__dirname, 'client/build')));
 // if we're in production, serve client/build as static assets
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/build')));
+  app.use(express.static(path.join(__dirname, '../client/public')));
+  console.log("we are in production")
 }
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+app.use(express.static('build'));
+app.use(express.static('public'));
+
+app.get("/", (req, res) => {
+  const index = path.join(__dirname, '../client', 'public', 'index.html')
+  res.sendFile(index)
 });
 
-
 app.use(routes);
-// app.use("/api/calendar", require("./controllers/CalenderController"));
 
 db.once('open', () => {
   app.listen(PORT, () => {
